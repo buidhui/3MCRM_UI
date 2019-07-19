@@ -2,7 +2,7 @@ import React from 'react';
 import { MDBListGroup, MDBListGroupItem, MDBIcon } from 'mdbreact';
 import { NavLink } from 'react-router-dom';
 
-const TopNavigation = () => {
+const sideNavigation = () => {
     return (
         <div className="sidebar-fixed position-fixed">
             <a href="#!" className="logo-wrapper waves-effect">
@@ -21,7 +21,7 @@ const TopNavigation = () => {
                         Khách hàng
                     </MDBListGroupItem>
                 </NavLink>
-                <NavLink to="/tables" activeClassName="activeClass">
+                <NavLink to="/report" activeClassName="activeClass">
                     <MDBListGroupItem>
                         <MDBIcon icon="table" className="mr-3"/>
                         Báo cáo
@@ -33,10 +33,16 @@ const TopNavigation = () => {
                         Sales
                     </MDBListGroupItem>
                 </NavLink>
+                <NavLink to="/marketing" activeClassName="activeClass">
+                    <MDBListGroupItem>
+                        <MDBIcon icon="heart" className="mr-3"/>
+                    Marketings
+                    </MDBListGroupItem>
+                </NavLink>
                 <NavLink to="/404" activeClassName="activeClass">
                     <MDBListGroupItem>
                         <MDBIcon icon="business-time" className="mr-3"/>
-                        Marketings 
+                        404 Error 
                     </MDBListGroupItem>
                 </NavLink>
             </MDBListGroup>
@@ -44,4 +50,4 @@ const TopNavigation = () => {
     );
 }
 
-export default TopNavigation;
+export default sideNavigation;

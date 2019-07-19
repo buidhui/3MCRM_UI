@@ -1,7 +1,7 @@
 import React from 'react'
 import { MDBRow, MDBCol, MDBView, MDBCard, MDBCardBody, MDBTable, MDBTableHead, MDBTableBody } from 'mdbreact';
 
-const TablesPage =  () => {
+const ReportPage =  () => {
   return (
     <>
       <MDBRow>
@@ -145,4 +145,4 @@ const TablesPage =  () => {
   )
 }
 
-export default TablesPage;
+export default ReportPage;
