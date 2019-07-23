@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="https://i.imgur.com/pYIYkbi.pngg" />
+
+  <link rel="stylesheet" href="../dist/modules/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/modules/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="../dist/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../dist/css/demo.css">
+    <link rel="stylesheet" href="../dist/css/style.css">
+  
+  
+  
+  <title>3M CRM</title>
+</head>
+
+<body>
+ <div id="root"></div>
+    
+
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+ <script src="../dist/modules/jquery.min.js"></script>
+<script src="../dist/modules/nicescroll/jquery.nicescroll.min.js"></script>
+<script>
+ var ctx = document.getElementById("myChart").getContext('2d');
+ var myChart = new Chart(ctx, {
+   type: 'line',
+   data: {
+     labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+     datasets: [{
+       label: 'Statistics',
+       data: [460, 458, 330, 502, 430, 610, 488],
+       borderWidth: 2,
+       backgroundColor: 'rgb(87,75,144)',
+       borderColor: 'rgb(87,75,144)',
+       borderWidth: 2.5,
+       pointBackgroundColor: '#ffffff',
+       pointRadius: 4
+     }]
+   },
+   options: {
+     legend: {
+       display: false
+     },
+     scales: {
+       yAxes: [{
+         ticks: {
+           beginAtZero: true,
+           stepSize: 150
+         }
+       }],
+       xAxes: [{
+         gridLines: {
+           display: false
+         }
+       }]
+     },
+   }
+ });
+</script>
+<script src="../dist/js/scripts.js"></script>
+</body>
+
+</html>
