@@ -25,16 +25,16 @@ const SideNavigation = () => {
           <li className="menu-header">Tổng quan</li>
           <li>
             <Link to="/">
-              <i class="fas fa-tachometer-alt" />
+              <i className="fas fa-tachometer-alt" />
               <span>Tổng quan</span>
             </Link>
           </li>
           <li className="menu-header">Chi tiết</li>
           <li>
-            <Link href="top#" className="has-dropdown">
-              <i class="fas fa-user" />
+            <a href="top#" className="has-dropdown">
+              <i className="fas fa-user" />
               <span>Khách hàng</span>
-            </Link>
+            </a>
             <ul className="menu-dropdown">
               <li>
                 <Link to="/listcustomers">
@@ -49,7 +49,7 @@ const SideNavigation = () => {
                 </Link>
               </li>
               <li>
-                <Link href="top#">
+                <Link to="/customercare">
                   <i className="ion ion-ios-circle-outline" />
                   Chăm sóc khách hàng
                 </Link>
@@ -57,10 +57,10 @@ const SideNavigation = () => {
             </ul>
           </li>
           <li>
-            <Link href="top#" className="has-dropdown">
-              <i class="fas fa-shopping-cart" />
+            <a href="top#" className="has-dropdown">
+              <i className="fas fa-shopping-cart" />
               <span>Sales</span>
-            </Link>
+            </a>
             <ul className="menu-dropdown">
               <li>
                 <Link to="/listproducts">
@@ -78,7 +78,7 @@ const SideNavigation = () => {
           </li>
           <li>
             <Link to="/report">
-              <i class="fas fa-chart-line" />
+              <i className="fas fa-chart-line" />
               <span>Báo cáo</span>
             </Link>
           </li>
@@ -100,14 +100,14 @@ const SideNavigation = () => {
 								</li> */}
           <li className="menu-header">Thêm</li>
           <li>
-            <Link href="top#">
-              <i class="fas fa-info-circle" /> Credits
+            <Link to="/credit">
+              <i className="fas fa-info-circle" /> Credits
             </Link>
           </li>
         </ul>
         <div className="p-3 mt-4 mb-4">
           <Link
-            href="top#"
+            to="/setting"
             className="btn btn-info btn-shadow btn-round has-icon has-icon-nofloat btn-block"
           >
             <i className="ion ion-help-buoy" />

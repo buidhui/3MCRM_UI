@@ -3,7 +3,7 @@ import "./LoginStyle.css";
 
 export default function Login() {
   function onSignIn(e) {
-    // e.preventDefault();
+    e.preventDefault();
 
     localStorage.setItem("token", "okok");
   }
