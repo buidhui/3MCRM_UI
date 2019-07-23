@@ -3,7 +3,7 @@ import "./LoginStyle.css";
 
 export default function Login() {
   function onSignIn(e) {
-    e.preventDefault();
+    // e.preventDefault();
 
     localStorage.setItem("token", "okok");
   }
@@ -66,13 +66,9 @@ export default function Login() {
       </div>
 
       <footer className="copyrigh-wthree">
-        <p>
-          © 2019 CRM Application. All Rights Reserved | Design by
-          <a href="top#" target="_blank">
-            {" "}
-            3M CRM Team
-          </a>
-        </p>
+        <div className="footer-right">
+          Copyright &copy; 2019 Design By <a href="top#">3M Team</a>
+        </div>
       </footer>
     </React.Fragment>
   );

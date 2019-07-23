@@ -248,7 +248,9 @@ body a:focus,
 a:hover {
 	text-decoration: none;
 }
-
+.footer-right{
+    margin-top: 30px;
+}
 select,
 input[type="email"],
 input[type="text"],
@@ -375,12 +377,12 @@ h1.error {
 	-ms-transition: 0.5s all;
     box-sizing: border-box;
 }
-.form-left-to-w3l:hover{border-bottom:1px solid #67e878;}
-.form-left-to-w3l:hover span{color:#67e878;}
+.form-left-to-w3l:hover{border-bottom:1px solid #0a6aa7;}
+.form-left-to-w3l:hover span{color:#0a6aa7;}
 .form-left-to-w3l:hover.form-left-to-w3l input[type="email"],
 .form-left-to-w3l:hover.form-left-to-w3l input[type="password"],
 .form-left-to-w3l:hover.form-left-to-w3l input[type="text"]
-{ border-left:1px solid #67e878; }
+{ border-left:1px solid #0a6aa7; }
 .form-left-to-w3l span {
     -webkit-flex-basis: 15%;
     flex-basis: 15%;
@@ -488,6 +490,11 @@ input.checked {
     margin-bottom: 37px;
    
 }
+button[type=submit] {
+    margin-top: 50px;
+    padding: 20px 20px;
+    width: 70%;
+}
 .txt-left-side h2{
     color: #0a6aa7;
 }
@@ -512,6 +519,7 @@ input.checked {
     font-size: 15px;
 }
 .copyrigh-wthree {
+    
     padding: 4em 0em 4.5em;
 }
 }
