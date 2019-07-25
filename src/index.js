@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Layout from './Layout/Layout';
-
+import React from "react";
+import ReactDOM from "react-dom";
+import Layout from "./Layout/Layout";
+// import App from "./App";
 
 ReactDOM.render(
-<div>
-<Layout/>
+  <div>
+    <Layout />
+    {/* <App /> */}
+  </div>,
 
-</div>,
-
-document.getElementById('root')
+  document.getElementById("root")
 );
