@@ -1,18 +1,27 @@
 import React from "react";
 import "./LoginStyle.css";
+import { Redirect } from "react-router-dom";
 
-export default function Login() {
+export default function Login(props) {
   function onSignIn(e) {
-    // e.preventDefault();
+    e.preventDefault();
 
     localStorage.setItem("token", "okok");
+    console.log("Props", props.history);
+    props.history.push("/");
+
+    console.log("token", localStorage.getItem("token"));
+  }
+
+  if (localStorage.getItem("token")) {
+    return <Redirect to="/" />;
   }
 
   return (
     <React.Fragment>
       <h1 className="error">3M CRM APPLICATION</h1>
 
-      <div className="w3layouts-two-grids">
+      <div className="crm-two-grids">
         <div className="mid-class">
           <div className="img-right-side">
             <h3>Customers Relationship Managerment</h3>
@@ -29,22 +38,34 @@ export default function Login() {
           <div className="txt-left-side">
             <h2> Login Here </h2>
             <form>
-              <div className="form-left-to-w3l">
+              <div className="form-left-to-3m">
                 <span className="far fa-user" aria-hidden="true" />
-                <input type="text" name="Name" placeholder="Email" required />
+                <input
+                  id="email"
+                  type="email"
+                  className="form-control"
+                  name="email"
+                  placeholder="Email"
+                  tabIndex="1"
+                  required
+                  autoFocus
+                />
                 <div className="clear" />
               </div>
-              <div className="form-left-to-w3l ">
+              <div className="form-left-to-3m ">
                 <span className="fa fa-lock" aria-hidden="true" />
                 <input
+                  id="password"
                   type="password"
+                  className="form-control"
                   name="password"
                   placeholder="Password"
+                  tabIndex="2"
                   required
                 />
                 <div className="clear" />
               </div>
-              <div className="main-two-w3ls">
+              <div className="main-two-3ms">
                 <div className="left-side-forget">
                   <input type="checkbox" className="checked" />
                   <span className="remenber-me">Remember me </span>

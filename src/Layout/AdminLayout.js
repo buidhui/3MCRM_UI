@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 import TopNavigation from "../Components/TopNavigation";
-import SideNavigation from "../Components/SideNavigation";
-import Footer from "../Components/Footer";
+import AdminSideNav from "../Components/AdminSideNav";
 import Routes from "../Components/Routes";
+import Footer from "../Components/Footer";
+import { BrowserRouter, Redirect } from "react-router-dom";
 
-import { BrowserRouter } from "react-router-dom";
-
-class Layout extends Component {
+class AdminLayout extends Component {
   render() {
     // if (!localStorage.getItem("token")) {
     //   return <Redirect to="/login" />;
     // }
-
     return (
       <BrowserRouter>
         <div id="app">
@@ -21,16 +19,12 @@ class Layout extends Component {
             {/* Top Navigation End */}
 
             {/* Sidebar Start */}
-            <SideNavigation />
+            {/* <SideNavigation /> */}
+            <AdminSideNav />
             {/* Sidebar End */}
-
-            {/* Main content start */}
             <div className="main-content">
               <Routes />
             </div>
-            {/* Main content end*/}
-
-            {/* Footer   */}
             <Footer />
           </div>
         </div>
@@ -39,4 +33,4 @@ class Layout extends Component {
   }
 }
 
-export default Layout;
+export default AdminLayout;

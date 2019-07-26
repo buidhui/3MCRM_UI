@@ -1,6 +1,4 @@
 import React from "react";
-import Routes from "./Routes";
-import Footer from "../Components/Footer";
 
 export default class TopNavigation extends React.Component {
   render() {
@@ -35,7 +33,7 @@ export default class TopNavigation extends React.Component {
                 placeholder="Tìm kiếm..."
                 aria-label="Search"
               />
-              <button className="btn" type="submit">
+              <button className="btn">
                 <i className="ion ion-search" />
               </button>
             </div>
@@ -135,14 +133,6 @@ export default class TopNavigation extends React.Component {
             </li>
           </ul>
         </nav>
-        {/* Main content start */}
-        <div className="main-content">
-          <Routes />
-        </div>
-        {/* Main content end*/}
-
-        {/* Footer   */}
-        <Footer />
       </div>
     );
   }

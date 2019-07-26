@@ -7,6 +7,7 @@ import DsSanPham from "./Pages/DsSanPham";
 import DsDonHang from "./Pages/DsDonHang";
 import BaoCao from "./Pages/BaoCao";
 import Marketing from "./Pages/Marketing";
+import DsNhanVien from "./Pages/DsNhanVien";
 
 class Routes extends React.Component {
   render() {
@@ -14,6 +15,7 @@ class Routes extends React.Component {
       <Switch>
         <Route exact path="/" component={TongQuan} />
         <Route path="/tongquan" component={TongQuan} />
+        <Route path="/employ" component={DsNhanVien} />
         <Route path="/listcustomers" component={DsKhachHang} />
         <Route path="/groupcustomers" component={NhomKhachHang} />
         <Route path="/listproducts" component={DsSanPham} />
