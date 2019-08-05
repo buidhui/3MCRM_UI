@@ -940,3 +940,58 @@ body.sidebar-gone .main-content {
 }
 @media (min-width: 1200px) {
 }
+.add-form{
+  border:  rgb(211, 209, 209) ridge 1px ;
+  background-color: white;
+  padding: 5px;
+  margin: 10px;
+}
+.add-form-row{
+  margin: 13px;
+}
+.form-line{
+  margin-left: 10px;
+  margin-top: 20px;
+}
+.modal-form-body{
+  right: 5px;
+  margin: 15px;
+}
+.detail-card{
+  margin: 15px;
+}
+/* .detail-card-8t{
+  margin: 15px 15px 50px;
+}
+.detail-card-8b{
+  margin: 15px ;
+} */
+.debt{
+  margin: 7px 12px;
+}
+.cus-note{
+  border: ridge rgb(211, 209, 209) 1px;
+  padding: 7px;
+}
+.cus-sub{
+  margin-top: 15px !important;
+  margin-bottom: 10px !important;
+}
+.btn-add-cus{
+  margin: 0 ;
+  padding: 0.6rem 2.14rem;
+}
+.add-product-h6{
+  padding-top: 10px;
+  /* //padding-left: 15px;  */
+  font-weight: bold;
+}
+h4 {
+  font-weight: bold;
+}
+.form-label{
+  font-weight: bold;
+}
+.order-table{
+  background-color: #c6e2ff;
+}

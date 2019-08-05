@@ -37,7 +37,7 @@ const SideNavigation = () => {
             </a>
             <ul className="menu-dropdown">
               <li>
-                <Link to="/listcustomers">
+                <Link to="/customers">
                   <i className="ion ion-ios-circle-outline" />
                   Danh sách khách hàng
                 </Link>
@@ -63,13 +63,13 @@ const SideNavigation = () => {
             </a>
             <ul className="menu-dropdown">
               <li>
-                <Link to="/listproducts">
+                <Link to="/products">
                   <i className="ion ion-ios-circle-outline" />
                   Danh sách sản phẩm
                 </Link>
               </li>
               <li>
-                <Link to="/order">
+                <Link to="/orders">
                   <i className="ion ion-ios-circle-outline" />
                   Danh sách đơn hàng
                 </Link>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import CustomerList from '../customer/CustomerList'
 class DsKhachHang extends Component {
   render() {
     return (
@@ -8,7 +8,9 @@ class DsKhachHang extends Component {
           <h1 className="section-header">
             <div>Danh sách khách hàng</div>
           </h1>
+          <CustomerList />
         </section>
+        
       </React.Fragment>
     );
   }
