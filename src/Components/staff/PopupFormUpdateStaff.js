@@ -8,7 +8,7 @@ export default function PopupForm(props) {
     const style = {left: '135px'} ;
     return (
       <>
-        <button type="button" className="btn blue-gradient float-right" onClick={() => setShow(true) }>
+        <button type="button" className="btn btn-primary float-right" onClick={() => setShow(true) }>
           Sửa thông tin 
         </button>
         <Modal

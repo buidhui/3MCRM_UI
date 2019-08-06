@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {Card,Row,Col} from 'react-bootstrap';
 import axios from 'axios';
 import PopupFormUpdate from './PopupFormUpdateStaff';
+import url from '../url'
 class StaffDetail extends Component{
     constructor(props){
         super(props);
@@ -17,7 +18,7 @@ class StaffDetail extends Component{
     componentDidMount(){
 		axios({
 			method: 'get',
-			url: `http://192.168.10.22:8080/staffs/${this.props.id}`
+			url: `${url}/staffs/${this.props.id}`
 		}).then(respone => {
 			this.setState({
 				staffDetail: respone.data,
@@ -29,7 +30,7 @@ class StaffDetail extends Component{
     deleteStaff(){
         axios({
 			method: 'delete',
-			url: `http://192.168.10.22:8080/staffs/${this.props.id}`
+			url: `${url}/staffs/${this.props.id}`
 		}).then(respone => {
             console.log(respone+"xóa được chưuaaaaaaaaaaa");
 		}).catch(error => {
@@ -89,9 +90,9 @@ class StaffDetail extends Component{
                             <Card.Body>
                                 <Card.Title>Liên hệ</Card.Title>
                                 <Card.Text>
-                                    Số điện thoại     :  {staffDetail.phoneNumber}
+                                    Số điện thoại     :  {staffDetail.phone}
                                     <br/>
-                                    Chức vụ      :  {(staffDetail.role) ? staffDetail.role : "Đang cập nhật"}
+                                    Chức vụ      :  {(staffDetail.role === 1) ? "Quản trị viên" : "Nhân viên"}
                                     <br/>
                                     Email       :  {staffDetail.email}
                                     <br/>

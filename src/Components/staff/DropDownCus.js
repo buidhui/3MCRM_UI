@@ -28,13 +28,13 @@ class DropDownCus extends Component{
         <InputGroup className="mb-3">
             <div className="row">
                 <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                    <FormControl name="filterName" value={filterName} onChange={this.onChange} placeholder="Nhập tên nhân viên... "/>
+                    <FormControl style={{width: "100%"}} name="filterName" value={filterName} onChange={this.onChange} placeholder="Nhập tên nhân viên... "/>
                 </div>
                 <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                    <FormControl name="filterEmail" value={filterEmail} onChange={this.onChange} placeholder="Nhập email nhân viên..."/>
+                    <FormControl style={{width: "100%"}} name="filterEmail" value={filterEmail} onChange={this.onChange} placeholder="Nhập email nhân viên..."/>
                 </div>
                 <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                    <FormControl name="filterPhone" value={filterPhone} onChange={this.onChange} placeholder="Nhập số điện thoại..."/>
+                    <FormControl style={{width: "100%"}} name="filterPhone" value={filterPhone} onChange={this.onChange} placeholder="Nhập số điện thoại..."/>
                 </div>    
             </div>                                      
         </InputGroup>
