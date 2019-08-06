@@ -29,7 +29,7 @@ class DashBoardTopNv extends Component {
               <p>Nhân viên 1</p>
               <br />
               <div className="text-center">
-                <a href="#" className="btn btn-primary btn-round">
+                <a href="top#" className="btn btn-primary btn-round">
                   View All
                 </a>
               </div>
