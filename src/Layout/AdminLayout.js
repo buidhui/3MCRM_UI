@@ -3,7 +3,7 @@ import TopNavigation from "../Components/TopNavigation";
 import AdminSideNav from "../Components/AdminSideNav";
 import Routes from "../Components/Routes";
 import Footer from "../Components/Footer";
-import { BrowserRouter, Redirect } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 class AdminLayout extends Component {
   render() {
