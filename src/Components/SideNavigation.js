@@ -42,6 +42,12 @@ const SideNavigation = () => {
                   Danh sách khách hàng
                 </Link>
               </li>
+              <li>
+                <Link to="/groupcustomers">
+                  <i className="ion ion-ios-circle-outline" />
+                  Nhóm khách hàng
+                </Link>
+              </li>
             </ul>
           </li>
           <li>
