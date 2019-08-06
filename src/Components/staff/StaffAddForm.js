@@ -59,7 +59,7 @@ class StaffAddFrom extends Component {
     const data = {
       "id": this.state.id,
       "name": this.state.name,
-      "role": this.state.role,
+      "jobTitle": this.state.role,
       "dob": this.state.dob,
       "email": this.state.email,
       "gender": this.state.gender,
