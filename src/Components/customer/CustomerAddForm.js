@@ -103,7 +103,7 @@ class CustomerAddForm extends Component{
                           <Form.Control type="date" name="DOB" value={this.state.DOB} placeholder="Nhập ngày sinh" onChange={this.onChange}/>
                       </Form.Group>  
 
-                      <Form.Group as={Col} xs={2} controlId="formGridGender">
+                      <Form.Group as={Col} xs={3} controlId="formGridGender">
                       <Form.Label>Giới tính</Form.Label>
                       <Form.Control as="select" name="gender"  onChange={this.onChange}>
                           <option value={null}>Giới tính</option>
@@ -133,12 +133,12 @@ class CustomerAddForm extends Component{
                                 <Form.Label>Nhóm khách hàng</Form.Label>
                                 <Form.Control as="select" name="customerType" value={this.state.customerType} onChange={this.onChange} >
                                   <option value={null}>Nhóm khách hàng</option>
-                                  <option value={1}>Nhóm 1</option>
-                                  <option value={2}>Nhóm 2</option>
-                                  <option value={3}>Nhóm 3</option>
-                                  <option value={4}>Nhóm 4</option>
-                                  <option value={5}>Nhóm 5</option>
-                                  <option value={6}>Nhóm 6</option>
+                                  <option value={1}>Nhóm Luxury</option>
+                                  <option value={2}>Nhóm Diamond</option>
+                                  <option value={3}>Nhóm Platinum</option>
+                                  <option value={4}>Nhóm Gold</option>
+                                  <option value={5}>Nhóm Silver</option>
+                                  
                                 </Form.Control>
                         </Form.Group>
                     </Form.Row>    

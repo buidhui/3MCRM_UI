@@ -18,7 +18,6 @@ class CustomerDetail extends Component {
             method: 'get',
             url: `${url}/orderdetails/${this.props.id}`
         }).then(respone => {
-            console.log(respone.data)
             this.setState({
                 orderDetail: respone.data,
             })
@@ -59,7 +58,9 @@ class CustomerDetail extends Component {
         const eleOrder = orderDetail.map((orderItem, index) => {
             return <OrderItem key={index} index={index} orderItem={orderItem} ></OrderItem>;
         });
+        console.log(this.state)
         return (
+            
             <div>
                 <Row>
                     <Col xl={8}>
@@ -124,13 +125,13 @@ class CustomerDetail extends Component {
                                     </Col>
                                     <Col>
                                         <Card.Text>
-                                            <span className="float-right">{orderDetail[0].orderOrder && orderDetail[0].orderOrder.totalMoney}</span>
+                                            <span className="float-right">{orderDetail[0].orderOrder && orderDetail[0].orderOrder.totalMoney + " VNĐ"}</span>
                                             <br />
-                                            <span className="float-right">{orderDetail[0].orderOrder && (orderDetail[0].orderOrder.discount) ? orderDetail[0].orderOrder.chiet_khau +"%" : "0%" }</span>
+                                            <span className="float-right">{orderDetail[0] && (orderDetail[0].discount) ? orderDetail[0].discount+"%" : "0%" }</span>
                                             <br />
-                                            <span className="float-right">{orderDetail[0].orderOrder && (orderDetail[0].orderOrder.costShip) ? orderDetail[0].orderOrder.phi_giaohang +" VNĐ" : "0 VNĐ" }</span>
+                                            <span className="float-right">{orderDetail[0] && (orderDetail[0].costShip) ? orderDetail[0].costShip +" VNĐ" : "0 VNĐ" }</span>
                                             <br />
-                                            <span className="float-right">{orderDetail[0].orderOrder && orderDetail[0].orderOrder.totalMoney +" VNĐ"}</span>
+                                            <span className="float-right">{orderDetail[0].orderOrder && orderDetail[0].orderOrder.totalMoney*(100-orderDetail[0].discount)/100 +" VNĐ"}</span>
                                         </Card.Text>
                                     </Col>
                                 </Row>
