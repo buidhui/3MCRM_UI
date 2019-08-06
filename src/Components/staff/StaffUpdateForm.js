@@ -58,7 +58,7 @@ class StaffUpdateForm extends Component{
         const data = {
             "id": this.state.id,
             "name": this.state.name,
-            "role": this.state.role,
+            "jobTitle": this.state.role,
             "dob": this.state.dob,
             "email": this.state.email,
             "gender": this.state.gender,
@@ -68,6 +68,7 @@ class StaffUpdateForm extends Component{
         if(!data.name){
           alert("Tên nhân viên không được để trống!")
         }else{
+          console.log(data)
           this.updateStaff(data);
           this.props.onClick();
         }
@@ -80,7 +81,7 @@ class StaffUpdateForm extends Component{
             name : staff.name,
             dob: staff.dob,
             gender: (staff.gender) ? staff.gender : "",
-            role: staff.role,
+            role:  (staff.jobTitle) ? staff.jobTitle : "Chưa cập nhật",
             email: staff.email,
             phone: staff.phone,
             note: (staff.note) ? staff.note : "Hiện tại chưa có ghi chú nào",

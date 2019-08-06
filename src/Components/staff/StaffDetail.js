@@ -20,6 +20,7 @@ class StaffDetail extends Component{
 			method: 'get',
 			url: `${url}/staffs/${this.props.id}`
 		}).then(respone => {
+            console.log(respone.data)
 			this.setState({
 				staffDetail: respone.data,
 			})
@@ -92,7 +93,7 @@ class StaffDetail extends Component{
                                 <Card.Text>
                                     Số điện thoại     :  {staffDetail.phone}
                                     <br/>
-                                    Chức vụ      :  {(staffDetail.role === 1) ? "Quản trị viên" : "Nhân viên"}
+                                    Chức vụ      :  {(staffDetail.jobTitle) ? staffDetail.jobTitle : "Chưa cập nhật"}
                                     <br/>
                                     Email       :  {staffDetail.email}
                                     <br/>
