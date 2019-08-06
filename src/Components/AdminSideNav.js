@@ -23,7 +23,7 @@ const SideNavigation = () => {
             <img alt="" src="../dist/img/avatar/avatar-1.jpeg" />
           </div>
           <div className="sidebar-user-details">
-            <div className="user-name">Huy Bùi</div>
+            <div className="user-name">Việt Huy</div>
             <div className="user-role">Admin</div>
           </div>
         </div>
