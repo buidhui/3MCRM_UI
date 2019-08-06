@@ -104,7 +104,7 @@ class CustomerAddForm extends Component {
     const data = {
       "orderDate": this.state.ngay_giaoHang,
       "staffOrder": {
-        id: 12,
+        id: 22,
       },
       "customerOrder": {
         id: this.state.id_cus

@@ -37,7 +37,7 @@ const SideNavigation = () => {
           </li>
           <li className="menu-header">Chi tiết</li>
           <li>
-            <Link to="/employ">
+            <Link to="/staffs">
               <i className="fas fa-chart-line" />
               <span>Nhân viên</span>
             </Link>

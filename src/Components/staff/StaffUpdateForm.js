@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Form,Col,Button,Row,Container} from 'react-bootstrap';
 import axios from 'axios';
+import url from '../url'
 class StaffUpdateForm extends Component{
     constructor(props){
         super(props);
@@ -18,7 +19,7 @@ class StaffUpdateForm extends Component{
       updateStaff(obj){
         axios({
           method: 'put',
-          url: `http://192.168.10.22:8080/staffs/${this.props.staff.id}`,
+          url: `${url}/staffs/${this.props.staff.id}`,
           data: obj,
 			headers: {
                 'content-type': 'application/json',
@@ -27,7 +28,7 @@ class StaffUpdateForm extends Component{
       alert("Sửa thông tin nhân viên thành công");
 			axios({
         method: 'get',
-        url: `http://192.168.10.22:8080/staffs/${this.props.staff.id}`
+        url: `${url}/staffs/${this.props.staff.id}`
       }).then(respone => {
         this.props.onUpdateData(respone.data)
       }).catch(error => {
@@ -61,7 +62,7 @@ class StaffUpdateForm extends Component{
             "dob": this.state.dob,
             "email": this.state.email,
             "gender": this.state.gender,
-            "phoneNumber": this.state.phone,
+            "phone": this.state.phone,
             "note": this.state.note,
         };
         if(!data.name){
@@ -81,7 +82,7 @@ class StaffUpdateForm extends Component{
             gender: (staff.gender) ? staff.gender : "",
             role: staff.role,
             email: staff.email,
-            phone: staff.phoneNumber,
+            phone: staff.phone,
             note: (staff.note) ? staff.note : "Hiện tại chưa có ghi chú nào",
             
         },()=>{

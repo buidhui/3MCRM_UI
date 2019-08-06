@@ -4,6 +4,7 @@ import StaffListItem from './StaffListItem';
 import DropDownCus from './DropDownCus';
 import PopupForm from './PopupFormStaff';
 import {Table} from 'react-bootstrap';
+import url from '../url'
 class StaffList extends Component{
     state ={
 		staffList : [],
@@ -22,7 +23,7 @@ class StaffList extends Component{
     componentDidMount(){
 		axios({
 			method: 'get',
-			url: 'http://192.168.10.22:8080/staffs/list'
+			url: `${url}/staffs/list`
 		}).then(respone => {
 			this.setState({
 				staffList: respone.data,
