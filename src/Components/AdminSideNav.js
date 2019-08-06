@@ -15,7 +15,7 @@ const SideNavigation = () => {
           <img
             alt="MDB React Logo"
             className="img-fluid"
-            src="https://i.imgur.com/zTBWKsm.png"
+            src="https://i.imgur.com/syrimDs.png  "
           />
         </div>
         <div className="sidebar-user">
@@ -49,7 +49,7 @@ const SideNavigation = () => {
             </a>
             <ul className="menu-dropdown">
               <li>
-                <Link to="/listcustomers">
+                <Link to="/customers">
                   <i className="ion ion-ios-circle-outline" />
                   Danh sách khách hàng
                 </Link>
@@ -60,12 +60,6 @@ const SideNavigation = () => {
                   Nhóm khách hàng
                 </Link>
               </li>
-              <li>
-                <a href="top#">
-                  <i className="ion ion-ios-circle-outline" />
-                  Chăm sóc khách hàng
-                </a>
-              </li>
             </ul>
           </li>
           <li>
@@ -75,13 +69,13 @@ const SideNavigation = () => {
             </a>
             <ul className="menu-dropdown">
               <li>
-                <Link to="/listproducts">
+                <Link to="/products">
                   <i className="ion ion-ios-circle-outline" />
                   Danh sách sản phẩm
                 </Link>
               </li>
               <li>
-                <Link to="/order">
+                <Link to="/orders">
                   <i className="ion ion-ios-circle-outline" />
                   Danh sách đơn hàng
                 </Link>
