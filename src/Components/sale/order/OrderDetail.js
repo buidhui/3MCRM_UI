@@ -32,8 +32,8 @@ class CustomerDetail extends Component {
             method: 'put',
             url: `${url}/orders/${this.props.id}`,
             data:{
-                "idDonhang" : this.props.id,
-                "trangthai" : status
+                "id" : this.props.id,
+                "state" : status
             }
         }).then( () => {
             axios({

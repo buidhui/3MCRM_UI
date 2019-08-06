@@ -3,7 +3,9 @@ import {Form,Col,Row,Container,Button} from 'react-bootstrap';
 import axios from 'axios';
 import {Link,Prompt} from 'react-router-dom';
 import url from '../../url'
-//const url= 'http://192.168.43.95:8080/products/add'
+import Select from 'react-select';
+const optionCat = [
+];
 class CustomerAddForm extends Component{
     constructor(props){
         super(props);
@@ -18,7 +20,8 @@ class CustomerAddForm extends Component{
           gia_xuatbuon:'',
           gia_xuatle:'',
           loai_sp: "",
-          don_vi: ''
+          don_vi: '',
+          catList: [],
         }
       }
       onUpdateData= (data) =>{
@@ -46,6 +49,48 @@ class CustomerAddForm extends Component{
           console.log(error);
         });
       }
+      componentDidMount(){
+        axios({
+          method: 'get',
+          url: `${url}/category/list`,
+          }).then((respone)=>{
+            this.setState({
+              catList: respone.data
+            },() =>{
+              console.log(this.state)
+            })
+          }).catch(error => {
+            console.log(error);
+          });
+      }
+      pushCat = (catList, optionCat) => {
+        if (catList.length !== 0 && optionCat.length === 0) {
+          for (var i = 0; i < catList.length; i++) {
+            var value = catList[i].name;
+            var label = catList[i].name ;
+            optionCat.push({ value: value, label: label })
+          }
+        }
+      }
+      handleChangeCat = selectedCat => {
+        this.setState({
+          loai_sp: selectedCat.value
+        });
+      };
+      // getCatList(){
+      //   axios({
+      //     method: 'get',
+      //     url: `${url}/category/list`,
+      //     }).then((respone)=>{
+      //       this.setState({
+      //         catList: respone.data
+      //       },() =>{
+      //         console.log(this.state)
+      //       })
+      //     }).catch(error => {
+      //       console.log(error);
+      //     });
+      // }
       onChange = (event) => {
         var target = event.target;
         var name = target.name;
@@ -60,21 +105,21 @@ class CustomerAddForm extends Component{
         event.preventDefault();
         
         const data = {
-            "ten": this.state.ten,
-            "xuat_su": (this.state.xuat_su) ? this.state.xuat_su :null,
-            "hang_sx": (this.state.hang_sx) ? this.state.hang_sx : null,
-            "so_luong": (this.state.so_luong) ? this.state.so_luong : null,
-            "gia_nhap": (this.state.gia_nhap) ? this.state.gia_nhap : null,
-            "mo_ta": (this.state.mo_ta) ? this.state.mo_ta: null,
-            "thue": (this.state.thue) ? this.state.thue : null,
-            "gia_xuatbuon" : (this.state.gia_xuatbuon) ? this.state.gia_xuatbuon : null,
-            "gia_xuatle": (this.state.gia_xuatle) ? this.state.gia_xuatle : null,
+            "name": this.state.ten,
+            "origin": (this.state.xuat_su) ? this.state.xuat_su :null,
+            "brand": (this.state.hang_sx) ? this.state.hang_sx : null,
+            "quantity": (this.state.so_luong) ? this.state.so_luong : null,
+            "purchasePrice": (this.state.gia_nhap) ? this.state.gia_nhap : null,
+            "description": (this.state.mo_ta) ? this.state.mo_ta: null,
+            "tax": (this.state.thue) ? this.state.thue : null,
+            "wholesalePrice" : (this.state.gia_xuatbuon) ? this.state.gia_xuatbuon : null,
+            "retailPrice": (this.state.gia_xuatle) ? this.state.gia_xuatle : null,
             "catName": (this.state.loai_sp) ? this.state.loai_sp : null,
-            "don_vi": (this.state.don_vi) ? this.state.don_vi : null
+            "unit": (this.state.don_vi) ? this.state.don_vi : null
         };
-        if(!data.ten){
+        if(!data.name){
           alert("Tên sản phẩm không được để trống!")
-        }else if(!data.gia_xuatbuon || !data.gia_xuatle){
+        }else if(!data.wholesalePrice || !data.retailPrice){
           alert("Giá bán hàng hóa không được để trống!")
         }else{
           this.addCustomer(data);     
@@ -82,6 +127,9 @@ class CustomerAddForm extends Component{
         }
       }
     render(){
+      const {catList} = this.state;
+      const selectedCat = undefined;
+      this.pushCat(catList,optionCat)
       return(
         <Row>
           <Prompt when={!!this.state.name} message="Bạn có chắc chắn muốn dừng lại?"/>
@@ -155,8 +203,12 @@ class CustomerAddForm extends Component{
                 <Form.Row className="add-form-row" >
                   <Form.Group as={Col} controlId="formGridName">
                     <Form.Label>Loại sản phẩm</Form.Label>
-                    <Form.Control type="text" name="loai_sp" value={this.state.loai_sp} onChange={this.onChange}>
-                    </Form.Control>
+                    <Select
+                        value={selectedCat}
+                        onChange={this.handleChangeCat}
+                        options={optionCat}
+                        placeholder="Nhập tên sản phẩm..."
+                      />
                   </Form.Group>                 
                 </Form.Row> 
                 <Form.Row className="add-form-row" >

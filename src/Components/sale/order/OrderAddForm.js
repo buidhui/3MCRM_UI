@@ -112,11 +112,11 @@ class CustomerAddForm extends Component {
       "methodPay": this.state.phuongthuc_thanhtoan,
       "methodShip": this.state.phuongthuc_giaohang,
       "note": this.state.ghi_chu,
-      "orderOrder": this.state.products,
+      "orderDetails": this.state.products,
       "discount": this.state.chietkhau,
       "costShip": this.state.phi_ship
     };
-    if (!data.customerDH) {
+    if (!data.customerOrder) {
       alert("Thêm đơn hàng không thành công")
       console.log(data)
     } else {

@@ -11,7 +11,7 @@ class CustomerListItem extends Component{
                 <td className="text-center" >{(customer.catName) ? customer.catName : "Đang cập nhật"} </td>
                 <td className="text-center" >{(customer.brand ) ? customer.brand : "Đang cập nhật"}</td>
                 <td className="text-center" >{(customer.origin) ? customer.origin : "Đang cập nhật"} </td>
-                <td className="text-center" >{(customer.sold_quantity) ? customer.sold_quantity : 0} </td>
+                <td className="text-center" >{(customer.soldQuantity) ? customer.soldQuantity : 0} </td>
                 <td className="text-center" >{(customer.quantity) ? customer.quantity: 0}  </td>
                 <td className="text-center" ><PopupFormUpdateProduct product={this.props.customer} onUpdateData={this.props.onUpdateData}/>
                </td>

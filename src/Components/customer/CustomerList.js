@@ -24,7 +24,6 @@ class CustomerList extends Component{
 			method: 'get',
 			url: `${url}/customers/list`
 		}).then(respone => {
-			console.log(respone.data);
 			this.setState({
 				customerList: respone.data,
 			})
@@ -63,9 +62,8 @@ class CustomerList extends Component{
 		if(filter){			
 				customerList = customerList.filter((customer) =>{
 				return customer.name.toLowerCase().indexOf(filter.filterName) !== -1 &&
-				customer.email.toLowerCase().indexOf(filter.filterEmail) !== -1 
-				// &&
-				//customer.phone.toLowerCase().indexOf(filter.filterPhone) !== -1;					
+				customer.email.toLowerCase().indexOf(filter.filterEmail) !== -1 &&
+				customer.phone.toLowerCase().indexOf(filter.filterPhone) !== -1;					
 				});													
 		}else{
 			return customerList;
