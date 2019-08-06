@@ -31,7 +31,7 @@ class Layout extends Component {
             {/* Main content end*/}
 
             {/* Footer   */}
-            <Footer />
+            {/* <Footer /> */}
           </div>
         </div>
       </BrowserRouter>

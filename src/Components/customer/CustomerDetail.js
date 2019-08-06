@@ -93,7 +93,7 @@ class CustomerDetail extends Component{
                                     <br/>
                                     Mã khách hàng       :  {customerDetail.id}
                                     <br/>
-                                    Nhân viên phụ trách(ID) : {(staff) ? staff.id : "Đang cập nhật"}
+                                    Nhân viên phụ trách(ID) : {(staff) ? staff.name: "Đang cập nhật"}
                                     <br/>
                                     Giới tính           : {(customerDetail.gender) ? "Nam" : "Nữ"}
                                     <br/>

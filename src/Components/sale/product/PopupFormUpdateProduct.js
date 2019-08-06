@@ -22,7 +22,7 @@ export default function PopupForm(props) {
         >
           <Modal.Header closeButton>
             <Modal.Title id="popup-form">
-              <h4>Thay đổi thông tin khách hàng</h4>
+              <h4>Thay đổi thông tin sản phẩm</h4>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body className="modal-form-body">
