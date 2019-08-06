@@ -15,17 +15,27 @@ class CustomerAddForm extends Component{
           discount:'',     
         }
       }
+      onUpdateData = (data) =>{
+        this.props.onUpdateData(data)
+      }
       addCustomer(obj){
         axios({
           method: 'put',
-          url: `${url}/nhomkhachhang/${this.props.group.id}`,
+          url: `${url}/customer-group/${this.props.group.id}`,
           data: obj,
           headers: {
                     'content-type': 'application/json',
                 }
         }).then(respone => {
-          console.log("response dc hay khong");
-          console.log(respone);
+          alert("Cập nhật thông tin nhóm khách hàng thành công")
+          axios({
+            method: 'get',
+            url: `${url}/customer-group/${this.props.group.id}`,
+          }).then(respone => {
+            this.onUpdateData(respone.data)
+          }).catch(error => {
+            console.log(error);
+          });          
         }).catch(error => {
           console.log(error);
           alert("Cập nhật nhóm khách hàng không thành công")
@@ -48,13 +58,13 @@ class CustomerAddForm extends Component{
         event.preventDefault();        
         const data = {
             "id": this.state.id,
-            "ten": this.state.name,
-            "ghichu": this.state.description,
-            "giaMacdinh": this.state.defaultPrice,
-            "thueMacdinh": this.state.defaultTax,
-            "chietkhau": this.state.discount,
+            "name": this.state.name,
+            "note": this.state.description,
+            "defaultPrice": this.state.defaultPrice,
+            "defaultTax": this.state.defaultTax,
+            "discount": this.state.discount,
         };
-        if(!data.ten){
+        if(!data.name){
           alert("Tên nhóm khách hàng không được để trống!")
         }else{
           console.log(data);
@@ -66,13 +76,11 @@ class CustomerAddForm extends Component{
           const group = this.props.group;
         this.setState({
             id : group.id,
-            name : group.ten,
-            description: group.ghichu,
-            defaultPrice: group.giaMacdinh,
-            defaultTax: group.thueMacdinh,
-            discount: group.chietkhau,
-        },()=>{
-          console.log(this.state);
+            name : group.name,
+            description: (group.note) ? group.note : "Chưa có ghi chú gì về nhóm khách hàng ngày",
+            defaultPrice: (group.defaultPrice) ? group.defaultPrice : 0,
+            defaultTax: (group.defaultTax) ? group.defaultTax : 0,
+            discount: (group.discount) ? group.discount : 0,
         })
       }
     render(){

@@ -6,8 +6,8 @@ class CustomerListItem extends Component{
         return(
             <tr> 
                 <td style={{width:'10%'}} > <Link  to={'/groupcustomers/' + group.id}>{group.id}</Link> </td>
-                <td style={{width:'30%'}}><Link  to={'/groupcustomers/' + group.id }>{group.ten}</Link> </td>
-                <td style={{width:'50%'}} ><Link  to={'/groupcustomers/'+ group.id }>{group.ghichu}</Link> </td>
+                <td style={{width:'30%'}}><Link  to={'/groupcustomers/' + group.id }>{group.name}</Link> </td>
+                <td style={{width:'50%'}} ><Link  to={'/groupcustomers/'+ group.id }>{group.note}</Link> </td>
                 <td style={{width:'10%'}} className="text-center"><Link  to={'/groupcustomers/' + group.id}>{group.date}</Link> </td>
             </tr>          
         );

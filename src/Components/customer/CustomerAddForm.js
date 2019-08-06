@@ -66,12 +66,12 @@ class CustomerAddForm extends Component{
             "dob": (this.state.DOB) ? this.state.DOB : null,
             "email": (this.state.email) ? this.state.email : null,
             "gender": (this.state.gender) ? this.state.gender : null,
-            "phoneNumber": (this.state.phone) ? this.state.phone : null,
+            "phone": (this.state.phone) ? this.state.phone : null,
             "note": (this.state.description) ? this.state.description: null,
             "staff":{
               id: (this.state.staff) ? this.state.staff : null
             },
-            "nhomkhachhang":{
+            "customer_group":{
               id: (this.state.customerType) ? this.state.customerType: null
             }
         };

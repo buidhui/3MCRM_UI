@@ -5,12 +5,12 @@ class OrderItem extends Component{
         var{orderItem} = this.props;
         return(
             <tr > 
-                <td >{orderItem.ctHangHoa && orderItem.ctHangHoa.id} </td>
-                <td >{orderItem.ctHangHoa && orderItem.ctHangHoa.ten}</td>
-                <td className="text-center" >{ orderItem.ctHangHoa && orderItem.ctHangHoa.don_vi}</td>
-                <td className="text-center" >{orderItem.donGia}</td>
-                <td className="text-center" >{orderItem.soLuong}</td>
-                <td className="text-center" >{orderItem.thanhTien}</td>
+                <td >{orderItem.productOrder && orderItem.productOrder.id} </td>
+                <td >{orderItem.productOrder && orderItem.productOrder.name}</td>
+                <td className="text-center" >{ orderItem.productOrder && orderItem.productOrder.unit}</td>
+                <td className="text-center" >{orderItem.unitPrice}</td>
+                <td className="text-center" >{orderItem.quantity}</td>
+                <td className="text-center" >{orderItem.finalPrice}</td>
             </tr>          
         );
     }

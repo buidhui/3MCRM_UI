@@ -5,14 +5,14 @@ class CustomerListItem extends Component{
     render(){   
         var{customer} = this.props;
         return(
-            <tr sida={this.props.sida}> 
+            <tr> 
                 <td >{customer.id} </td>
-                <td style={{width:'25%'}} >{(customer.ten) ? customer.ten : "Đang cập nhật"} </td>
+                <td style={{width:'25%'}} >{(customer.name) ? customer.name : "Đang cập nhật"} </td>
                 <td className="text-center" >{(customer.catName) ? customer.catName : "Đang cập nhật"} </td>
-                <td className="text-center" >{(customer.hang_sx ) ? customer.hang_sx : "Đang cập nhật"}</td>
-                <td className="text-center" >{(customer.xuat_su) ? customer.xuat_su : "Đang cập nhật"} </td>
-                <td className="text-center" >{(customer.soluong_daban) ? customer.soluong_daban : 0} </td>
-                <td className="text-center" >{(customer.so_luong) ? customer.so_luong: 0}  </td>
+                <td className="text-center" >{(customer.brand ) ? customer.brand : "Đang cập nhật"}</td>
+                <td className="text-center" >{(customer.origin) ? customer.origin : "Đang cập nhật"} </td>
+                <td className="text-center" >{(customer.sold_quantity) ? customer.sold_quantity : 0} </td>
+                <td className="text-center" >{(customer.quantity) ? customer.quantity: 0}  </td>
                 <td className="text-center" ><PopupFormUpdateProduct product={this.props.customer} onUpdateData={this.props.onUpdateData}/>
                </td>
                 

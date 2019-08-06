@@ -22,7 +22,7 @@ class CustomerList extends Component{
 			method: 'get',
 			url: `${url}/orders/list`
 		}).then(respone => {
-			
+			console.log(respone.data)
 			this.setState({
 				orderList: respone.data,
 			});

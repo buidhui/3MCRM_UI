@@ -63,8 +63,9 @@ class CustomerList extends Component{
 		if(filter){			
 				customerList = customerList.filter((customer) =>{
 				return customer.name.toLowerCase().indexOf(filter.filterName) !== -1 &&
-				customer.email.toLowerCase().indexOf(filter.filterEmail) !== -1 &&
-				customer.phoneNumber.toLowerCase().indexOf(filter.filterPhone) !== -1;					
+				customer.email.toLowerCase().indexOf(filter.filterEmail) !== -1 
+				// &&
+				//customer.phone.toLowerCase().indexOf(filter.filterPhone) !== -1;					
 				});													
 		}else{
 			return customerList;

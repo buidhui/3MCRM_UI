@@ -15,7 +15,7 @@ class CustomerList extends Component{
     componentDidMount(){
 		axios({
 			method: 'get',
-			url: `${url}/nhomkhachhang/list`
+			url: `${url}/customer-group/list`
 		}).then(respone => {
 			this.setState({
 				customerGroupList: respone.data,
@@ -49,7 +49,7 @@ class CustomerList extends Component{
 		const {filter} = this.state;		
 		if(filter){			
 			customerGroupList = customerGroupList.filter((group) =>{
-				return group.ten.toLowerCase().indexOf(filter.filterName) !== -1});													
+				return group.name.toLowerCase().indexOf(filter.filterName) !== -1});													
 		}else{
 			return customerGroupList;
 		}

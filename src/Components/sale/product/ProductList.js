@@ -58,7 +58,7 @@ class CustomerList extends Component{
 		const {filter} = this.state;
 		if(filter){			
 				customerList = customerList.filter((customer) =>{
-				return customer.ten.toLowerCase().indexOf(filter.filterEmail) !== -1 && customer.id.toString().toLowerCase().indexOf(filter.filterName) !== -1;					
+				return customer.name.toLowerCase().indexOf(filter.filterEmail) !== -1 && customer.id.toString().toLowerCase().indexOf(filter.filterName) !== -1;					
 				});													
 		}else{
 			return customerList;

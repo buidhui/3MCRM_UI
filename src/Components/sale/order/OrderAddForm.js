@@ -102,19 +102,19 @@ class CustomerAddForm extends Component {
   onSubmit = (event) => {
     event.preventDefault();
     const data = {
-      "ngay_giaohang": this.state.ngay_giaoHang,
-      "staffDH": {
+      "orderDate": this.state.ngay_giaoHang,
+      "staffOrder": {
         id: 12,
       },
-      "customerDH": {
+      "customerOrder": {
         id: this.state.id_cus
       },
-      "phuongthuc_thanhtoan": this.state.phuongthuc_thanhtoan,
-      "phuongthuc_giaohang": this.state.phuongthuc_giaohang,
-      "ghichu": this.state.ghi_chu,
-      "ctDonhang": this.state.products,
-      "chiet_khau": this.state.chietkhau,
-      "phi_giaohang": this.state.phi_ship
+      "methodPay": this.state.phuongthuc_thanhtoan,
+      "methodShip": this.state.phuongthuc_giaohang,
+      "note": this.state.ghi_chu,
+      "orderOrder": this.state.products,
+      "discount": this.state.chietkhau,
+      "costShip": this.state.phi_ship
     };
     if (!data.customerDH) {
       alert("Thêm đơn hàng không thành công")
@@ -146,7 +146,7 @@ class CustomerAddForm extends Component {
     if (customerList.length !== 0 && optionCus.length === 0) {
       for (var i = 0; i < customerList.length; i++) {
         var value = customerList[i].id;
-        var label = customerList[i].name + " - " + customerList[i].phoneNumber;
+        var label = customerList[i].name + " - " + customerList[i].phone;
         optionCus.push({ value: value, label: label })
       }
     }
@@ -155,17 +155,17 @@ class CustomerAddForm extends Component {
     if (productList.length !== 0 && optionProduct.length === 0) {
       for (var i = 0; i < productList.length; i++) {
         var value = {};
-        value.ctHangHoa = productList[i];
-        value.soLuong = 0;
-        value.chietKhau = 0;
-        var label = productList[i].ten;
+        value.productOrder = productList[i];
+        value.quantity = 0;
+        value.discount = 0;
+        var label = productList[i].name;
         optionProduct.push({ value: value, label: label })
       }
     }
   }
   onDeleteProduct = (id) => {
     for (var i = 0; i < this.state.products.length; i++) {
-      if (this.state.products[i].ctHangHoa.id === id) {
+      if (this.state.products[i].productOrder.id === id) {
         this.state.products.splice(i, 1);
         this.setState({
           products: this.state.products
@@ -176,7 +176,7 @@ class CustomerAddForm extends Component {
   onUpdateQuantity = (id, quantity, discount, total) => {
       var totalM = (100 - discount) / 100;
       this.setState(prevState => ({
-        products: prevState.products.map((product) => (product.ctHangHoa.id === id) ? { ...product, soLuong: quantity, chietKhau: discount, total: total * totalM } : product)
+        products: prevState.products.map((product) => (product.productOrder.id === id) ? { ...product, quantity: quantity, discount: discount, total: total * totalM } : product)
       }), () => {
         console.log(this.state.products)
     })  
@@ -186,7 +186,7 @@ class CustomerAddForm extends Component {
     for (var i = 0; i < this.state.products.length; i++) {
       total = total + this.state.products[i].total;
     }
-    return total*((this.state.chietkhau) ? this.state.chietkhau : 1) + this.state.phi_ship;
+    return total*((this.state.discount) ? this.state.discount : 1) + this.state.phi_ship;
   }
   render() {
     const selectedCus = undefined;

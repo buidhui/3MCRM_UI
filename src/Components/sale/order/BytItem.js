@@ -10,7 +10,7 @@ class BuyItem extends Component {
         }
     }
     onDeleteProduct = () => {
-        this.props.onDeleteProduct(this.props.buyItem.ctHangHoa.id);
+        this.props.onDeleteProduct(this.props.buyItem.productOrder.id);
     }
     onChangeQuantity = (event) => {
         var target = event.target;
@@ -25,7 +25,7 @@ class BuyItem extends Component {
         this.setState({
             [name]: value,
         }, () => {
-            this.props.onUpdateQuantity(this.props.buyItem.ctHangHoa.id, this.state.quantity, this.state.discount, this.state.quantity * this.props.buyItem.ctHangHoa.gia_xuatle);
+            this.props.onUpdateQuantity(this.props.buyItem.productOrder.id, this.state.quantity, this.state.discount, this.state.quantity * this.props.buyItem.productOrder.retailPrice);
         });
 
     }
@@ -40,15 +40,15 @@ class BuyItem extends Component {
         var { buyItem } = this.props;
         return (
             <tr >
-                <td >{buyItem && buyItem.ctHangHoa.id} </td>
-                <td >{buyItem && buyItem.ctHangHoa.ten}</td>
-                <td className="text-center" >{buyItem && buyItem.ctHangHoa.don_vi}</td>
-                <td className="text-center" >{buyItem && buyItem.ctHangHoa.gia_xuatle}</td>
+                <td >{buyItem && buyItem.productOrder.id} </td>
+                <td >{buyItem && buyItem.productOrder.name}</td>
+                <td className="text-center" >{buyItem && buyItem.productOrder.unit}</td>
+                <td className="text-center" >{buyItem && buyItem.productOrder.retailPrice}</td>
                 <td className="text-center" >
                     <Form.Control
                         type="number"
                         min="1"
-                        max={buyItem && buyItem.ctHangHoa.so_luong}
+                        max={buyItem && buyItem.productOrder.quantity}
                         name="quantity"
                         value={this.state.quantity}
                         onChange={this.onChangeQuantity}
@@ -63,7 +63,7 @@ class BuyItem extends Component {
                         onChange={this.onChangeQuantity}
                         style={{ padding: '3px', marginLeft: "7px", width: '55px', height: "calc(0.75em + 0.5rem + 2px)" }} />
                 </td>
-                <td className="text-center" >{this.showTotal(this.state.quantity, buyItem.ctHangHoa.gia_xuatle, this.state.discount)}</td>
+                <td className="text-center" >{this.showTotal(this.state.quantity, buyItem.productOrder.retailPrice, this.state.discount)}</td>
                 <td className="text-center" >
                     <button
                         type="button"

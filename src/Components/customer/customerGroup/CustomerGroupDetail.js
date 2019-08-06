@@ -8,13 +8,12 @@ class CustomerDetail extends Component{
         super(props);
         this.state ={
             groupDetail : [],
-            update: false
         }
     }
     componentDidMount(){
 		axios({
 			method: 'get',
-			url: `${url}/nhomkhachhang/${this.props.id}`
+			url: `${url}/customer-group/${this.props.id}`
 		}).then(respone => {
             console.log(respone)
             if(!respone.data){
@@ -54,6 +53,11 @@ class CustomerDetail extends Component{
     onDelete = () =>{
         this.deleteCustomer();
     }
+    onUpdateData =(data) =>{
+        this.setState({
+            groupDetail: data
+        })
+    }
     render(){
         const groupDetail = this.state.groupDetail;
         return(
@@ -68,7 +72,7 @@ class CustomerDetail extends Component{
                                         <Col >
                                         <Card.Subtitle><h6>Tên nhóm</h6></Card.Subtitle>
                                             <Card.Text className="cus-note">
-                                                {(groupDetail.ten) ? groupDetail.ten : "Đang cập nhật"}
+                                                {(groupDetail.name) ? groupDetail.name : "Đang cập nhật"}
                                             </Card.Text>  
                                         </Col>
                                         <Col >
@@ -87,13 +91,13 @@ class CustomerDetail extends Component{
                                     <Col >
                                     <Card.Subtitle className="cus-sub"><h6>Giá mặc định</h6></Card.Subtitle>
                                         <Card.Text className="cus-note">
-                                            {(groupDetail.giaMacdinh) ? groupDetail.giaMacdinh : "Đang cập nhật"}
+                                            {(groupDetail.defaultPrice) ? groupDetail.defaultPrice : "Đang cập nhật"}
                                         </Card.Text>  
                                     </Col>
                                     <Col >
                                     <Card.Subtitle className="cus-sub"><h6>Thuế mặc định</h6></Card.Subtitle>
                                         <Card.Text className="cus-note">
-                                            {(groupDetail.thueMacdinh) ? groupDetail.thueMacdinh : "Đang cập nhật"}
+                                            {(groupDetail.defaultTax) ? groupDetail.defaultTax : "Đang cập nhật"}
                                         </Card.Text>  
                                     </Col>
                                 </Row>
@@ -101,7 +105,7 @@ class CustomerDetail extends Component{
                                     <Col >
                                     <Card.Subtitle className="cus-sub"><h6>Chiết khấu</h6></Card.Subtitle>
                                         <Card.Text className="cus-note">
-                                            {(groupDetail.chietkhau) ? groupDetail.chietkhau : "Đang cập nhật"}
+                                            {(groupDetail.discount) ? groupDetail.discount : "Đang cập nhật"}
                                         </Card.Text>  
                                     </Col>
                                     <Col >
@@ -119,7 +123,7 @@ class CustomerDetail extends Component{
                             <Card.Body>
                                 <Card.Title>Mô tả</Card.Title>
                                 <Card.Text className="cus-note">
-                                {(groupDetail.ghichu) ? groupDetail.ghichu : "Đang cập nhật"}
+                                {(groupDetail.note) ? groupDetail.note : "Đang cập nhật"}
                                 </Card.Text>
                             </Card.Body>
                         </Card>
@@ -127,7 +131,7 @@ class CustomerDetail extends Component{
                 </Row>
             <hr className="form-line"/>
             <div className="mb-5">                         
-                <PopupFormUpdateGroup open={this.props.open} group={groupDetail} />   
+                <PopupFormUpdateGroup open={this.props.open} group={groupDetail} onUpdateData={this.onUpdateData} />   
             </div>
             </div>      
         );

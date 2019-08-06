@@ -26,7 +26,7 @@ export default function PopupForm(props) {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body className="modal-form-body">
-            <CustomerGroupUpdateForm group={props.group} onClick={() => setShow(false)}/>
+            <CustomerGroupUpdateForm group={props.group} onClick={() => setShow(false)} onUpdateData={props.onUpdateData}/>
           </Modal.Body>
         </Modal>
       </>

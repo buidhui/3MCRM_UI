@@ -57,21 +57,21 @@ class CustomerAddForm extends Component{
        
         event.preventDefault();        
         const data = {
-          "ten": this.state.ten,
-          "xuat_su": (this.state.xuat_su) ? this.state.xuat_su :null,
-          "hang_sx": (this.state.hang_sx) ? this.state.hang_sx : null,
-          "so_luong": (this.state.so_luong) ? this.state.so_luong : null,
-          "gia_nhap": (this.state.gia_nhap) ? this.state.gia_nhap : null,
-          "mo_ta": (this.state.mo_ta) ? this.state.mo_ta: null,
-          "thue": (this.state.thue) ? this.state.thue : null,
-          "gia_xuatbuon" : (this.state.gia_xuatbuon) ? this.state.gia_xuatbuon : null,
-          "gia_xuatle": (this.state.gia_xuatle) ? this.state.gia_xuatle : null,
+          "name": this.state.ten,
+          "origin": (this.state.xuat_su) ? this.state.xuat_su :null,
+          "brand": (this.state.hang_sx) ? this.state.hang_sx : null,
+          "quantity": (this.state.so_luong) ? this.state.so_luong : null,
+          "purchasePrice": (this.state.gia_nhap) ? this.state.gia_nhap : null,
+          "description": (this.state.mo_ta) ? this.state.mo_ta: null,
+          "tax": (this.state.thue) ? this.state.thue : null,
+          "wholesalePrice" : (this.state.gia_xuatbuon) ? this.state.gia_xuatbuon : null,
+          "retailPrice": (this.state.gia_xuatle) ? this.state.gia_xuatle : null,
           "catName": (this.state.loai_sp) ? this.state.loai_sp : null,
-          "don_vi": (this.state.don_vi) ? this.state.don_vi : null
+          "unit": (this.state.don_vi) ? this.state.don_vi : null
         };
-        if(!data.ten){
+        if(!data.name){
           alert("Tên hàng hóa không được để trống!")
-        }else if(!data.gia_xuatbuon || !data.gia_xuatle){
+        }else if(!data.wholesalePrice || !data.retailPrice){
           alert("Giá bán hàng hóa không được để trống!")
         }else{  
           console.log(data);
@@ -82,17 +82,17 @@ class CustomerAddForm extends Component{
       componentDidMount(){
           const product = this.props.product;
         this.setState({
-            ten : product.ten,
-            xuat_su : (product.xuat_su) ? product.xuat_su : "Đang cập nhật",
-            hang_sx: (product.hang_sx) ? product.hang_sx : "Đang cập nhật",
-            so_luong: (product.so_luong) ? product.so_luong : 0,
-            gia_nhap: (product.gia_nhap) ? product.gia_nhap : 0,
-            mo_ta: (product.mo_ta) ? product.mo_ta : "Đang cập nhật",
-            thue: (product.thue) ? product.thue : 0,
-            gia_xuatbuon: (product.gia_xuatbuon) ? product.gia_xuatbuon : 0,
-            gia_xuatle: (product.gia_xuatle) ? product.gia_xuatle : 0,
+            ten : product.name,
+            xuat_su : (product.origin) ? product.origin : "Đang cập nhật",
+            hang_sx: (product.brand) ? product.brand : "Đang cập nhật",
+            so_luong: (product.quantity) ? product.quantity : 0,
+            gia_nhap: (product.purchasePrice) ? product.purchasePrice : 0,
+            mo_ta: (product.description) ? product.description : "Đang cập nhật",
+            thue: (product.tax) ? product.tax : 0,
+            gia_xuatbuon: (product.wholesalePrice) ? product.wholesalePrice : 0,
+            gia_xuatle: (product.retailPrice) ? product.retailPrice : 0,
             loai_sp: (product.catName) ? product.catName : "Đang cập nhật",
-            don_vi: (product.don_vi) ? product.don_vi : "Đang cập nhật"
+            don_vi: (product.unit) ? product.unit : "Đang cập nhật"
         })
       }
       onUpdateData= (data) =>{

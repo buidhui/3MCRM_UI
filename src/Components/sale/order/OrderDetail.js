@@ -18,6 +18,7 @@ class CustomerDetail extends Component {
             method: 'get',
             url: `${url}/orderdetails/${this.props.id}`
         }).then(respone => {
+            console.log(respone.data)
             this.setState({
                 orderDetail: respone.data,
             })
@@ -50,7 +51,6 @@ class CustomerDetail extends Component {
         });
     }
     changeStatus= (status) => {
-        console.log(status)
         this.updateStatus(status);
     }
     render() {
@@ -70,13 +70,13 @@ class CustomerDetail extends Component {
                                     <Col>
                                         <h6>Tên khách hàng</h6>
                                         <Card.Text className="cus-note">
-                                            {orderDetail[0].ctDonHang && (orderDetail[0].ctDonHang.customerDH.name) ? orderDetail[0].ctDonHang.customerDH.name : "Đang cập nhật"}
+                                            {orderDetail[0].orderOrder && (orderDetail[0].orderOrder.customerOrder.name) ? orderDetail[0].orderOrder.customerOrder.name : "Đang cập nhật"}
                                         </Card.Text>
                                     </Col>
                                     <Col>
                                         <h6>Số điện thoại   </h6>
                                         <Card.Text className="cus-note">
-                                            {orderDetail[0].ctDonHang && orderDetail[0].ctDonHang.customerDH.phoneNumber}
+                                            {orderDetail[0].orderOrder && orderDetail[0].orderOrder.customerOrder.phone}
                                         </Card.Text>
                                     </Col>
                                 </Row>
@@ -84,7 +84,7 @@ class CustomerDetail extends Component {
                                     <Col>
                                         <h6 style={{ marginTop: "7px" }}>Địa chỉ   </h6>
                                         <Card.Text className="cus-note">
-                                            {orderDetail[0].ctDonHang && (orderDetail[0].ctDonHang.customerDH.address) ? orderDetail[0].ctDonHang.customerDH.address : "Chưa có"}
+                                            {orderDetail[0].orderOrder&& (orderDetail[0].orderOrder.customerOrder.address) ? orderDetail[0].orderOrder.customerOrder.address : "Chưa có"}
                                         </Card.Text>
                                     </Col>
                                 </Row>
@@ -124,13 +124,13 @@ class CustomerDetail extends Component {
                                     </Col>
                                     <Col>
                                         <Card.Text>
-                                            <span className="float-right">{orderDetail[0].ctDonHang && orderDetail[0].ctDonHang.tong_tien}</span>
+                                            <span className="float-right">{orderDetail[0].orderOrder && orderDetail[0].orderOrder.totalMoney}</span>
                                             <br />
-                                            <span className="float-right">{orderDetail[0].ctDonHang && (orderDetail[0].ctDonHang.chiet_khau) ? orderDetail[0].ctDonHang.chiet_khau +"%" : "0%" }</span>
+                                            <span className="float-right">{orderDetail[0].orderOrder && (orderDetail[0].orderOrder.discount) ? orderDetail[0].orderOrder.chiet_khau +"%" : "0%" }</span>
                                             <br />
-                                            <span className="float-right">{orderDetail[0].ctDonHang && (orderDetail[0].ctDonHang.phi_giaohang) ? orderDetail[0].ctDonHang.phi_giaohang +" VNĐ" : "0 VNĐ" }</span>
+                                            <span className="float-right">{orderDetail[0].orderOrder && (orderDetail[0].orderOrder.costShip) ? orderDetail[0].orderOrder.phi_giaohang +" VNĐ" : "0 VNĐ" }</span>
                                             <br />
-                                            <span className="float-right">{orderDetail[0].ctDonHang && orderDetail[0].ctDonHang.tong_tien +" VNĐ"}</span>
+                                            <span className="float-right">{orderDetail[0].orderOrder && orderDetail[0].orderOrder.totalMoney +" VNĐ"}</span>
                                         </Card.Text>
                                     </Col>
                                 </Row>
@@ -142,7 +142,7 @@ class CustomerDetail extends Component {
                                     <Col>
                                         <Card.Text className="cus-note">
                                             <span style={{ textTransform: "uppercase", marginBottom: "0px", marginLeft: "75px" }}>phương thức thanh toán</span>
-                                            <span style={{ marginRight: "35px" }} className="float-right" >{orderDetail[0].ctDonHang && (orderDetail[0].ctDonHang.phuongthuc_thanhtoan) ? orderDetail[0].ctDonHang.phuongthuc_thanhtoan : "Chưa có"}</span>
+                                            <span style={{ marginRight: "35px" }} className="float-right" >{orderDetail[0].orderOrder && (orderDetail[0].orderOrder.method_pay) ? orderDetail[0].orderOrder.method_pay : "Chưa có"}</span>
                                         </Card.Text>
                                     </Col>
                                 </Row>
@@ -154,7 +154,7 @@ class CustomerDetail extends Component {
                                     <Col>
                                         <Card.Text className="cus-note">
                                             <span style={{ textTransform: "uppercase", marginBottom: "0px", marginLeft: "75px" }}>phương thức giao hàng</span>
-                                            <span style={{ marginRight: "35px" }} className="float-right" >{orderDetail[0].ctDonHang && (orderDetail[0].ctDonHang.phuongthuc_giaohang) ? orderDetail[0].ctDonHang.phuongthuc_giaohang : "Chưa có"}</span>
+                                            <span style={{ marginRight: "35px" }} className="float-right" >{orderDetail[0].orderOrder && (orderDetail[0].orderOrder.method_ship) ? orderDetail[0].orderOrder.method_ship : "Chưa có"}</span>
                                         </Card.Text>
                                     </Col>
                                 </Row>
@@ -169,7 +169,7 @@ class CustomerDetail extends Component {
                                     <Col>
                                         <h6 style={{ marginTop: "7px" }}>Chính sách giá   </h6>
                                         <Card.Text className="cus-note">
-                                            {orderDetail[0].ctDonHang && (orderDetail[0].ctDonHang.customerDH.nhomkhachhang) ? orderDetail[0].ctDonHang.customerDH.nhomkhachhang.giaMacdinh : "Đang cập nhật"}
+                                            {orderDetail[0].orderOrder && (orderDetail[0].orderOrder.customerOrder.customerGroup) ? orderDetail[0].orderOrder.customerDH.customerGroup.defaultPrice : "Đang cập nhật"}
                                         </Card.Text>
                                     </Col>
                                 </Row>
@@ -177,9 +177,9 @@ class CustomerDetail extends Component {
                                     <Col>
                                         <h6 style={{ marginTop: "7px" }}>Áp dụng thuế  </h6>
                                         <Card.Text className="cus-note">
-                                            {orderDetail[0].ctDonHang 
-                                                && (orderDetail[0].ctDonHang.customerDH.nhomkhachhang) 
-                                                ? orderDetail[0].ctDonHang.customerDH.nhomkhachhang.thueMacdinh : "Đang cập nhật"}
+                                            {orderDetail[0].orderOrder 
+                                                && (orderDetail[0].orderOrder.customerOrder.customerGroup) 
+                                                ? orderDetail[0].orderOrder.customerOrder.customerGroup.defaultTax : "Đang cập nhật"}
                                         </Card.Text>
                                     </Col>
                                 </Row>
@@ -187,9 +187,9 @@ class CustomerDetail extends Component {
                                     <Col>
                                         <h6 style={{ marginTop: "7px" }}> Ngày đặt hàng   </h6>
                                         <Card.Text className="cus-note">
-                                            {orderDetail[0].ctDonHang && 
-                                                (orderDetail[0].ctDonHang.ngay_dathang) ? 
-                                                moment(orderDetail[0].ctDonHang.ngay_dathang).format('DD/MM/YYYY') : "Chưa có"}
+                                            {orderDetail[0].orderOrder && 
+                                                (orderDetail[0].orderOrder.dateOrder) ? 
+                                                moment(orderDetail[0].orderOrder.dateOrder).format('DD/MM/YYYY') : "Chưa có"}
                                                 
                                         </Card.Text>
                                     </Col>
@@ -198,14 +198,14 @@ class CustomerDetail extends Component {
                                     <Col>
                                         <h6 style={{ marginTop: "7px" }}> Trạng thái đơn hàng   </h6>
                                         <Card.Text style={{padding: "7px"}}>
-                                            {orderDetail[0].ctDonHang && 
-                                                (orderDetail[0].ctDonHang.trangthai) ? "Hoàn thành" : "Đang thực hiện"}   
+                                            {orderDetail[0].orderOrder && 
+                                                (orderDetail[0].orderOrder.state) ? "Hoàn thành" : "Đang thực hiện"}   
                                              
                                         </Card.Text>
                                         
                                     </Col>
                                     <Col>
-                                        <Status orderDetail={orderDetail[0].ctDonHang && orderDetail[0].ctDonHang} changeStatus={this.changeStatus}/>
+                                        <Status orderDetail={orderDetail[0].orderOrder && orderDetail[0].orderOrder} changeStatus={this.changeStatus}/>
                                     </Col>
                                     </Row>
                             </Card.Body>

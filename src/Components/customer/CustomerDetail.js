@@ -10,7 +10,7 @@ class CustomerDetail extends Component{
         this.state ={
             customerDetail : [],
             staff: [],
-            nkh: [],
+            customer_group: [],
         }
     }
     componentDidMount(){
@@ -21,7 +21,7 @@ class CustomerDetail extends Component{
             this.setState({
                 customerDetail: respone.data,
                 staff: respone.data.staff,
-                nkh: respone.data.nhomkhachhang
+                customer_group: respone.data.customer_group
             }) 		
 		}).catch(error => {
             console.log(error);
@@ -51,13 +51,13 @@ class CustomerDetail extends Component{
         this.setState({
             customerDetail: data,
             staff: data.staff,
-            nkh: data.nhomkhachhang
+            customer_group: data.customer_group
         })
     }
     render(){
         const customerDetail = this.state.customerDetail;
         const staff = this.state.staff;     
-        const nkh = this.state.nkh;
+        const customer_group = this.state.customer_group;
         var moment = require('moment');
         return(
             <div>
@@ -89,7 +89,7 @@ class CustomerDetail extends Component{
                             <Card.Body>
                                 <Card.Title>Thông tin khách hàng</Card.Title>
                                 <Card.Text>
-                                    Nhóm khách hàng     :  {(nkh) ? nkh.ten : "Đang cập nhật"}
+                                    Nhóm khách hàng     :  {(customer_group) ? customer_group.name : "Đang cập nhật"}
                                     <br/>
                                     Mã khách hàng       :  {customerDetail.id}
                                     <br/>
@@ -106,7 +106,7 @@ class CustomerDetail extends Component{
                             <Card.Body>
                                 <Card.Title>Liên hệ</Card.Title>
                                 <Card.Text>
-                                    Số điện thoại     :  {customerDetail.phoneNumber}
+                                    Số điện thoại     :  {customerDetail.phone}
                                     <br/>
                                     Địa chỉ      :  {(customerDetail.address) ? customerDetail.address : "Đang cập nhật" }
                                     <br/>
@@ -119,11 +119,11 @@ class CustomerDetail extends Component{
                             <Card.Body>
                                 <Card.Title>Ưu đãi</Card.Title>
                                 <Card.Text>
-                                    Giá mặc định     :  {(nkh) ? nkh.giaMacdinh : "Đang cập nhật"}
+                                    Giá mặc định     :  {(customer_group) ? customer_group.default_price : "Đang cập nhật"}
                                     <br/>
-                                    Thuế mặc định       :  {(nkh) ? nkh.thueMacdinh : "Đang cập nhật"}
+                                    Thuế mặc định       :  {(customer_group) ? customer_group.default_tax : "Đang cập nhật"}
                                     <br/>
-                                    Chiết khấu : {(nkh) ? nkh.giaMacdinh : "Đang cập nhật"}
+                                    Chiết khấu : {(customer_group) ? customer_group.discount : "Đang cập nhật"}
                                     <br/>
                                     Phương thức thanh toán           : Đang cập nhật
                                     <br/>
