@@ -80,7 +80,7 @@ class CustomerDetail extends Component{
                         </Card>
                         <Card style={{ width: '100%', margin: "15px" }}>
                             <Card.Body>
-                                <TabViewDatil customer={customerDetail}/>
+                                <TabViewDatil customer={customerDetail.id}/>
                             </Card.Body>
                         </Card>
                     </Col>
@@ -93,7 +93,7 @@ class CustomerDetail extends Component{
                                     <br/>
                                     Mã khách hàng       :  {customerDetail.id}
                                     <br/>
-                                    Nhân viên phụ trách(ID) : {(staff) ? staff.name: "Đang cập nhật"}
+                                    Nhân viên phụ trách : {(staff) ? staff.name: "Đang cập nhật"}
                                     <br/>
                                     Giới tính           : {(customerDetail.gender) ? "Nam" : "Nữ"}
                                     <br/>

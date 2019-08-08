@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import TopNavigation from "../Components/TopNavigation";
 import AdminSideNav from "../Components/AdminSideNav";
 import Routes from "../Components/Routes";
-import Footer from "../Components/Footer";
 import { BrowserRouter} from "react-router-dom";
 
 class AdminLayout extends Component {

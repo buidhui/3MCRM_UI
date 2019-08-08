@@ -47,7 +47,7 @@ export default function DisabledTabs(props) {
         </Tabs>
       </AppBar>
       {value === 0 && <TabContainer>
-          <TablCusDetail/></TabContainer>}
+          <TablCusDetail customer={props.customer}/></TabContainer>}
     </div>
   );
 }

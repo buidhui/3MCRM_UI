@@ -5,7 +5,7 @@ import CustomerAddForm from './OrderAddForm';
 
 export default function PopupForm(props) {
     const [show, setShow] = React.useState(false);
-    const style = {left: '135px'} 
+    const style = {left: '135px',} 
     return (
       <>
         <button type="button" className=" btn btn-primary float-right" onClick={() => setShow(true) }>
