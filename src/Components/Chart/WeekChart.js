@@ -5,7 +5,7 @@ import { MDBContainer } from "mdbreact";
 class WeekChart extends React.Component {
   state = {
     dataLine: {
-      labels: ["January", "February", "March", "April", "May", "June", "July"],
+      labels: ["Thứ 2 ", "February", "March", "April", "May", "June", "July"],
       datasets: [
         {
           label: "My First dataset",

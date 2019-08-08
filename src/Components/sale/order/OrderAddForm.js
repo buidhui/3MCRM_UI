@@ -1,14 +1,20 @@
-import React, { Component } from 'react';
-import { Form, Col, Row, Container, Button, Table, Card } from 'react-bootstrap';
-import axios from 'axios';
-import { Link, Prompt } from 'react-router-dom';
-import Select from 'react-select';
-import BuyItem from './BytItem';
-import url from '../../url'
-const optionCus = [
-];
-const optionProduct = [
-];
+import React, { Component } from "react";
+import {
+  Form,
+  Col,
+  Row,
+  Container,
+  Button,
+  Table,
+  Card
+} from "react-bootstrap";
+import axios from "axios";
+import { Link, Prompt } from "react-router-dom";
+import Select from "react-select";
+import BuyItem from "./BytItem";
+import url from "../../url";
+const optionCus = [];
+const optionProduct = [];
 
 //const url = 'http://192.168.43.95:8080/orders/add'
 class CustomerAddForm extends Component {
@@ -18,113 +24,126 @@ class CustomerAddForm extends Component {
       productList: [],
       customerDetail: [],
       customerList: [],
-      id_cus: '',
+      id_cus: "",
       products: [],
-      phuongthuc_giaohang: '',
-      phuongthuc_thanhtoan: '',
-      ngay_giaoHang: '',
-      ghi_chu: '',
+      phuongthuc_giaohang: "",
+      phuongthuc_thanhtoan: "",
+      ngay_giaoHang: "",
+      ghi_chu: "",
       chietkhau: 0,
       phi_ship: 0
-    }
+    };
   }
   componentDidMount() {
     axios({
-      method: 'get',
+      method: "get",
       url: `${url}/customers/list`
-    }).then(respone => {
-      this.setState({
-        customerList: respone.data,
+    })
+      .then(respone => {
+        this.setState({
+          customerList: respone.data
+        });
       })
-    }).catch(error => {
-      console.log(error);
-    });
+      .catch(error => {
+        console.log(error);
+      });
     axios({
-      method: 'get',
+      method: "get",
       url: `${url}/products/list`
-    }).then(respone => {
-      this.setState({
-        productList: respone.data,
+    })
+      .then(respone => {
+        this.setState({
+          productList: respone.data
+        });
       })
-    }).catch(error => {
-      console.log(error);
-    });
+      .catch(error => {
+        console.log(error);
+      });
   }
   getCustomer(id) {
     axios({
-      method: 'get',
+      method: "get",
       url: `${url}/customers/${id}`
-    }).then(respone => {
-      this.setState({
-        customerDetail: respone.data,
+    })
+      .then(respone => {
+        this.setState({
+          customerDetail: respone.data
+        });
       })
-    }).catch(error => {
-      console.log(error);
-    });
+      .catch(error => {
+        console.log(error);
+      });
   }
-  onUpdateData = (data) => {
+  onUpdateData = data => {
     this.props.onUpdateData(data);
-  }
+  };
   addCustomer(obj) {
     axios({
-      method: 'post',
+      method: "post",
       url: `${url}/orders/add`,
       data: obj,
       headers: {
-        'content-type': 'application/json',
+        "content-type": "application/json"
       }
-    }).then(() => {
-      axios({
-        method: 'get',
-        url: `${url}/orders/list`
-      }).then(respone => {
-        alert("Thêm đơn hàng thành công")
-        this.onUpdateData(respone.data);
-      }).catch(error => {
+    })
+      .then(() => {
+        axios({
+          method: "get",
+          url: `${url}/orders/list`
+        })
+          .then(respone => {
+            alert("Thêm đơn hàng thành công");
+            this.onUpdateData(respone.data);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      })
+      .catch(error => {
+        alert("Thêm đơn hàng không thành công");
+        console.log(obj);
         console.log(error);
       });
-    }).catch(error => {
-      alert("Thêm đơn hàng không thành công")
-      console.log(obj);
-      console.log(error);
-    });
   }
-  onChange = (event) => {
+  onChange = event => {
     var target = event.target;
     var name = target.name;
     var value = target.value;
-    this.setState({
-      [name]: value,
-    }, () => {
-      console.log(this.state);
-    });
-  }
-  onSubmit = (event) => {
+    this.setState(
+      {
+        [name]: value
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
+  };
+  onSubmit = event => {
     event.preventDefault();
     const data = {
-      "orderDate": this.state.ngay_giaoHang,
-      "staffOrder": {
-        id: 22,
+      orderDate: this.state.ngay_giaoHang,
+      staffOrder: {
+        id: 22
       },
-      "customerOrder": {
+      customerOrder: {
         id: this.state.id_cus
       },
-      "methodPay": this.state.phuongthuc_thanhtoan,
-      "methodShip": this.state.phuongthuc_giaohang,
-      "note": this.state.ghi_chu,
-      "orderDetails": this.state.products,
-      "discount": this.state.chietkhau,
-      "costShip": this.state.phi_ship
+      methodPay: this.state.phuongthuc_thanhtoan,
+      methodShip: this.state.phuongthuc_giaohang,
+      note: this.state.ghi_chu,
+      orderDetails: this.state.products,
+      discount: this.state.chietkhau,
+      costShip: this.state.phi_ship
     };
     if (!data.customerOrder) {
-      alert("Thêm đơn hàng không thành công")
-      console.log(data)
+      alert("Thêm đơn hàng không thành công");
+      console.log(data);
     } else {
-      console.log(data)
+      console.log(data);
       this.props.onClick();
       this.addCustomer(data);
     }
-  }
+  };
   handleChangeCus = selectedCus => {
     this.setState({
       id_cus: selectedCus.value
@@ -133,11 +152,14 @@ class CustomerAddForm extends Component {
   };
   handleChangeProduct = selectedProduct => {
     if (this.state.products.indexOf(selectedProduct.value) === -1) {
-      this.setState(previousState => ({
-        products: [...previousState.products, selectedProduct.value]
-      }), () => {
-        console.log(this.state.products)
-      })
+      this.setState(
+        previousState => ({
+          products: [...previousState.products, selectedProduct.value]
+        }),
+        () => {
+          console.log(this.state.products);
+        }
+      );
     } else {
       alert("Sản phẩm đã có trong giỏ hàng");
     }
@@ -147,10 +169,10 @@ class CustomerAddForm extends Component {
       for (var i = 0; i < customerList.length; i++) {
         var value = customerList[i].id;
         var label = customerList[i].name + " - " + customerList[i].phone;
-        optionCus.push({ value: value, label: label })
+        optionCus.push({ value: value, label: label });
       }
     }
-  }
+  };
   pushProduct = (productList, optionProduct) => {
     if (productList.length !== 0 && optionProduct.length === 0) {
       for (var i = 0; i < productList.length; i++) {
@@ -159,35 +181,50 @@ class CustomerAddForm extends Component {
         value.quantity = 0;
         value.discount = 0;
         var label = productList[i].name;
-        optionProduct.push({ value: value, label: label })
+        optionProduct.push({ value: value, label: label });
       }
     }
-  }
-  onDeleteProduct = (id) => {
+  };
+  onDeleteProduct = id => {
     for (var i = 0; i < this.state.products.length; i++) {
       if (this.state.products[i].productOrder.id === id) {
         this.state.products.splice(i, 1);
         this.setState({
           products: this.state.products
-        })
+        });
       }
     }
-  }
+  };
   onUpdateQuantity = (id, quantity, discount, total) => {
-      var totalM = (100 - discount) / 100;
-      this.setState(prevState => ({
-        products: prevState.products.map((product) => (product.productOrder.id === id) ? { ...product, quantity: quantity, discount: discount, total: total * totalM } : product)
-      }), () => {
-        console.log(this.state.products)
-    })  
-  }
+    var totalM = (100 - discount) / 100;
+    this.setState(
+      prevState => ({
+        products: prevState.products.map(product =>
+          product.productOrder.id === id
+            ? {
+                ...product,
+                quantity: quantity,
+                discount: discount,
+                total: total * totalM
+              }
+            : product
+        )
+      }),
+      () => {
+        console.log(this.state.products);
+      }
+    );
+  };
   getTotal = () => {
     var total = 0;
     for (var i = 0; i < this.state.products.length; i++) {
       total = total + this.state.products[i].total;
     }
-    return total*((this.state.discount) ? this.state.discount : 1) + this.state.phi_ship;
-  }
+    return (
+      total * (this.state.discount ? this.state.discount : 1) +
+      this.state.phi_ship
+    );
+  };
   render() {
     const selectedCus = undefined;
     const selectedProduct = undefined;
@@ -201,24 +238,28 @@ class CustomerAddForm extends Component {
 
     this.pushCustomer(customerList, optionCus);
     this.pushProduct(productList, optionProduct);
-    
 
     if (products.length !== 0) {
       eleBuy = products.map((buyItem, index) => {
-        return <BuyItem
-          key={index}
-          index={index}
-          buyItem={buyItem}
-          onDeleteProduct={this.onDeleteProduct}
-          onUpdateQuantity={this.onUpdateQuantity}>
-        </BuyItem>;
+        return (
+          <BuyItem
+            key={index}
+            index={index}
+            buyItem={buyItem}
+            onDeleteProduct={this.onDeleteProduct}
+            onUpdateQuantity={this.onUpdateQuantity}
+          />
+        );
       });
     }
     return (
       <Row>
-        <Prompt when={!!this.state.name} message="Bạn có chắc chắn muốn dừng lại?" />
+        <Prompt
+          when={!!this.state.name}
+          message="Bạn có chắc chắn muốn dừng lại?"
+        />
         <Col xs={12}>
-          <Form >
+          <Form>
             <h4>Thông tin cơ bản </h4>
             <Row>
               <Col xs={8} className="add-col">
@@ -248,28 +289,26 @@ class CustomerAddForm extends Component {
                         placeholder="Nhập tên sản phẩm..."
                       />
                       <Table responsive hover style={{ marginTop: "10px" }}>
-                        <thead className="order-table" >
+                        <thead className="order-table">
                           <tr>
-                            <th >Mã sản phẩm</th>
-                            <th >Tên sản phẩm</th>
+                            <th>Mã sản phẩm</th>
+                            <th>Tên sản phẩm</th>
                             <th className="text-center">Đơn vị</th>
                             <th className="text-center">Đơn giá</th>
                             <th className="text-center">Số lượng</th>
                             <th className="text-center">Chiết khấu</th>
                             <th className="text-center">Thành tiền</th>
-                            <th className="text-center"></th>
+                            <th className="text-center" />
                           </tr>
                         </thead>
-                        <tbody>
-                          {eleBuy}
-                        </tbody>
+                        <tbody>{eleBuy}</tbody>
                       </Table>
                     </Form.Group>
                   </Form.Row>
                   <hr />
                   <Row style={{ margin: "0px 15px" }}>
-                    <Col lg={{ span: 3, offset: 7 }} >
-                      <Card.Text >
+                    <Col lg={{ span: 3, offset: 7 }}>
+                      <Card.Text>
                         <span className="float-left">Tổng tiền</span>
                         <br />
                         <span className="float-left">Chiết khấu</span>
@@ -277,12 +316,13 @@ class CustomerAddForm extends Component {
                         <span className="float-left">Phí giao hàng</span>
                         <br />
                         <span className="float-left">Khách phải trả</span>
-                      
                       </Card.Text>
                     </Col>
                     <Col>
                       <Card.Text>
-                        <span className="float-right">{products && (this.getTotal()) ? this.getTotal() : 0}</span>
+                        <span className="float-right">
+                          {products && this.getTotal() ? this.getTotal() : 0}
+                        </span>
                         <br />
                         <span className="float-right">
                           <Form.Control
@@ -291,7 +331,14 @@ class CustomerAddForm extends Component {
                             min="0"
                             value={this.state.chietkhau}
                             onChange={this.onChange}
-                            style={{ padding: '3px', marginLeft: "7px", width: '55px', height: "calc(0.75em + 0.5rem + 2px)" }} /></span>
+                            style={{
+                              padding: "3px",
+                              marginLeft: "7px",
+                              width: "55px",
+                              height: "calc(0.75em + 0.5rem + 2px)"
+                            }}
+                          />
+                        </span>
                         <br />
                         <span className="float-right">
                           <Form.Control
@@ -300,9 +347,20 @@ class CustomerAddForm extends Component {
                             min="0"
                             value={this.state.phi_ship}
                             onChange={this.onChange}
-                            style={{ padding: '3px', marginLeft: "7px", width: '55px', height: "calc(0.75em + 0.5rem + 2px)" }} /></span>
+                            style={{
+                              padding: "3px",
+                              marginLeft: "7px",
+                              width: "55px",
+                              height: "calc(0.75em + 0.5rem + 2px)"
+                            }}
+                          />
+                        </span>
                         <br />
-                        <span className="float-right">{products && (this.getTotal()) ? Math.round(this.getTotal()) : 0}</span>
+                        <span className="float-right">
+                          {products && this.getTotal()
+                            ? Math.round(this.getTotal())
+                            : 0}
+                        </span>
                       </Card.Text>
                     </Col>
                   </Row>
@@ -311,16 +369,26 @@ class CustomerAddForm extends Component {
                   <Form.Row className="add-form-row">
                     <Form.Group as={Col} controlId="formGridEmail">
                       <Form.Label>Xác nhận phương thức thanh toán</Form.Label>
-                      <Form.Control as="select" name="phuongthuc_thanhtoan" value={this.state.phuongthuc_thanhtoan} onChange={this.onChange} >
+                      <Form.Control
+                        as="select"
+                        name="phuongthuc_thanhtoan"
+                        value={this.state.phuongthuc_thanhtoan}
+                        onChange={this.onChange}
+                      >
                         <option value="Chuyển khoản">Chuyển khoản</option>
-                        <option value='Tiền mặt'>Tiền mặt</option>
+                        <option value="Tiền mặt">Tiền mặt</option>
                       </Form.Control>
                     </Form.Group>
                     <Form.Group as={Col} controlId="formGridEmail">
                       <Form.Label>Xác nhận phương thức giao hàng</Form.Label>
-                      <Form.Control as="select" name="phuongthuc_giaohang" value={this.state.phuongthuc_giaohang} onChange={this.onChange} >
-                        <option value='Viettel Post'>Viettel Post</option>
-                        <option value='Tự gọi ship'>Tự gọi ship</option>
+                      <Form.Control
+                        as="select"
+                        name="phuongthuc_giaohang"
+                        value={this.state.phuongthuc_giaohang}
+                        onChange={this.onChange}
+                      >
+                        <option value="Viettel Post">Viettel Post</option>
+                        <option value="Tự gọi ship">Tự gọi ship</option>
                       </Form.Control>
                     </Form.Group>
                   </Form.Row>
@@ -329,40 +397,62 @@ class CustomerAddForm extends Component {
               <Col xs={4}>
                 <Container className="add-form">
                   <h5 className="add-product-h6">Thông tin đơn hàng</h5>
-                  <Form.Row className="add-form-row" >
+                  <Form.Row className="add-form-row">
                     <Form.Group as={Col} controlId="formGridName">
                       <Form.Label>Chính sách giá</Form.Label>
-                      <Form.Control type="text"
+                      <Form.Control
+                        type="text"
                         name="chinhsachgia"
-                        value={customerDetail.nhomkhachhang && (customerDetail.nhomkhachhang.giaMacdinh) ? customerDetail.nhomkhachhang.giaMacdinh : "Đang chờ"} onChange={this.onChange}>
-                      </Form.Control>
+                        value={
+                          customerDetail.nhomkhachhang &&
+                          customerDetail.nhomkhachhang.giaMacdinh
+                            ? customerDetail.nhomkhachhang.giaMacdinh
+                            : "Đang chờ"
+                        }
+                        onChange={this.onChange}
+                      />
                     </Form.Group>
                   </Form.Row>
-                  <Form.Row className="add-form-row" >
+                  <Form.Row className="add-form-row">
                     <Form.Group as={Col} controlId="formGridName">
                       <Form.Label>Áp dụng thuế</Form.Label>
-                      <Form.Control type="text"
+                      <Form.Control
+                        type="text"
                         name="apdungthue"
-                        value={customerDetail.nhomkhachhang && (customerDetail.nhomkhachhang.thueMacdinh) ? customerDetail.nhomkhachhang.thueMacdinh : "Đang chờ"} onChange={this.onChange} />
+                        value={
+                          customerDetail.nhomkhachhang &&
+                          customerDetail.nhomkhachhang.thueMacdinh
+                            ? customerDetail.nhomkhachhang.thueMacdinh
+                            : "Đang chờ"
+                        }
+                        onChange={this.onChange}
+                      />
                     </Form.Group>
                   </Form.Row>
-                  <Form.Row className="add-form-row" >
+                  <Form.Row className="add-form-row">
                     <Form.Group as={Col} controlId="formGridName">
                       <Form.Label>Ngày giao hàng</Form.Label>
-                      <Form.Control type="date" name="ngay_giaoHang" value={this.state.ngay_giaoHang} onChange={this.onChange} />
+                      <Form.Control
+                        type="date"
+                        name="ngay_giaoHang"
+                        value={this.state.ngay_giaoHang}
+                        onChange={this.onChange}
+                      />
                     </Form.Group>
                   </Form.Row>
                 </Container>
                 <Container className="add-form">
                   <h5 className="add-product-h6">Ghi chú</h5>
-                  <Form.Row className="add-form-row" >
+                  <Form.Row className="add-form-row">
                     <Form.Group as={Col} controlId="formGridName">
-                      <Form.Control as="textarea"
+                      <Form.Control
+                        as="textarea"
                         rows="4"
                         name="ghi_chu"
                         value={this.state.ghi_chu}
                         placeholder="Ghi chú cần thiết về đơn hàng..."
-                        onChange={this.onChange} />
+                        onChange={this.onChange}
+                      />
                     </Form.Group>
                   </Form.Row>
                 </Container>
@@ -370,9 +460,14 @@ class CustomerAddForm extends Component {
             </Row>
             <hr className="form-line" />
             <Link to="/customers">
-              <Button variant="primary" type="submit" className="float-right" onClick={this.onSubmit}>
+              <Button
+                variant="primary"
+                type="submit"
+                className="float-right"
+                onClick={this.onSubmit}
+              >
                 Lưu thông tin
-          </Button>
+              </Button>
             </Link>
           </Form>
         </Col>
