@@ -20,7 +20,7 @@ export default class SimpleTable extends Component{
   componentDidMount() {
     axios({
       method: 'get',
-      url: `${url}/customers/orders-his/116`
+      url: `${url}/customers/orders-his/${this.props.customer}`
     }).then(respone => {
       this.setState({
         history: respone.data
@@ -31,6 +31,7 @@ export default class SimpleTable extends Component{
   }
   
   render(){
+    
     var moment = require('moment');
     const {history} =this.state;
     return (
