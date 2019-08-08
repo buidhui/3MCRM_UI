@@ -39,7 +39,7 @@ export default class TopNavigation extends React.Component {
             </div>
           </form>
           <ul className="navbar-nav navbar-right">
-            <li className="dropdown dropdown-list-toggle">
+            {/* <li className="dropdown dropdown-list-toggle">
               <a
                 href="top#"
                 data-toggle="dropdown"
@@ -112,25 +112,29 @@ export default class TopNavigation extends React.Component {
                   </a>
                 </div>
               </div>
-            </li>
-            <li className="dropdown">
-              <a
-                href="top#"
+            </li> */}
+
+            <div className="dropdown">
+              <button
+                className="btn btn-default dropdown-toggle"
+                type="button"
+                id="dropdownMenu1"
                 data-toggle="dropdown"
-                className="nav-link dropdown-toggle nav-link-lg"
+                aria-haspopup="true"
+                aria-expanded="false"
               >
-                <i className="ion ion-android-person d-lg-none" />
-                <div className="d-sm-none d-lg-inline-block">Chào, Huy Bùi</div>
-              </a>
-              <div className="dropdown-menu dropdown-menu-right">
-                <a href="profile.html" className="dropdown-item has-icon">
+                Hi, <strong>Viet Huy</strong>
+              </button>
+
+              <div className="dropdown-menu dropdown-primary">
+                <a className="dropdown-item" href="top#">
                   <i className="ion ion-android-person tkdx" /> Tài khoản
                 </a>
-                <a href="top#" className="dropdown-item has-icon">
+                <a className="dropdown-item" href="top#">
                   <i className="ion ion-log-out tkdx" /> Đăng xuất
                 </a>
               </div>
-            </li>
+            </div>
           </ul>
         </nav>
       </div>

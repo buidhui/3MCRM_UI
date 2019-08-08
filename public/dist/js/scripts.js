@@ -6,10 +6,10 @@ if (window.Dropzone) {
 // Global
 $(function() {
   if ($(".main-sidebar").length) {
-    $(".main-sidebar").niceScroll({
-      cursoropacitymin: 0.1,
-      cursoropacitymax: 0.8
-    });
+    // $(".main-sidebar").niceScroll({
+    //   cursoropacitymin: 0.1,
+    //   cursoropacitymax: 0.8
+    // });
     var sidebar_nicescroll = $(".main-sidebar").getNiceScroll();
 
     $(".main-sidebar .sidebar-menu li a.has-dropdown").on("click", function() {
@@ -191,20 +191,20 @@ $(function() {
     });
   });
 
-  //   if ($(".main-navbar").length) {
-  //     $(".main-navbar").scrollupbar({
-  //       enterViewport: function() {
-  //         $(".main-navbar").addClass("active");
-  //       },
-  //       exitViewport: function() {
-  //         $(".main-navbar").removeClass("active");
-  //       }
-  //     });
+  if ($(".main-navbar").length) {
+    // $(".main-navbar").scrollupbar({
+    //   enterViewport: function() {
+    //     $(".main-navbar").addClass("active");
+    //   },
+    //   exitViewport: function() {
+    //     $(".main-navbar").removeClass("active");
+    //   }
+    // });
 
-  //     $(window).scroll(function() {
-  //       if ($(this).scrollTop() == 0) {
-  //         $(".main-navbar").removeClass("active");
-  //       }
-  //     });
-  //   }
+    $(window).scroll(function() {
+      if ($(this).scrollTop() == 0) {
+        $(".main-navbar").removeClass("active");
+      }
+    });
+  }
 });

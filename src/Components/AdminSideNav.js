@@ -82,12 +82,12 @@ const SideNavigation = () => {
               </li>
             </ul>
           </li>
-          <li>
+          {/* <li>
             <Link to="/report">
               <i className="fas fa-chart-line" />
               <span>Báo cáo</span>
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/marketing">
               <i className="ion ion-stats-bars" />

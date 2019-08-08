@@ -3,6 +3,8 @@
 body {
   background-color: #f6f6f6;
   font-size: 14px;
+  overflow-x:hidden;
+  
 }
 
 /* custorm */
@@ -43,7 +45,7 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
   border: none;
   -webkit-box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
-  width: 200px;
+  width: 100px;
 }
 .dropdown-menu a {
   font-size: 14px;
@@ -113,6 +115,7 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
   height: 350px;
   overflow: hidden;
 }
+
 /* end dropdown */
 
 /* btn */
@@ -209,7 +212,8 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 }
 
 .sidebar-brand {
-	margin-bottom: 35px;
+  margin-bottom: 35px;
+  background-color: transparent;
 }
 
 .sidebar-user{
@@ -225,6 +229,7 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
   position: absolute;
   z-index: 890;
   background-color: transparent;
+  width: 80%;
 }
 .navbar.active {
   background-color: #574b90;
@@ -293,6 +298,10 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
   color: #fff;
   opacity: 0.6;
 }
+
+/* .navbar-right{
+  margin-right: 18%;
+} */
 /* end navbar */
 
 /* layout */
@@ -1240,10 +1249,11 @@ body.sidebar-gone .main-content {
     -ms-flex-direction: row;
     flex-direction: row;
   }
-  .navbar-expand-lg .navbar-nav .dropdown-menu-right {
+ /* .dropdown-menu-rightsss {
     right: 0;
-    left: auto;
-  }
+    left:auto;
+    width: 10px;
+  } */
   .main-footer {
     padding-left: 30px;
   }
