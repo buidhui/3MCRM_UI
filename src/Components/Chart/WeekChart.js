@@ -3,8 +3,6 @@ import { Line } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
 import url from "../url";
 import axios from "axios";
-const labelArr = [];
-const dataArr = [];
 class WeekChart extends React.Component {
   state = {
     weeksale: [],

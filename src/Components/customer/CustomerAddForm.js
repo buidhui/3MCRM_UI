@@ -215,7 +215,7 @@ class CustomerAddForm extends Component {
                       />
                     </Form.Group>
                   </Form.Row>
-                  <Form.Row className="add-form-row">
+                  {/* <Form.Row className="add-form-row">
                     <Form.Group as={Col} controlId="formGridEmail">
                       <Form.Label>
                         Email <span style={{ color: "red" }}>*</span>
@@ -257,7 +257,7 @@ class CustomerAddForm extends Component {
                         <option value={5}>Nhóm Silver</option>
                       </Form.Control>
                     </Form.Group>
-                  </Form.Row>
+                  </Form.Row> */}
                 </Container>
               </Col>
               <Col xs={4}>

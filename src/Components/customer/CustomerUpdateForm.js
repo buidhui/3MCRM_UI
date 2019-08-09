@@ -3,6 +3,8 @@ import {Form,Col,Button,Row,Container} from 'react-bootstrap';
 import axios from 'axios';
 import {Prompt} from 'react-router-dom';
 import url from '../url'
+import Select from "react-select";
+const staff = [];
 class CustomerAddForm extends Component{
 
     constructor(props){
@@ -18,6 +20,7 @@ class CustomerAddForm extends Component{
           note:'',
           staff:'',
           customerType: '',
+          staffList: []
         }
       }
       addCustomer(obj){
@@ -71,24 +74,36 @@ class CustomerAddForm extends Component{
             "dob": this.state.dob,
             "email": this.state.email,
             "gender": this.state.gender,
-            "phoneNumber": this.state.phone,
+            "phone": this.state.phone,
             "note": this.state.note,
             "staff": {
               id: (this.state.staff) ? this.state.staff : null
             },
-            "nhomkhachhang":{
+            "group":{
               id: this.state.customerType
             }
         };
         if (!data.name || !data.email || ! data.phone) {
           alert("Tên khách hàng, email và số điện thoại không được để trống!");
+          console.log(data)
         }else{              
           this.addCustomer(data);   
           this.props.onClick();   
         }
       }
       componentDidMount(){
-          const customer = this.props.customer;
+        axios({
+          method: 'get',
+          url: `${url}/staffs/list`
+        }).then(respone => {
+          this.setState({
+            staffList: respone.data,
+          })
+        }).catch(error => {
+          console.log(error)
+        });
+          
+        const customer = this.props.customer;
         this.setState({
             id : customer.id,
             name : customer.name,
@@ -96,16 +111,34 @@ class CustomerAddForm extends Component{
             gender: (customer.gender) ? customer.gender : "",
             address: (customer.address) ? customer.address : "",
             email: (customer.email) ? customer.email : "",
-            phone: (customer.phoneNumber) ? customer.phoneNumber : "",
+            phone: (customer.phone) ? customer.phone : "",
             note: (customer.note ? customer.note : " "),
             staff: (customer.staff) ? customer.staff.id : "",
-            customerType: (customer.nhomkhachhang) ? customer.nhomkhachhang.id : 0
+            customerType: (customer.group) ? customer.group.id : 0
         })
       }
+      pushCustomer = (staffList, staff) => {
+        if (staffList.length !== 0 && staff.length === 0) {
+          for (var i = 0; i < staffList.length; i++) {
+            var value = staffList[i].id;
+            var label = staffList[i].name + " - " + staffList[i].id;
+            staff.push({ value: value, label: label });
+          }
+        }
+      };
+      handleChangeCus = selectedCus => {
+        this.setState({
+          staff: selectedCus.value
+        });
+      };
       onUpdateData= (data) =>{
         this.props.onUpdateData(data);
       }
     render(){
+      const {staffList} = this.state;
+      this.pushCustomer(staffList, staff);
+      const selectedStaff = undefined;
+      console.log(staff)
       return(
         <Row>
           <Prompt when={!!this.state.name} message="Bạn có chắc chắn muốn dừng lại?"/>
@@ -126,7 +159,7 @@ class CustomerAddForm extends Component{
                           <Form.Control type="date" name="dob" value={this.state.dob} onChange={this.onChange}/>
                       </Form.Group>  
 
-                      <Form.Group as={Col} xs={2} controlId="formGridGender">
+                      <Form.Group as={Col} xs={3} controlId="formGridGender">
                       <Form.Label>Giới tính</Form.Label>
                       <Form.Control as="select" name="gender" value={this.state.gender} onChange={this.onChange}>
                           <option >Giới tính</option>
@@ -164,15 +197,6 @@ class CustomerAddForm extends Component{
                                   <option value={6}>Nhóm 6</option>
                                 </Form.Control>
                         </Form.Group>
-                        {/* <Form.Group as={Col} controlId="formGridCusProfit">
-                                <Form.Label>Ưu đãi</Form.Label>
-                                <Form.Control as="select" name="customerProfit" value={this.state.customerProfit} onChange={this.onChange} >
-                                  <option value={1}>Nhóm 1</option>
-                                  <option value={2}>Nhóm 2</option>
-                                  <option value={3}>Nhóm 3</option>
-                                  <option value={4}>Nhóm 4</option>
-                                </Form.Control>
-                        </Form.Group> */}
                     </Form.Row>    
                                                                          
               </Container>                  
@@ -188,7 +212,12 @@ class CustomerAddForm extends Component{
                 <Form.Row className="add-form-row" >
                   <Form.Group as={Col} controlId="formGridName">
                     <Form.Label>Nhân viên chăm sóc</Form.Label>
-                    <Form.Control name="staff" value={this.state.staff} placeholder="" onChange={this.onChange}/>
+                    <Select
+                        value={selectedStaff}
+                        onChange={this.handleChangeCus}
+                        options={staff}
+                        placeholder="Nhân viên chăm sóc"
+                      />
                   </Form.Group>
                 </Form.Row>                                                    
                 </Container> 
