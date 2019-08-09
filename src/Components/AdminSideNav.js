@@ -95,11 +95,11 @@ const SideNavigation = () => {
             </Link>
           </li>
           <li className="menu-header">Thêm</li>
-          <li>
+          {/* <li>
             <Link to="/credit">
               <i className="fas fa-info-circle" /> Credits
             </Link>
-          </li>
+          </li> */}
         </ul>
         <div className="p-3 mt-4 mb-4">
           <Link

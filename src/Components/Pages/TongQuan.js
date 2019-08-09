@@ -16,7 +16,7 @@ class TongQuan extends Component {
 
           <div className="row">
             <DashBoardChart />
-            <DashBoardTopNv />
+            <DashBoardTopNv/>
           </div>
         </section>
       </React.Fragment>
