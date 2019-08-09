@@ -64,7 +64,7 @@ class YearChart extends React.Component {
   pushLabel = (yearsale, labelArr) => {
     if (yearsale.length !== 0) {
       for (var i = 0; i < yearsale.length; i++) {
-        var date = yearsale[i].date;
+        var date = yearsale[i].month;
         labelArr.push(date);
       }
     }
@@ -84,7 +84,7 @@ class YearChart extends React.Component {
     return (
       <MDBContainer>
         <Bar
-          height={210}
+          height={255}
           data={this.state.dataBar}
           //   options={this.state.barChartOptions}
         />

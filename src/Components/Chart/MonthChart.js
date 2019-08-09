@@ -71,7 +71,7 @@ class MonthChart extends React.Component {
     return (
       <MDBContainer>
         <Line
-          height={210}
+          height={255}
           data={this.state.dataLine}
           options={{ responsive: true }}
         />
