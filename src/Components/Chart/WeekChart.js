@@ -3,8 +3,8 @@ import { Line } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
 import url from "../url";
 import axios from "axios";
-const labelArr = [];
-const dataArr = [];
+// const labelArr = [];
+// const dataArr = [];
 class WeekChart extends React.Component {
   state = {
     weeksale: [],
@@ -12,20 +12,20 @@ class WeekChart extends React.Component {
       labels: [],
       datasets: [
         {
-          label: "My First dataset",
+          label: "Doanh thu ngày",
           fill: true,
-          lineTension: 0.3,
-          backgroundColor: "rgba(225, 204,230, .3)",
-          borderColor: "rgb(205, 130, 158)",
+          lineTension: 0.1,
+          backgroundColor: "rgba(26, 157, 240, 0.1)",
+          borderColor: "rgb(26, 157, 240)",
           borderCapStyle: "butt",
           borderDash: [],
           borderDashOffset: 0.0,
           borderJoinStyle: "miter",
-          pointBorderColor: "rgb(205, 130,1 58)",
+          pointBorderColor: "rgb(26, 157, 240)",
           pointBackgroundColor: "rgb(255, 255, 255)",
-          pointBorderWidth: 10,
+          pointBorderWidth: 5,
           pointHoverRadius: 5,
-          pointHoverBackgroundColor: "rgb(0, 0, 0)",
+          pointHoverBackgroundColor: "rgb(255, 255, 255)",
           pointHoverBorderColor: "rgba(220, 220, 220,1)",
           pointHoverBorderWidth: 2,
           pointRadius: 1,
@@ -35,7 +35,7 @@ class WeekChart extends React.Component {
       ]
     }
   };
-  componentDidMount(){
+  componentDidMount() {
     axios({
       method: "get",
       url: `${url}/weeksale`
@@ -50,16 +50,15 @@ class WeekChart extends React.Component {
       });
   }
   pushLabel = (weeksale, labelArr) => {
-    if (weeksale.length !== 0 && labelArr.length === 0) {
+    if (weeksale.length !== 0) {
       for (var i = 0; i < weeksale.length; i++) {
         var date = weeksale[i].date;
         labelArr.push(date);
       }
     }
-    
   };
   pushData = (weeksale, dataArr) => {
-    if (weeksale.length !== 0 && dataArr.length === 0) {
+    if (weeksale.length !== 0) {
       for (var i = 0; i < weeksale.length; i++) {
         var date = weeksale[i].values;
         dataArr.push(date);
@@ -67,14 +66,14 @@ class WeekChart extends React.Component {
     }
   };
   render() {
-    const {weeksale} = this.state;
-    this.pushLabel(weeksale,this.state.dataLine.labels);
-    this.pushData(weeksale,this.state.dataLine.datasets[0].data);
-    console.log(this.state)
+    const { weeksale } = this.state;
+    this.pushLabel(weeksale, this.state.dataLine.labels);
+    this.pushData(weeksale, this.state.dataLine.datasets[0].data);
+    // console.log(this.state);
     return (
       <MDBContainer>
         <Line
-          height={190}
+          height={210}
           data={this.state.dataLine}
           options={{ responsive: true }}
         />

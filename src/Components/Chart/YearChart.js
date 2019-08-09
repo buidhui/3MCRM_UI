@@ -1,44 +1,92 @@
 import React from "react";
-import { Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
+import url from "../url";
+import axios from "axios";
 
 class YearChart extends React.Component {
   state = {
-    dataLine: {
-      labels: ["January", "February", "March", "April", "May", "June", "July"],
+    yearsale: [],
+    dataBar: {
+      labels: [],
       datasets: [
         {
-          label: "My Second dataset",
-          fill: true,
-          lineTension: 0.3,
-          backgroundColor: "rgba(184, 185, 210, .3)",
-          borderColor: "rgb(35, 26, 136)",
-          borderCapStyle: "butt",
-          borderDash: [],
-          borderDashOffset: 0.0,
-          borderJoinStyle: "miter",
-          pointBorderColor: "rgb(35, 26, 136)",
-          pointBackgroundColor: "rgb(255, 255, 255)",
-          pointBorderWidth: 10,
-          pointHoverRadius: 5,
-          pointHoverBackgroundColor: "rgb(0, 0, 0)",
-          pointHoverBorderColor: "rgba(220, 220, 220, 1)",
-          pointHoverBorderWidth: 2,
-          pointRadius: 1,
-          pointHitRadius: 10,
-          data: [28, 48, 40, 19, 86, 27, 90]
+          label: "Doanh thu năm",
+          data: [],
+          backgroundColor: [
+            "rgba(98,  182, 239,0.4)",
+            "rgba(98,  182, 239,0.4)",
+            "rgba(98,  182, 239,0.4)",
+            "rgba(98,  182, 239,0.4)",
+            "rgba(98,  182, 239,0.4)",
+            "rgba(98,  182, 239,0.4)",
+            "rgba(98,  182, 239,0.4)",
+            "rgba(98,  182, 239,0.4)",
+            "rgba(98,  182, 239,0.4)",
+            "rgba(98,  182, 239,0.4)",
+            "rgba(98,  182, 239,0.4)",
+            "rgba(98,  182, 239,0.4)"
+          ],
+          borderWidth: 2,
+          borderColor: [
+            "rgb(26, 157, 240)",
+            "rgb(26, 157, 240)",
+            "rgb(26, 157, 240)",
+            "rgb(26, 157, 240)",
+            "rgb(26, 157, 240)",
+            "rgb(26, 157, 240)",
+            "rgb(26, 157, 240)",
+            "rgb(26, 157, 240)",
+            "rgb(26, 157, 240)",
+            "rgb(26, 157, 240)",
+            "rgb(26, 157, 240)",
+            "rgb(26, 157, 240)",
+            "rgb(26, 157, 240)"
+          ]
         }
       ]
     }
   };
-
+  componentDidMount() {
+    axios({
+      method: "get",
+      url: `${url}/yearsale`
+    })
+      .then(respone => {
+        this.setState({
+          yearsale: respone.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+  pushLabel = (yearsale, labelArr) => {
+    if (yearsale.length !== 0) {
+      for (var i = 0; i < yearsale.length; i++) {
+        var date = yearsale[i].date;
+        labelArr.push(date);
+      }
+    }
+  };
+  pushData = (yearsale, dataArr) => {
+    if (yearsale.length !== 0) {
+      for (var i = 0; i < yearsale.length; i++) {
+        var date = yearsale[i].values;
+        dataArr.push(date);
+      }
+    }
+  };
   render() {
+    const { yearsale } = this.state;
+    this.pushLabel(yearsale, this.state.dataBar.labels);
+    this.pushData(yearsale, this.state.dataBar.datasets[0].data);
     return (
       <MDBContainer>
-        <Line
-          height={190}
-          data={this.state.dataLine}
-          options={{ responsive: true }}
+        <Bar
+          height={210}
+          data={this.state.dataBar}
+          //   options={this.state.barChartOptions}
         />
       </MDBContainer>
     );
