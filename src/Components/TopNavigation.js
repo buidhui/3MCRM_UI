@@ -116,7 +116,7 @@ export default class TopNavigation extends React.Component {
 
             <div className="dropdown">
               <button
-                className="btn btn-default dropdown-toggle"
+                className="btn btn-default dropdown-toggle account"
                 type="button"
                 id="dropdownMenu1"
                 data-toggle="dropdown"

@@ -1,7 +1,66 @@
 import React, { Component } from "react";
+import Axios from "axios";
+import url from "../url";
 
 class DashBoarData extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      statistics: []
+    };
+  }
+
+  componentDidMount() {
+    Axios({
+      method: "get",
+      url: `${url}/statistics`
+    })
+      .then(res => {
+        // console.log(res.data);
+        this.setState({
+          statistics: res.data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   render() {
+    var { statistics } = this.state;
+    function formatMoney(
+      amount,
+      decimalCount = 2,
+      decimal = "",
+      thousands = ","
+    ) {
+      try {
+        decimalCount = Math.abs(decimalCount);
+        decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+
+        const negativeSign = amount < 0 ? "-" : "";
+
+        let i = parseInt(
+          (amount = Math.abs(Number(amount) || 0).toFixed(decimalCount))
+        ).toString();
+        let j = i.length > 3 ? i.length % 3 : 0;
+
+        return (
+          negativeSign +
+          (j ? i.substr(0, j) + thousands : "") +
+          i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) +
+          (decimalCount
+            ? decimal +
+              Math.abs(amount - i)
+                .toFixed(decimalCount)
+                .slice(4)
+            : "")
+        );
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    var result = formatMoney(statistics.revenue);
     return (
       <React.Fragment>
         <div className="row">
@@ -14,7 +73,7 @@ class DashBoarData extends Component {
                 <div className="card-header">
                   <h4>Khách hàng</h4>
                 </div>
-                <div className="card-body">10</div>
+                <div className="card-body">{statistics.totalCustomers}</div>
               </div>
             </div>
           </div>
@@ -28,7 +87,7 @@ class DashBoarData extends Component {
                 <div className="card-header">
                   <h4>Đơn hàng</h4>
                 </div>
-                <div className="card-body">42</div>
+                <div className="card-body">{statistics.totalOrders}</div>
               </div>
             </div>
           </div>
@@ -39,9 +98,9 @@ class DashBoarData extends Component {
               </div>
               <div className="card-wrap">
                 <div className="card-header">
-                  <h4>Giao dịch</h4>
+                  <h4>Doanh thu</h4>
                 </div>
-                <div className="card-body">1,201</div>
+                <div className="card-body">{result}</div>
               </div>
             </div>
           </div>
@@ -52,9 +111,9 @@ class DashBoarData extends Component {
               </div>
               <div className="card-wrap">
                 <div className="card-header">
-                  <h4>Online Users</h4>
+                  <h4>Nhân viên</h4>
                 </div>
-                <div className="card-body">47</div>
+                <div className="card-body">{statistics.totalStaffs}</div>
               </div>
             </div>
           </div>

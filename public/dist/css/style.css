@@ -208,7 +208,7 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 
 .sidebar-brand :hover{
 	transition: all 1.5s; 
-	transform: scale(1.5);
+	transform: scale(1.1);
 }
 
 .sidebar-brand {
@@ -539,7 +539,7 @@ body.sidebar-gone .main-content {
 .card .card-header,
 .card .card-footer,
 .card .card-body {
-	background-color: transparent;
+  background-color: transparent;
 }
 .data {
   margin-top: 70px;
