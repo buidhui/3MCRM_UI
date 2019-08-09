@@ -80,7 +80,7 @@ class CustomerDetail extends Component{
                         </Card>
                         <Card style={{ width: '100%', margin: "15px" }}>
                             <Card.Body>
-                                <TabViewDatil customer={customerDetail.id}/>
+                                <TabViewDatil customer={this.props.id}/>
                             </Card.Body>
                         </Card>
                     </Col>

@@ -1,11 +1,15 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
-
+import url from "../url";
+import axios from "axios";
+const labelArr = [];
+const dataArr = [];
 class WeekChart extends React.Component {
   state = {
+    weeksale: [],
     dataLine: {
-      labels: ["Thứ 2 ", "February", "March", "April", "May", "June", "July"],
+      labels: [],
       datasets: [
         {
           label: "My First dataset",
@@ -26,13 +30,47 @@ class WeekChart extends React.Component {
           pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
-          data: [65, 59, 80, 81, 56, 55, 40]
+          data: []
         }
       ]
     }
   };
-
+  componentDidMount(){
+    axios({
+      method: "get",
+      url: `${url}/weeksale`
+    })
+      .then(respone => {
+        this.setState({
+          weeksale: respone.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+  pushLabel = (weeksale, labelArr) => {
+    if (weeksale.length !== 0 && labelArr.length === 0) {
+      for (var i = 0; i < weeksale.length; i++) {
+        var date = weeksale[i].date;
+        labelArr.push(date);
+      }
+    }
+    
+  };
+  pushData = (weeksale, dataArr) => {
+    if (weeksale.length !== 0 && dataArr.length === 0) {
+      for (var i = 0; i < weeksale.length; i++) {
+        var date = weeksale[i].values;
+        dataArr.push(date);
+      }
+    }
+  };
   render() {
+    const {weeksale} = this.state;
+    this.pushLabel(weeksale,this.state.dataLine.labels);
+    this.pushData(weeksale,this.state.dataLine.datasets[0].data);
+    console.log(this.state)
     return (
       <MDBContainer>
         <Line

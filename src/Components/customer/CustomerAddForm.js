@@ -32,6 +32,7 @@ class CustomerAddForm extends Component {
       }
     })
       .then(() => {
+        alert("Thêm mới khách hàng thành công");
         axios({
           method: "get",
           url: `${url}/customers/list`
@@ -82,8 +83,8 @@ class CustomerAddForm extends Component {
         id: this.state.customerType ? this.state.customerType : null
       }
     };
-    if (!data.name) {
-      alert("Tên khách hàng không được để trống!");
+    if (!data.name || !data.email || ! data.phone) {
+      alert("Tên khách hàng, email và số điện thoại không được để trống!");
     } else {
       this.addCustomer(data);
       this.props.onClick();

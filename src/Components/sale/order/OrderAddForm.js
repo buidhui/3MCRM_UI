@@ -210,19 +210,18 @@ class CustomerAddForm extends Component {
             : product
         )
       }),
-      () => {
-        console.log(this.state.products);
-      }
     );
   };
   getTotal = () => {
     var total = 0;
-    for (var i = 0; i < this.state.products.length; i++) {
-      total = total + this.state.products[i].total;
+    if(this.state.products.length !== 0){
+      for (var i = 0; i < this.state.products.length; i++) {
+        total = total + parseInt(this.state.products[i].total);
+        total = total + parseInt(this.state.phi_ship);
+      }
     }
     return (
-      total * (this.state.discount ? this.state.discount : 1) +
-      this.state.phi_ship
+      total
     );
   };
   render() {
@@ -296,7 +295,7 @@ class CustomerAddForm extends Component {
                             <th className="text-center">Đơn vị</th>
                             <th className="text-center">Đơn giá</th>
                             <th className="text-center">Số lượng</th>
-                            <th className="text-center">Chiết khấu</th>
+                            <th className="text-center">Chiết khấu(%)</th>
                             <th className="text-center">Thành tiền</th>
                             <th className="text-center" />
                           </tr>
@@ -311,7 +310,7 @@ class CustomerAddForm extends Component {
                       <Card.Text>
                         <span className="float-left">Tổng tiền</span>
                         <br />
-                        <span className="float-left">Chiết khấu</span>
+                        <span className="float-left">Chiết khấu(%)</span>
                         <br />
                         <span className="float-left">Phí giao hàng</span>
                         <br />
@@ -321,7 +320,7 @@ class CustomerAddForm extends Component {
                     <Col>
                       <Card.Text>
                         <span className="float-right">
-                          {products && this.getTotal() ? this.getTotal() : 0}
+                          {products && this.getTotal(products) ? this.getTotal(products) : 0}
                         </span>
                         <br />
                         <span className="float-right">

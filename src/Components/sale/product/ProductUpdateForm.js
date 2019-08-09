@@ -40,6 +40,7 @@ class CustomerAddForm extends Component{
             console.log(error);
           })
         }).catch(error => {
+          alert("Cập nhật thông tin hàng hóa không thành công");
           console.log(error);
         });
       }
