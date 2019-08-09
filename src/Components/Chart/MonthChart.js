@@ -11,7 +11,7 @@ class MonthChart extends React.Component {
       labels: [],
       datasets: [
         {
-          label: "Doanh thu tháng",
+          label: "Doanh thu ngày trong tháng",
           fill: true,
           lineTension: 0.1,
           backgroundColor: "rgba(26, 157, 240, 0.1)",
@@ -52,7 +52,10 @@ class MonthChart extends React.Component {
     if (monthsale.length !== 0) {
       for (var i = 0; i < monthsale.length; i++) {
         var date = monthsale[i].date;
-        labelArr.push(date);
+        var date1 = date.slice(8) + "/" + date.slice(5, 7);
+        labelArr.push(date1);
+
+        // console.log(date1);
       }
     }
   };
@@ -71,7 +74,7 @@ class MonthChart extends React.Component {
     return (
       <MDBContainer>
         <Line
-          height={210}
+          height={255}
           data={this.state.dataLine}
           options={{ responsive: true }}
         />

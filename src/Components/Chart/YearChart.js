@@ -11,7 +11,7 @@ class YearChart extends React.Component {
       labels: [],
       datasets: [
         {
-          label: "Doanh thu năm",
+          label: "Doanh thu tháng trong năm",
           data: [],
           backgroundColor: [
             "rgba(98,  182, 239,0.4)",
@@ -68,7 +68,9 @@ class YearChart extends React.Component {
     if (yearsale.length !== 0) {
       for (var i = 0; i < yearsale.length; i++) {
         var date = yearsale[i].month;
-        labelArr.push(date);
+        var date1 = date.slice(5) + "/" + date.slice(0, 4);
+
+        labelArr.push(date1);
       }
     }
   };
@@ -87,7 +89,7 @@ class YearChart extends React.Component {
     return (
       <MDBContainer>
         <Bar
-          height={210}
+          height={255}
           data={this.state.dataBar}
           //   options={this.state.barChartOptions}
         />

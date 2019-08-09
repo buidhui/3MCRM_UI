@@ -61,6 +61,7 @@ class DashBoarData extends Component {
       }
     }
     var result = formatMoney(statistics.revenue);
+
     return (
       <React.Fragment>
         <div className="row">
@@ -73,7 +74,9 @@ class DashBoarData extends Component {
                 <div className="card-header">
                   <h4>Khách hàng</h4>
                 </div>
-                <div className="card-body">{statistics.totalCustomers}</div>
+                <div className="card-body">
+                  <small>{statistics.totalCustomers}</small>
+                </div>
               </div>
             </div>
           </div>
@@ -87,7 +90,9 @@ class DashBoarData extends Component {
                 <div className="card-header">
                   <h4>Đơn hàng</h4>
                 </div>
-                <div className="card-body">{statistics.totalOrders}</div>
+                <div className="card-body">
+                  <small>{statistics.totalOrders}</small>
+                </div>
               </div>
             </div>
           </div>
@@ -100,7 +105,9 @@ class DashBoarData extends Component {
                 <div className="card-header">
                   <h4>Doanh thu</h4>
                 </div>
-                <div className="card-body">{result}</div>
+                <div className="card-body">
+                  <small>{result} VNĐ</small>
+                </div>
               </div>
             </div>
           </div>
@@ -113,7 +120,9 @@ class DashBoarData extends Component {
                 <div className="card-header">
                   <h4>Nhân viên</h4>
                 </div>
-                <div className="card-body">{statistics.totalStaffs}</div>
+                <div className="card-body">
+                  <small>{statistics.totalStaffs}</small>
+                </div>
               </div>
             </div>
           </div>

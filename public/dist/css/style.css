@@ -582,7 +582,7 @@ body.sidebar-gone .main-content {
 	font-weight: 700;
 	letter-spacing: 1px;
 	text-transform: uppercase;
-	margin: 2px 0 -2px 0;
+  margin: 2px 0 -2px 0;
 	font-family: 'Montserrat';
 	line-height: 30px;
 }
@@ -609,7 +609,7 @@ body.sidebar-gone .main-content {
 .card.card-sm-3 .card-header h4,
 .card.card-sm-4 .card-header h4,
 .card.card-sm-5 .card-header h4 {
-	line-height: 1.2;
+	line-height: 1.5;
 }
 .card.card-lg .card-body,
 .card.card-sm .card-body,
@@ -748,7 +748,7 @@ body.sidebar-gone .main-content {
 .card.card-sm-4 .card-header h4 {
 	font-size: 10px;
 	letter-spacing: 1px;
-	color: #868e96;
+	color: #3b4449;
 }
 .card.card-sm-3 .card-body,
 .card.card-sm-4 .card-body {
