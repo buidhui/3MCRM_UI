@@ -91,12 +91,11 @@ class DashBoardTopNv extends Component {
                 {topCustomer.map((topCustomer, index) => (
                   <div key={index}>
                     <h6 className="text-secondary">
-                      {" "}
-                      <MDBBadge pill color="success">
+                      
+                      <MDBBadge pill color="success" style={{marginLeft: "5px", marginRight: "5px"}}>
                         {index + 1}
-                      </MDBBadge>{" "}
-                      {topCustomer.name}
-                      {result}
+                      </MDBBadge>
+                      {topCustomer.name} {result}
                     </h6>
                   </div>
                 ))}
@@ -105,14 +104,14 @@ class DashBoardTopNv extends Component {
 
             <div>
               <div className="card-header bg-info text-light">
-                <h4>Sản phẩm bán chạy 7</h4>
+                <h4>Sản phẩm bán chạy tháng 7</h4>
               </div>
               <div>
                 {totalmonthlysold.map((totalmonthlysold, index) => (
                   <div key={index}>
                     <h6 className="text-secondary">
                       {" "}
-                      <MDBBadge pill color="success">
+                      <MDBBadge pill color="success" style={{marginLeft: "5px", marginRight: "5px"}}>
                         {index + 1}
                       </MDBBadge>{" "}
                       {totalmonthlysold.name}

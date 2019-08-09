@@ -92,6 +92,7 @@ class CustomerAddForm extends Component {
           url: `${url}/orders/list`
         })
           .then(respone => {
+            this.props.onClick();
             alert("Thêm đơn hàng thành công");
             this.onUpdateData(respone.data);
           })
@@ -121,7 +122,7 @@ class CustomerAddForm extends Component {
   onSubmit = event => {
     event.preventDefault();
     const data = {
-      orderDate: this.state.ngay_giaoHang,
+      dateShip: this.state.ngay_giaoHang,
       staffOrder: {
         id: 22
       },
@@ -140,7 +141,7 @@ class CustomerAddForm extends Component {
       console.log(data);
     } else {
       console.log(data);
-      this.props.onClick();
+      
       this.addCustomer(data);
     }
   };
@@ -152,7 +153,10 @@ class CustomerAddForm extends Component {
   };
   handleChangeProduct = selectedProduct => {
     if (this.state.products.indexOf(selectedProduct.value) === -1) {
+      selectedProduct.value.quantity = 1;
+      selectedProduct.value.total = selectedProduct.value.productOrder.retailPrice
       this.setState(
+        
         previousState => ({
           products: [...previousState.products, selectedProduct.value]
         }),
@@ -237,7 +241,6 @@ class CustomerAddForm extends Component {
 
     this.pushCustomer(customerList, optionCus);
     this.pushProduct(productList, optionProduct);
-
     if (products.length !== 0) {
       eleBuy = products.map((buyItem, index) => {
         return (
@@ -297,7 +300,6 @@ class CustomerAddForm extends Component {
                             <th className="text-center">Số lượng</th>
                             <th className="text-center">Chiết khấu(%)</th>
                             <th className="text-center">Thành tiền</th>
-                            <th className="text-center" />
                           </tr>
                         </thead>
                         <tbody>{eleBuy}</tbody>
@@ -403,9 +405,9 @@ class CustomerAddForm extends Component {
                         type="text"
                         name="chinhsachgia"
                         value={
-                          customerDetail.nhomkhachhang &&
-                          customerDetail.nhomkhachhang.giaMacdinh
-                            ? customerDetail.nhomkhachhang.giaMacdinh
+                          customerDetail.Group &&
+                          customerDetail.group.defaultPrice
+                            ? customerDetail.group.defaultPrice
                             : "Đang chờ"
                         }
                         onChange={this.onChange}
@@ -419,9 +421,9 @@ class CustomerAddForm extends Component {
                         type="text"
                         name="apdungthue"
                         value={
-                          customerDetail.nhomkhachhang &&
-                          customerDetail.nhomkhachhang.thueMacdinh
-                            ? customerDetail.nhomkhachhang.thueMacdinh
+                          customerDetail.group &&
+                          customerDetail.group.defaultTax
+                            ? customerDetail.group.defaultTax
                             : "Đang chờ"
                         }
                         onChange={this.onChange}

@@ -5,7 +5,6 @@ class BuyItem extends Component {
         super(props);
         this.state = {
             quantity: 1,
-            total: 0,
             discount: 0
         }
     }
@@ -17,7 +16,7 @@ class BuyItem extends Component {
         var name = target.name;
         var value = target.value;
         if(name === "quantity" ){
-            value = (value < 0) ? 0 : value
+            value = (value < 0) ? 1 : value
         }
         if(name === "discount"){
             value = (value < 0) ? 0 : value
@@ -25,6 +24,7 @@ class BuyItem extends Component {
         this.setState({
             [name]: value,
         }, () => {
+            console.log(this.state)
             this.props.onUpdateQuantity(this.props.buyItem.productOrder.id, this.state.quantity, this.state.discount, this.state.quantity * this.props.buyItem.productOrder.retailPrice);
         });
 
