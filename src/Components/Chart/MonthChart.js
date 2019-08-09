@@ -52,7 +52,7 @@ class MonthChart extends React.Component {
     if (monthsale.length !== 0) {
       for (var i = 0; i < monthsale.length; i++) {
         var date = monthsale[i].date;
-        var date1 = date.slice(8) + "-" + date.slice(5, 7);
+        var date1 = date.slice(8) + "/" + date.slice(5, 7);
         labelArr.push(date1);
 
         // console.log(date1);

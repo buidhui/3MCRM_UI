@@ -65,7 +65,7 @@ class YearChart extends React.Component {
     if (yearsale.length !== 0) {
       for (var i = 0; i < yearsale.length; i++) {
         var date = yearsale[i].month;
-        var date1 = date.slice(5) + "-" + date.slice(0, 4);
+        var date1 = date.slice(5) + "/" + date.slice(0, 4);
 
         labelArr.push(date1);
       }

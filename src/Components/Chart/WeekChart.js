@@ -54,7 +54,7 @@ class WeekChart extends React.Component {
       for (var i = 0; i < weeksale.length; i++) {
         var date = weeksale[i].date;
         var date1 =
-          date.slice(8) + "-" + date.slice(5, 7) + "-" + date.slice(0, 4);
+          date.slice(8) + "/" + date.slice(5, 7) + "/" + date.slice(0, 4);
         labelArr.push(date1);
       }
     }
