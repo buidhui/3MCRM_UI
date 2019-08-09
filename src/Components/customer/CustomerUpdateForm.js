@@ -80,8 +80,8 @@ class CustomerAddForm extends Component{
               id: this.state.customerType
             }
         };
-        if(!data.name){
-          alert("Tên khách hàng không được để trống!")
+        if (!data.name || !data.email || ! data.phone) {
+          alert("Tên khách hàng, email và số điện thoại không được để trống!");
         }else{              
           this.addCustomer(data);   
           this.props.onClick();   

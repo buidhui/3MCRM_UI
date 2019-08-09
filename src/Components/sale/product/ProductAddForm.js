@@ -36,6 +36,7 @@ class CustomerAddForm extends Component {
       }
     })
       .then(() => {
+        alert("Thêm mới sản phẩm thành công");
         axios({
           method: "get",
           url: `${url}/products/list`
@@ -128,10 +129,10 @@ class CustomerAddForm extends Component {
       catName: this.state.loai_sp ? this.state.loai_sp : null,
       unit: this.state.don_vi ? this.state.don_vi : null
     };
-    if (!data.name) {
-      alert("Tên sản phẩm không được để trống!");
-    } else if (!data.wholesalePrice || !data.retailPrice) {
-      alert("Giá bán hàng hóa không được để trống!");
+    if(!data.name){
+      alert("Tên hàng hóa không được để trống!")
+    }else if(!data.wholesalePrice || !data.retailPrice){
+      alert("Giá bán hàng hóa không được để trống!")
     } else {
       this.addCustomer(data);
       this.props.onClick();
