@@ -12,7 +12,7 @@ class WeekChart extends React.Component {
       labels: [],
       datasets: [
         {
-          label: "Doanh thu ngày",
+          label: "Doanh thu ngày trong tuần",
           fill: true,
           lineTension: 0.1,
           backgroundColor: "rgba(26, 157, 240, 0.1)",
@@ -53,7 +53,9 @@ class WeekChart extends React.Component {
     if (weeksale.length !== 0) {
       for (var i = 0; i < weeksale.length; i++) {
         var date = weeksale[i].date;
-        labelArr.push(date);
+        var date1 =
+          date.slice(8) + "-" + date.slice(5, 7) + "-" + date.slice(0, 4);
+        labelArr.push(date1);
       }
     }
   };
