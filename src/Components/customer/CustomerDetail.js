@@ -18,10 +18,11 @@ class CustomerDetail extends Component{
 			method: 'get',
 			url: `${url}/customers/${this.props.id}`
 		}).then(respone => {
+            console.log(respone.data)
             this.setState({
                 customerDetail: respone.data,
                 staff: respone.data.staff,
-                customer_group: respone.data.customer_group
+                customer_group: respone.data.group
             }) 		
 		}).catch(error => {
             console.log(error);
@@ -51,7 +52,7 @@ class CustomerDetail extends Component{
         this.setState({
             customerDetail: data,
             staff: data.staff,
-            customer_group: data.customer_group
+            customer_group: data.group
         })
     }
     render(){
