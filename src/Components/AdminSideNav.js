@@ -43,6 +43,12 @@ const SideNavigation = () => {
             </Link>
           </li>
           <li>
+            <Link to="/leads">
+              <i className="fas fa-user" />
+              <span>Đầu mối</span>
+            </Link>
+          </li>
+          <li>
             <a href="top#" className="has-dropdown">
               <i className="fas fa-user" />
               <span>Khách hàng</span>

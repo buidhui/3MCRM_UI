@@ -8,6 +8,7 @@ class CustomerAddForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      idLead: "",
       name: "",
       DOB: "",
       gender: "",
@@ -25,7 +26,7 @@ class CustomerAddForm extends Component {
   addCustomer(obj) {
     axios({
       method: "post",
-      url: `${url}/customers/add`,
+      url: `${url}/customers/add?idLead=${this.props.customer.id}`,
       data: obj,
       headers: {
         "content-type": "application/json"
@@ -35,7 +36,7 @@ class CustomerAddForm extends Component {
         alert("Thêm mới khách hàng thành công");
         axios({
           method: "get",
-          url: `${url}/customers/list`
+          url: `${url}/lead/list`
         })
           .then(respone => {
             this.onUpdateData(respone.data);
@@ -81,7 +82,8 @@ class CustomerAddForm extends Component {
       },
       customer_group: {
         id: this.state.customerType ? this.state.customerType : null
-      }
+      },
+      idLead: this.state.id
     };
     if (!data.name || !data.email || !data.phone) {
       alert("Tên khách hàng, email và số điện thoại không được để trống!");
@@ -90,7 +92,16 @@ class CustomerAddForm extends Component {
       this.props.onClick();
     }
   };
+  componentDidMount(){
+      let {customer} = this.props;
+      this.setState({
+          name : customer.name,
+          email: (customer.email) ? customer.email : "Chưa có",
+          phone: (customer.phone) ? customer.phone : "Chưa có",
+      })
+  }
   render() {
+      console.log(this.props)
     return (
       <Row>
         <Prompt

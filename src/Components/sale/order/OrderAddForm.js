@@ -300,6 +300,7 @@ class CustomerAddForm extends Component {
                             <th className="text-center">Số lượng</th>
                             <th className="text-center">Chiết khấu(%)</th>
                             <th className="text-center">Thành tiền</th>
+                            <th className="text-center"> </th>
                           </tr>
                         </thead>
                         <tbody>{eleBuy}</tbody>

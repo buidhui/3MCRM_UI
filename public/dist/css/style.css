@@ -1342,3 +1342,9 @@ h4 {
 .order-table{
   background-color: #c6e2ff;
 }
+ a:hover{
+  text-decoration: none !important;
+}
+.list-item{
+  color: #000000 ;
+}
