@@ -11,7 +11,8 @@ import DsNhanVien from "./Pages/DsNhanVien";
 import ChiTietKhachHang from "./Pages/ChiTietKhachHang";
 import ChiTietDonHang from "./Pages/ChiTietDonHang";
 import ChiTietNhomKH from "./Pages/ChiTietNhomKH";
-import ChiTietNhanVien from "./Pages/ChiTietNhanVien";
+import ChiTietNhanVien from "./Pages/ChiTietNhanVien"
+import DauMoi from "./Pages/DauMoi";
 class Routes extends React.Component {
   render() {
     return (
@@ -29,6 +30,8 @@ class Routes extends React.Component {
         <Route path="/orders/:id" component={ChiTietDonHang} />
         <Route path="/report" component={BaoCao} />
         <Route path="/marketing" component={Marketing} />
+        <Route path="/leads" component={DauMoi} />
+        
       </Switch>
     );
   }

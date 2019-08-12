@@ -6,12 +6,12 @@ class StaffListItem extends Component{
         var moment = require('moment');
         return(
             <tr>
-                <td><Link  to={'staffs/' + staff.id}>{staff.name} </Link> </td>
-                <td><Link  to={'staffs/' + staff.id}>{staff.jobTitle} </Link> </td>
-                <td className="text-center"><Link  to={'staffs/' + staff.id}>{(staff.dob ? moment(staff.dob).format('DD/MM/YYYY') : "Đang cập nhật")} </Link> </td>
-                <td><Link  to={'staffs/' + staff.id}>{staff.email} </Link> </td>
-                <td className="text-center"><Link  to={'staffs/' + staff.id}>{staff.phone} </Link> </td>
-                <td className="text-center"><Link  to={'staffs/' + staff.id}>{staff.gender === 1 ? "Nam" : "Nữ"} </Link> </td>
+                <td><Link className="list-item"  to={'staffs/' + staff.id}>{staff.name} </Link> </td>
+                <td><Link className="list-item" to={'staffs/' + staff.id}>{staff.jobTitle} </Link> </td>
+                <td className="text-center"><Link className="list-item" to={'staffs/' + staff.id}>{(staff.dob ? moment(staff.dob).format('DD/MM/YYYY') : "Đang cập nhật")} </Link> </td>
+                <td><Link className="list-item" to={'staffs/' + staff.id}>{staff.email} </Link> </td>
+                <td className="text-center"><Link className="list-item" to={'staffs/' + staff.id}>{staff.phone} </Link> </td>
+                <td className="text-center"><Link className="list-item" to={'staffs/' + staff.id}>{staff.gender === 1 ? "Nam" : "Nữ"} </Link> </td>
             </tr>             
         );
     }
