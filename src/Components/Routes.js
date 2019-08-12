@@ -11,7 +11,7 @@ import DsNhanVien from "./Pages/DsNhanVien";
 import ChiTietKhachHang from "./Pages/ChiTietKhachHang";
 import ChiTietDonHang from "./Pages/ChiTietDonHang";
 import ChiTietNhomKH from "./Pages/ChiTietNhomKH";
-import ChiTietNhanVien from "./Pages/ChiTietNhanVien"
+import ChiTietNhanVien from "./Pages/ChiTietNhanVien";
 class Routes extends React.Component {
   render() {
     return (
