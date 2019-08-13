@@ -22,38 +22,74 @@ class DsKhachHang extends Component {
     this.setState({ file: e.target.files[0] });
   }
   fileUpload(file) {
-    const url = "http://example.com/file-upload";
+    const url = "http://192.168.10.10:8080/lead/upload";
     const formData = new FormData();
     formData.append("file", file);
     const config = {
       headers: {
-        "content-type": "multipart/form-data"
+        "Content-Type": "application/x-www-form-urlencoded"
       }
     };
     return post(url, formData, config);
   }
+
   render() {
+    var inputs = document.querySelectorAll(".file-input");
+
+    for (var i = 0, len = inputs.length; i < len; i++) {
+      customInput(inputs[i]);
+    }
+
+    function customInput(el) {
+      const fileInput = el.querySelector('[type="file"]');
+      const label = el.querySelector("[data-js-label]");
+
+      fileInput.onchange = fileInput.onmouseout = function() {
+        if (!fileInput.value) return;
+
+        var value = fileInput.value.replace(/^.*[/]/, "");
+        el.className += " -chosen";
+        label.innerText = value;
+      };
+    }
     return (
       <React.Fragment>
         <section className="section">
           <h1 className="section-header">
             <div>Danh sách khách hàng đầu mối</div>
           </h1>
+
           <div className="row">
-            <div className="col-12">
-              {" "}
-              <form onSubmit={this.onFormSubmit}>
+            <div className="col-lg-11 col-md-11 col-sm-11">
+              <form className="file-input" onSubmit={this.onFormSubmit}>
+                <input type="file" onChange={this.onChange} accept=".xlsx" />
+                <span className="button">Chọn tệp</span>
+                <span className="label" data-js-label>
+                  Tệp chưa được chọn...
+                </span>
+              </form>
+            </div>
+            <div className="col-lg-1 col-md-1 col-sm-1">
+              <button type="submit" className="btn_upload">
+                <i className="fas fa-arrow-circle-up upload" />
+                {/* <i className="fas fa-cloud-upload-alt upload" /> */}
+              </button>
+            </div>
+
+            {/* <button className="button" type="submit">
+                Tải lên
+              </button> */}
+            {/* <form onSubmit={this.onFormSubmit}>
                 <input
                   className="bg-light fileinput1"
                   type="file"
                   onChange={this.onChange}
+                  accept=".xlsx"
                 />
-
                 <button className="btn-info" type="submit">
                   Tải lên
                 </button>
-              </form>
-            </div>
+              </form> */}
           </div>
 
           <br />
