@@ -59,6 +59,38 @@ class CustomerDetail extends Component {
         const eleOrder = orderDetail.map((orderItem, index) => {
             return <OrderItem key={index} index={index} orderItem={orderItem} ></OrderItem>;
         });
+        function formatMoney(
+            amount,
+            decimalCount = 2,
+            decimal = "",
+            thousands = ","
+          ) {
+            try {
+              decimalCount = Math.abs(decimalCount);
+              decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+      
+              const negativeSign = amount < 0 ? "-" : "";
+      
+              let i = parseInt(
+                (amount = Math.abs(Number(amount) || 0).toFixed(decimalCount))
+              ).toString();
+              let j = i.length > 3 ? i.length % 3 : 0;
+      
+              return (
+                negativeSign +
+                (j ? i.substr(0, j) + thousands : "") +
+                i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) +
+                (decimalCount
+                  ? decimal +
+                    Math.abs(amount - i)
+                      .toFixed(decimalCount)
+                      .slice(4)
+                  : "")
+              );
+            } catch (e) {
+              console.log(e);
+            }
+          }
         return (
             
             <div>
@@ -125,13 +157,13 @@ class CustomerDetail extends Component {
                                     </Col>
                                     <Col>
                                         <Card.Text>
-                                            <span className="float-right">{orderDetail[0].orderOrder && orderDetail[0].orderOrder.totalMoney + " VNĐ"}</span>
+                                            <span className="float-right">{orderDetail[0].orderOrder && formatMoney(orderDetail[0].orderOrder.totalMoney) + " VNĐ"}</span>
                                             <br />
                                             <span className="float-right">{orderDetail[0] && (orderDetail[0].discount) ? orderDetail[0].discount+"%" : "0%" }</span>
                                             <br />
-                                            <span className="float-right">{orderDetail[0].orderOrder && (orderDetail[0].orderOrder.costShip) ? orderDetail[0].orderOrder.costShip +" VNĐ" : "0 VNĐ" }</span>
+                                            <span className="float-right">{orderDetail[0].orderOrder && (orderDetail[0].orderOrder.costShip) ? formatMoney(orderDetail[0].orderOrder.costShip) +" VNĐ" : "0 VNĐ" }</span>
                                             <br />
-                                            <span className="float-right">{orderDetail[0].orderOrder && orderDetail[0].orderOrder.totalMoney*(100-orderDetail[0].discount)/100 +" VNĐ"}</span>
+                                            <span className="float-right">{orderDetail[0].orderOrder && formatMoney(orderDetail[0].orderOrder.totalMoney*(100-orderDetail[0].discount)/100) +" VNĐ"}</span>
                                         </Card.Text>
                                     </Col>
                                 </Row>

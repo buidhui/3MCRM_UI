@@ -114,7 +114,7 @@ class CustomerList extends Component {
                 <th className="text-center">Email</th>
                 <th className="text-center">Điện thoại</th>
                 <th className="text-center">Trạng thái</th>
-                <th className="text-center">Hành động</th>
+                <th className="text-center"></th>
               </tr>
             </thead>
             <tbody>{eleCustomer}</tbody>
