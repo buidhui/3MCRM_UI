@@ -136,12 +136,12 @@ class CustomerAddForm extends Component {
       discount: this.state.chietkhau,
       costShip: this.state.phi_ship
     };
-    if (!data.customerOrder) {
+    if (!data.customerOrder || !data.dateShip) {
       alert("Thêm đơn hàng không thành công");
       console.log(data);
     } else {
       console.log(data);
-      
+
       this.addCustomer(data);
     }
   };
@@ -156,7 +156,7 @@ class CustomerAddForm extends Component {
       selectedProduct.value.quantity = 1;
       selectedProduct.value.total = selectedProduct.value.productOrder.retailPrice
       this.setState(
-        
+
         previousState => ({
           products: [...previousState.products, selectedProduct.value]
         }),
@@ -194,7 +194,9 @@ class CustomerAddForm extends Component {
       if (this.state.products[i].productOrder.id === id) {
         this.state.products.splice(i, 1);
         this.setState({
-          products: this.state.products
+          products: this.state.products,
+          chietkhau: 0,
+          phi_ship: 0
         });
       }
     }
@@ -206,11 +208,11 @@ class CustomerAddForm extends Component {
         products: prevState.products.map(product =>
           product.productOrder.id === id
             ? {
-                ...product,
-                quantity: quantity,
-                discount: discount,
-                total: total * totalM
-              }
+              ...product,
+              quantity: quantity,
+              discount: discount,
+              total: total * totalM
+            }
             : product
         )
       }),
@@ -218,10 +220,16 @@ class CustomerAddForm extends Component {
   };
   getTotal = () => {
     var total = 0;
-    if(this.state.products.length !== 0){
+    if (this.state.products.length !== 0) {
       for (var i = 0; i < this.state.products.length; i++) {
-        total = total + parseInt(this.state.products[i].total);
-        total = total + parseInt(this.state.phi_ship);
+        if (this.state.chietkhau === 0) {
+          total = total + parseInt(this.state.products[i].total);
+          total = total + parseInt(this.state.phi_ship);
+        } else {
+          total = total + parseInt(this.state.products[i].total);
+          total = total * (100-parseInt(this.state.chietkhau)) / 100;
+          total = total + parseInt(this.state.phi_ship);
+        }
       }
     }
     return (
@@ -253,6 +261,38 @@ class CustomerAddForm extends Component {
           />
         );
       });
+    }
+    function formatMoney(
+      amount,
+      decimalCount = 2,
+      decimal = "",
+      thousands = ","
+    ) {
+      try {
+        decimalCount = Math.abs(decimalCount);
+        decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+
+        const negativeSign = amount < 0 ? "-" : "";
+
+        let i = parseInt(
+          (amount = Math.abs(Number(amount) || 0).toFixed(decimalCount))
+        ).toString();
+        let j = i.length > 3 ? i.length % 3 : 0;
+
+        return (
+          negativeSign +
+          (j ? i.substr(0, j) + thousands : "") +
+          i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) +
+          (decimalCount
+            ? decimal +
+            Math.abs(amount - i)
+              .toFixed(decimalCount)
+              .slice(4)
+            : "")
+        );
+      } catch (e) {
+        console.log(e);
+      }
     }
     return (
       <Row>
@@ -309,21 +349,21 @@ class CustomerAddForm extends Component {
                   </Form.Row>
                   <hr />
                   <Row style={{ margin: "0px 15px" }}>
-                    <Col lg={{ span: 3, offset: 7 }}>
+                    <Col lg={{ span: 4, offset: 6 }}>
                       <Card.Text>
-                        <span className="float-left">Tổng tiền</span>
+                        <span className="float-left">Tổng tiền (VNĐ)</span>
                         <br />
                         <span className="float-left">Chiết khấu(%)</span>
                         <br />
                         <span className="float-left">Phí giao hàng</span>
                         <br />
-                        <span className="float-left">Khách phải trả</span>
+                        <span className="float-left">Khách phải trả (VNĐ)</span>
                       </Card.Text>
                     </Col>
                     <Col>
                       <Card.Text>
                         <span className="float-right">
-                          {products && this.getTotal(products) ? this.getTotal(products) : 0}
+                          {products && this.getTotal(products) ? formatMoney(this.getTotal(products)) : 0}
                         </span>
                         <br />
                         <span className="float-right">
@@ -360,7 +400,7 @@ class CustomerAddForm extends Component {
                         <br />
                         <span className="float-right">
                           {products && this.getTotal()
-                            ? Math.round(this.getTotal())
+                            ? formatMoney(Math.round(this.getTotal()))
                             : 0}
                         </span>
                       </Card.Text>
@@ -407,7 +447,7 @@ class CustomerAddForm extends Component {
                         name="chinhsachgia"
                         value={
                           customerDetail.Group &&
-                          customerDetail.group.defaultPrice
+                            customerDetail.group.defaultPrice
                             ? customerDetail.group.defaultPrice
                             : "Đang chờ"
                         }
@@ -423,7 +463,7 @@ class CustomerAddForm extends Component {
                         name="apdungthue"
                         value={
                           customerDetail.group &&
-                          customerDetail.group.defaultTax
+                            customerDetail.group.defaultTax
                             ? customerDetail.group.defaultTax
                             : "Đang chờ"
                         }

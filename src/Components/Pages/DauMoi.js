@@ -40,8 +40,7 @@ class DsKhachHang extends Component {
             <div>Danh sách khách hàng đầu mối</div>
           </h1>
           <div className="row">
-            <div className="col-12">
-              {" "}
+            <div className="col-12">      
               <form onSubmit={this.onFormSubmit}>
                 <input
                   className="bg-light fileinput1"
