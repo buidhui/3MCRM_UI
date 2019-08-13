@@ -812,6 +812,9 @@ body.sidebar-gone .main-content {
 /*end card*/
 
 
+.fileinput1{
+  width: 94%;
+}
 
 /*footer*/
 .footer-right {
@@ -1287,6 +1290,9 @@ body.sidebar-gone .main-content {
 }
 @media (min-width: 1200px) {
 }
+/* .fileinput1{
+  width: 95%;
+} */
 .add-form{
   border:  rgb(211, 209, 209) ridge 1px ;
   background-color: white;
@@ -1348,3 +1354,4 @@ h4 {
 .list-item{
   color: #000000 ;
 }
+
