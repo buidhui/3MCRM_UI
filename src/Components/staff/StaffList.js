@@ -62,7 +62,8 @@ class StaffList extends Component{
 		if(filter){			
 				staffList = staffList.filter((staff) =>{
 				return staff.name.toLowerCase().indexOf(filter.filterName) !== -1 && 
-						staff.email.toLowerCase().indexOf(filter.filterEmail) !== -1 ;					
+						staff.email.toLowerCase().indexOf(filter.filterEmail) !== -1 &&
+						staff.phone.toLowerCase().indexOf(filter.filterPhone) !== -1;					
 				});													
 		}else{
 			return staffList;
