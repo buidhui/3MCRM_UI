@@ -3,7 +3,9 @@ import { Form, Col, Row, Container, Button } from "react-bootstrap";
 import axios from "axios";
 import { Link, Prompt } from "react-router-dom";
 import url from "../url";
-//const url= 'http://192.168.43.95:8080/customers/add'
+import Select from "react-select";
+const group = [];
+
 class CustomerAddForm extends Component {
   constructor(props) {
     super(props);
@@ -16,9 +18,38 @@ class CustomerAddForm extends Component {
       phone: "",
       description: "",
       staff: "",
-      customerType: ""
+      customerType: [],
+      groupList: [],
     };
   }
+  componentDidMount() {
+    axios({
+      method: 'get',
+      url: `${url}/customer-group/list`
+    }).then(respone => {
+      this.setState({
+        groupList: respone.data,
+      })
+    }).catch(error => {
+      console.log(error)
+    });
+  }
+  pushGroup = (groupList, group) => {
+    if (groupList.length !== 0 && group.length === 0) {
+      for (var i = 0; i < groupList.length; i++) {
+        var value = groupList[i].id;
+        var label = groupList[i].name
+        group.push({ value: value, id: value, label: label });
+      }
+    }
+  };
+  handleChangeGroup = selectedGroup => {
+    this.setState({
+      customerType: selectedGroup
+    },()=>{
+      console.log(this.state)
+    })
+  };
   onUpdateData = data => {
     this.props.onUpdateData(data);
   };
@@ -69,19 +100,17 @@ class CustomerAddForm extends Component {
     event.preventDefault();
 
     const data = {
-      name: this.state.name ? this.state.name : null,
-      address: this.state.address ? this.state.address : null,
-      dob: this.state.DOB ? this.state.DOB : null,
-      email: this.state.email ? this.state.email : null,
-      gender: this.state.gender ? this.state.gender : null,
-      phone: this.state.phone ? this.state.phone : null,
-      note: this.state.description ? this.state.description : null,
-      staff: {
+      "name": this.state.name ? this.state.name : null,
+      "address": this.state.address ? this.state.address : null,
+      "dob": this.state.DOB ? this.state.DOB : null,
+      "email": this.state.email ? this.state.email : null,
+      "gender": this.state.gender ? this.state.gender : null,
+      "phone": this.state.phone ? this.state.phone : null,
+      "note": this.state.description ? this.state.description : null,
+      "staff": {
         id: this.state.staff ? this.state.staff : null
       },
-      customer_group: {
-        id: this.state.customerType ? this.state.customerType : null
-      }
+      "groups": this.state.customerType ? this.state.customerType : null
     };
     if (!data.name || !data.email || !data.phone) {
       alert("Tên khách hàng, email và số điện thoại không được để trống!");
@@ -91,6 +120,9 @@ class CustomerAddForm extends Component {
     }
   };
   render() {
+    const { groupList } = this.state;
+    this.pushGroup(groupList, group);
+    const selectedGroup = undefined;
     return (
       <Row>
         <Prompt
@@ -187,20 +219,13 @@ class CustomerAddForm extends Component {
                   <Form.Row className="add-form-row">
                     <Form.Group as={Col} controlId="formGridCusType">
                       <Form.Label>Nhóm khách hàng</Form.Label>
-                      <Form.Control
-                        as="select"
-                        name="customerType"
-                        value={this.state.customerType}
-                        onChange={this.onChange}
-                      >
-                        <option value={null}>Nhóm khách hàng</option>
-                        <option value={1}>Nhóm 1</option>
-                        <option value={2}>Nhóm 2</option>
-                        <option value={3}>Nhóm 3</option>
-                        <option value={4}>Nhóm 4</option>
-                        <option value={5}>Nhóm 5</option>
-                        <option value={6}>Nhóm 6</option>
-                      </Form.Control>
+                      <Select
+                        isMulti
+                        value={selectedGroup}
+                        onChange={this.handleChangeGroup}
+                        options={group}
+                        placeholder="Nhóm khách hàng"
+                      />
                     </Form.Group>
                   </Form.Row>
                 </Container>

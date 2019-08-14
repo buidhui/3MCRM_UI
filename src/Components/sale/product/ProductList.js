@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, {Component} from 'react'
 import CustomerListItem from './ProductListItem';
 import DropDownCus from './DropDownProduct';
-import PopupForm from './PopupFormProduct';
+//import PopupForm from './PopupFormProduct';
 import {Table} from 'react-bootstrap';
 import url from '../../url'
 class CustomerList extends Component{
@@ -31,12 +31,11 @@ class CustomerList extends Component{
 			console.log(error);
 		});
 	}
-	onFilter = (filterName1,filterEmail1,filterPhone1) =>{
-		if(!filterName1 && !filterEmail1 && !filterPhone1){
+	onFilter = (filterName1) =>{
+		if(!filterName1 ){
 			this.setState({
 				filter:{
-					filterName: '',
-					filterEmail: '',
+					filterName: '',		
 				}
 			},()=>{
 				console.log(this.state);
@@ -45,7 +44,6 @@ class CustomerList extends Component{
 			this.setState({
 				filter:{
 					filterName: (filterName1) ? 	filterName1.toLowerCase() : this.state.filter.filterName,	
-					filterEmail: (filterEmail1) ? 	filterEmail1.toLowerCase() : this.state.filter.filterEmail,
 				}					
 			},()=>{
 				console.log(this.state);
@@ -58,7 +56,7 @@ class CustomerList extends Component{
 		const {filter} = this.state;
 		if(filter){			
 				customerList = customerList.filter((customer) =>{
-				return customer.name.toLowerCase().indexOf(filter.filterEmail) !== -1 && customer.id.toString().toLowerCase().indexOf(filter.filterName) !== -1;					
+				return customer.name.toLowerCase().indexOf(filter.filterName) !== -1 || customer.id.toString().toLowerCase().indexOf(filter.filterName) !== -1;					
 				});													
 		}else{
 			return customerList;
@@ -73,9 +71,9 @@ class CustomerList extends Component{
 						<div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
 							<DropDownCus onFilter ={this.onFilter }/>
 						</div>
-						<div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+						{/* <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 							<PopupForm open={this.props.open} onUpdateData={this.onUpdateData}/>
-						</div>
+						</div> */}
 					</div>												
 					<Table responsive  hover>
 						<thead>

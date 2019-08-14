@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 
-import PopupFormUpdateProduct from './PopupFormUpdateProduct';
+//import PopupFormUpdateProduct from './PopupFormUpdateProduct';
 class CustomerListItem extends Component{
     render(){   
         var{customer} = this.props;
@@ -13,8 +13,8 @@ class CustomerListItem extends Component{
                 <td className="text-center" >{(customer.origin) ? customer.origin : "Đang cập nhật"} </td>
                 <td className="text-center" >{(customer.soldQuantity) ? customer.soldQuantity : 0} </td>
                 <td className="text-center" >{(customer.quantity) ? customer.quantity: 0}  </td>
-                <td className="text-center" ><PopupFormUpdateProduct product={this.props.customer} onUpdateData={this.props.onUpdateData}/>
-               </td>
+                {/* <td className="text-center" ><PopupFormUpdateProduct product={this.props.customer} onUpdateData={this.props.onUpdateData}/>
+               </td> */}
                 
             </tr>          
         );

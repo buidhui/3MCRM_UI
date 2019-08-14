@@ -62,7 +62,6 @@ class CustomerDetail extends Component{
         const groupDetail = this.state.groupDetail;
         return(
             <div>
-                <h1>Thông tin chi tiết nhóm khách hàng</h1>
                 <Row>
                     <Col xl={8}>
                         <Card className="detail-card" style={{ width: '100%' }}>

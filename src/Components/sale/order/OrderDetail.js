@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Card, Row, Col, Table } from 'react-bootstrap';
 import axios from 'axios';
 import OrderItem from './OrderDetailItem';
-import Status from './Status';
+//import Status from './Status';
 import url from '../../url'
 class CustomerDetail extends Component {
     constructor(props) {
@@ -27,15 +27,15 @@ class CustomerDetail extends Component {
         });
 
     }
-    updateStatus(status){
+    updateStatus(status) {
         axios({
             method: 'put',
             url: `${url}/orders/${this.props.id}`,
-            data:{
-                "id" : this.props.id,
-                "state" : status
+            data: {
+                "id": this.props.id,
+                "state": status
             }
-        }).then( () => {
+        }).then(() => {
             axios({
                 method: 'get',
                 url: `${url}/orderdetails/${this.props.id}`
@@ -50,7 +50,7 @@ class CustomerDetail extends Component {
             console.log(error);
         });
     }
-    changeStatus= (status) => {
+    changeStatus = (status) => {
         this.updateStatus(status);
     }
     render() {
@@ -64,35 +64,35 @@ class CustomerDetail extends Component {
             decimalCount = 2,
             decimal = "",
             thousands = ","
-          ) {
+        ) {
             try {
-              decimalCount = Math.abs(decimalCount);
-              decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
-      
-              const negativeSign = amount < 0 ? "-" : "";
-      
-              let i = parseInt(
-                (amount = Math.abs(Number(amount) || 0).toFixed(decimalCount))
-              ).toString();
-              let j = i.length > 3 ? i.length % 3 : 0;
-      
-              return (
-                negativeSign +
-                (j ? i.substr(0, j) + thousands : "") +
-                i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) +
-                (decimalCount
-                  ? decimal +
-                    Math.abs(amount - i)
-                      .toFixed(decimalCount)
-                      .slice(4)
-                  : "")
-              );
+                decimalCount = Math.abs(decimalCount);
+                decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+
+                const negativeSign = amount < 0 ? "-" : "";
+
+                let i = parseInt(
+                    (amount = Math.abs(Number(amount) || 0).toFixed(decimalCount))
+                ).toString();
+                let j = i.length > 3 ? i.length % 3 : 0;
+
+                return (
+                    negativeSign +
+                    (j ? i.substr(0, j) + thousands : "") +
+                    i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) +
+                    (decimalCount
+                        ? decimal +
+                        Math.abs(amount - i)
+                            .toFixed(decimalCount)
+                            .slice(4)
+                        : "")
+                );
             } catch (e) {
-              console.log(e);
+                console.log(e);
             }
-          }
+        }
         return (
-            
+
             <div>
                 <Row>
                     <Col xl={8}>
@@ -117,7 +117,7 @@ class CustomerDetail extends Component {
                                     <Col>
                                         <h6 style={{ marginTop: "7px" }}>Địa chỉ   </h6>
                                         <Card.Text className="cus-note">
-                                            {orderDetail[0].orderOrder&& (orderDetail[0].orderOrder.customerOrder.address) ? orderDetail[0].orderOrder.customerOrder.address : "Chưa có"}
+                                            {orderDetail[0].orderOrder && (orderDetail[0].orderOrder.customerOrder.address) ? orderDetail[0].orderOrder.customerOrder.address : "Chưa có"}
                                         </Card.Text>
                                     </Col>
                                 </Row>
@@ -159,11 +159,11 @@ class CustomerDetail extends Component {
                                         <Card.Text>
                                             <span className="float-right">{orderDetail[0].orderOrder && formatMoney(orderDetail[0].orderOrder.totalMoney) + " VNĐ"}</span>
                                             <br />
-                                            <span className="float-right">{orderDetail[0] && (orderDetail[0].discount) ? orderDetail[0].discount+"%" : "0%" }</span>
+                                            <span className="float-right">{orderDetail[0] && (orderDetail[0].discount) ? orderDetail[0].discount + "%" : "0%"}</span>
                                             <br />
-                                            <span className="float-right">{orderDetail[0].orderOrder && (orderDetail[0].orderOrder.costShip) ? formatMoney(orderDetail[0].orderOrder.costShip) +" VNĐ" : "0 VNĐ" }</span>
+                                            <span className="float-right">{orderDetail[0].orderOrder && (orderDetail[0].orderOrder.costShip) ? formatMoney(orderDetail[0].orderOrder.costShip) + " VNĐ" : "0 VNĐ"}</span>
                                             <br />
-                                            <span className="float-right">{orderDetail[0].orderOrder && formatMoney(orderDetail[0].orderOrder.totalMoney*(100-orderDetail[0].discount)/100) +" VNĐ"}</span>
+                                            <span className="float-right">{orderDetail[0].orderOrder && formatMoney(orderDetail[0].orderOrder.totalMoney * (100 - orderDetail[0].discount) / 100) + " VNĐ"}</span>
                                         </Card.Text>
                                     </Col>
                                 </Row>
@@ -210,8 +210,8 @@ class CustomerDetail extends Component {
                                     <Col>
                                         <h6 style={{ marginTop: "7px" }}>Áp dụng thuế  </h6>
                                         <Card.Text className="cus-note">
-                                            {orderDetail[0].orderOrder 
-                                                && (orderDetail[0].orderOrder.customerOrder.customerGroup) 
+                                            {orderDetail[0].orderOrder
+                                                && (orderDetail[0].orderOrder.customerOrder.customerGroup)
                                                 ? orderDetail[0].orderOrder.customerOrder.customerGroup.defaultTax : "Đang cập nhật"}
                                         </Card.Text>
                                     </Col>
@@ -220,34 +220,31 @@ class CustomerDetail extends Component {
                                     <Col>
                                         <h6 style={{ marginTop: "7px" }}> Ngày đặt hàng   </h6>
                                         <Card.Text className="cus-note">
-                                            {orderDetail[0].orderOrder && 
-                                                (orderDetail[0].orderOrder.dateOrder) ? 
+                                            {orderDetail[0].orderOrder &&
+                                                (orderDetail[0].orderOrder.dateOrder) ?
                                                 moment(orderDetail[0].orderOrder.dateOrder).format('DD/MM/YYYY') : "Chưa có"}
-                                                
+
                                         </Card.Text>
                                     </Col>
                                 </Row>
-                                <Row> 
+                                <Row>
                                     <Col>
                                         <h6 style={{ marginTop: "7px" }}> Trạng thái đơn hàng   </h6>
-                                        <Card.Text style={{padding: "7px"}}>
-                                            {orderDetail[0].orderOrder && 
-                                                (orderDetail[0].orderOrder.state) ? "Hoàn thành" : "Đang thực hiện"}   
-                                             
+                                        <Card.Text className="cus-note">
+                                            {orderDetail[0].orderOrder &&
+                                                (orderDetail[0].orderOrder.state) ? "Hoàn thành" : "Đang thực hiện"}
+
                                         </Card.Text>
-                                        
                                     </Col>
-                                    <Col>
-                                        <Status orderDetail={orderDetail[0].orderOrder && orderDetail[0].orderOrder} changeStatus={this.changeStatus}/>
-                                    </Col>
-                                    </Row>
+                                </Row>
                             </Card.Body>
                         </Card>
                         <Card className="detail-card" style={{ width: '100%' }}>
                             <Card.Body>
                                 <Card.Title>Ghi chú</Card.Title>
                                 <Card.Text className="cus-note">
-                                    Trong database không có 
+                                    {orderDetail[0].orderOrder &&
+                                        (orderDetail[0].orderOrder.note) ? orderDetail[0].orderOrder.note : "Không có ghi chú nào về đơn hàng"}
                                 </Card.Text>
                             </Card.Body>
                         </Card>

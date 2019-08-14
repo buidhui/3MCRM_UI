@@ -5,7 +5,6 @@ import CustomerAddForm from './LeadAddForm';
 
 export default function PopupForm(props) {
     const [show, setShow] = React.useState(false);
-    const style = {left: '135px'} 
     return (
       <>
         <button type="button" className=" btn btn-outline-primary" onClick={() => setShow(true) }>
@@ -15,7 +14,6 @@ export default function PopupForm(props) {
         <Modal
           className="modal-form"  
           size="xl"
-          style={style}
           show={show}
           onHide={() => setShow(false)}
           centered

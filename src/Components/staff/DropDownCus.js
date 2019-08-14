@@ -1,43 +1,32 @@
-import React, {Component} from 'react';
-import {InputGroup,FormControl} from 'react-bootstrap';
-class DropDownCus extends Component{
-    constructor(props){
+import React, { Component } from 'react';
+import { InputGroup, FormControl } from 'react-bootstrap';
+class DropDownCus extends Component {
+    constructor(props) {
         super(props);
         this.state = {
             filterName: '',
-            filterEmail: '',
-            filterPhone: ''
         }
     }
-    onChange =(event) =>{
+    onChange = (event) => {
         var target = event.target;
         var name = target.name;
         var value = target.value;
-        this.props.onFilter ( 
+        this.props.onFilter(
             name === 'filterName' ? value : this.filterName,
-            name === 'filterEmail' ? value : this.filterEmail,
-            name === 'filterPhone' ? value : this.filterPhone );
+        )
         this.setState({
-            [name] : value,
+            [name]: value,
         });
 
     }
-    render(){
-        var {filterName,filterEmail,filterPhone} = this.state;
-        return(
-        <InputGroup className="mb-3">
-            <div className="row">
-                <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                    <FormControl style={{width: "100%"}} name="filterName" value={filterName} onChange={this.onChange} placeholder="Nhập tên nhân viên... "/>
-                </div>
-                <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                    <FormControl style={{width: "100%"}} name="filterEmail" value={filterEmail} onChange={this.onChange} placeholder="Nhập email nhân viên..."/>
-                </div>
-                <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                    <FormControl style={{width: "100%"}} name="filterPhone" value={filterPhone} onChange={this.onChange} placeholder="Nhập số điện thoại..."/>
-                </div>    
-            </div>                                      
-        </InputGroup>
+    render() {
+        var { filterName } = this.state;
+        return (
+            <InputGroup className="mb-3">
+
+                <FormControl style={{ width: "100%" }} name="filterName" value={filterName} onChange={this.onChange} placeholder="Nhập tên, email hoặc số điện thoại nhân viên... " />
+
+            </InputGroup>
         );
     }
 }

@@ -10,8 +10,6 @@ class StaffList extends Component{
 		staffList : [],
 		filter:{
 			filterName: '',
-			filterEmail: '',
-			filterPhone:''
 		},
 		
 	}
@@ -32,13 +30,12 @@ class StaffList extends Component{
 			console.log(error)
 		});
 	}
-	onFilter = (filterName1,filterEmail1,filterPhone1) =>{
-		if(!filterName1 && !filterEmail1 && !filterPhone1){
+	onFilter = (filterName1) =>{
+		if(!filterName1 ){
 			this.setState({
 				filter:{
 					filterName: '',
-					filterEmail: '',
-					filterPhone: ''
+					
 				}
 			},()=>{
 				console.log(this.state);
@@ -47,8 +44,7 @@ class StaffList extends Component{
 			this.setState({
 				filter:{
 					filterName: (filterName1) ? 	filterName1.toLowerCase() : this.state.filter.filterName,	
-					filterEmail: (filterEmail1) ? 	filterEmail1.toLowerCase() : this.state.filter.filterEmail,
-					filterPhone: (filterPhone1) ? filterPhone1 : this.state.filter.filterPhone
+					
 				}					
 			},()=>{
 				console.log(this.state);
@@ -61,9 +57,9 @@ class StaffList extends Component{
 		
 		if(filter){			
 				staffList = staffList.filter((staff) =>{
-				return staff.name.toLowerCase().indexOf(filter.filterName) !== -1 && 
-						staff.email.toLowerCase().indexOf(filter.filterEmail) !== -1 &&
-						staff.phone.toLowerCase().indexOf(filter.filterPhone) !== -1;					
+				return staff.name.toLowerCase().indexOf(filter.filterName) !== -1 ||
+						staff.email.toLowerCase().indexOf(filter.filterName) !== -1 ||
+						staff.phone.toLowerCase().indexOf(filter.filterName) !== -1;					
 				});													
 		}else{
 			return staffList;
