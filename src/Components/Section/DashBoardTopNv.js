@@ -112,15 +112,15 @@ class DashBoardTopNv extends Component {
 
             <div>
               <div className="card-header bg-info text-light">
-                <h4>Sản phẩm bán chạy tuần qua</h4>
+                <h4>Khách hàng chi tiêu nhiều nhất</h4>
               </div>
               <div>
                 <table className="table">
                   <thead>
                     <tr className="text-secondary">
                       <th scope="col">Top</th>
-                      <th scope="col">Tên sản phẩm</th>
-                      <th scope="col">Số lượng</th>
+                      <th scope="col">Tên khách hàng</th>
+                      <th scope="col">Chi tiêu</th>
                     </tr>
                   </thead>
                   {totalmonthlysold.map((totalmonthlysold, index) => (
