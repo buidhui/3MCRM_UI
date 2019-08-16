@@ -7,7 +7,7 @@ class DashBoardTopNv extends Component {
     super(props);
     this.state = {
       topCustomer: [],
-      totalmonthlysold: []
+      customersale: []
     };
   }
 
@@ -28,12 +28,12 @@ class DashBoardTopNv extends Component {
 
     Axios({
       method: "get",
-      url: `${url}/totalmonthlysold`
+      url: `${url}/customersale`
     })
       .then(res => {
         // console.log(res.data);
         this.setState({
-          totalmonthlysold: res.data
+          customersale: res.data
         });
       })
       .catch(err => {
@@ -41,7 +41,7 @@ class DashBoardTopNv extends Component {
       });
   }
   render() {
-    var { topCustomer, totalmonthlysold } = this.state;
+    var { topCustomer, customersale } = this.state;
     function formatMoney(
       amount,
       decimalCount = 2,
@@ -120,10 +120,10 @@ class DashBoardTopNv extends Component {
                     <tr className="text-secondary">
                       <th scope="col">Top</th>
                       <th scope="col">Tên khách hàng</th>
-                      <th scope="col">Chi tiêu</th>
+                      <th scope="col">Chi tiêu (VNĐ)</th>
                     </tr>
                   </thead>
-                  {totalmonthlysold.map((totalmonthlysold, index) => (
+                  {customersale.map((customersale, index) => (
                     <tbody key={index}>
                       <tr>
                         <th scope="row">
@@ -132,8 +132,8 @@ class DashBoardTopNv extends Component {
                             {index + 1}
                           </span>
                         </th>
-                        <td> {totalmonthlysold.name}</td>
-                        <td> {totalmonthlysold.quantity}</td>
+                        <td> {customersale.name}</td>
+                        <td>{formatMoney(customersale.values)}</td>
                       </tr>
                     </tbody>
                   ))}

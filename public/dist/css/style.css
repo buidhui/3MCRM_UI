@@ -220,7 +220,10 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 	margin-left: 15px;
 }
 
-
+.chart{
+  margin-left: -40px;
+  margin-top: 20px;
+}
 /* navbar */
 .navbar {
   height: 70px;

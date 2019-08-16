@@ -53,12 +53,15 @@ class YearChart extends React.Component {
       url: `${url}/yearsale`
     })
       .then(respone => {
-        console.log(respone.data)
-        this.setState({
-          yearsale: respone.data
-        },()=>{
-          console.log(this.state)
-        });
+        // console.log(respone.data)
+        this.setState(
+          {
+            yearsale: respone.data
+          },
+          () => {
+            // console.log(this.state);
+          }
+        );
       })
       .catch(error => {
         console.log(error);

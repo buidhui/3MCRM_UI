@@ -75,7 +75,7 @@ class DashBoarData extends Component {
                   <h4>KH đầu mối</h4>
                 </div>
                 <div className="card-body">
-                  <small>{statistics.totalCustomers}</small>
+                  <small>{statistics.totalLead}</small>
                 </div>
               </div>
             </div>
@@ -91,7 +91,7 @@ class DashBoarData extends Component {
                   <h4>KH Tiềm Năng</h4>
                 </div>
                 <div className="card-body">
-                  <small>{statistics.totalOrders}</small>
+                  <small>{statistics.totalOpp}</small>
                 </div>
               </div>
             </div>
@@ -103,10 +103,10 @@ class DashBoarData extends Component {
               </div>
               <div className="card-wrap">
                 <div className="card-header">
-                  <h4>Khách Hàng</h4>
+                  <h4>KH Chính thức</h4>
                 </div>
                 <div className="card-body">
-                  <small>{result} VNĐ</small>
+                  <small>{statistics.totalCustomers}</small>
                 </div>
               </div>
             </div>
@@ -118,10 +118,10 @@ class DashBoarData extends Component {
               </div>
               <div className="card-wrap">
                 <div className="card-header">
-                  <h4>Nhân viên</h4>
+                  <h4>Doanh thu</h4>
                 </div>
                 <div className="card-body">
-                  <small>{statistics.totalStaffs}</small>
+                  <small>{result} VNĐ</small>
                 </div>
               </div>
             </div>
