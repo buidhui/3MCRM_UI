@@ -133,15 +133,14 @@ class CustomerAddForm extends Component {
           <Form>
             <Form.Label>
               <h4>
-                Thông tin cơ bản ("<span style={{ color: "red" }}>*</span>" Bắt
-                buộc)
+                Thông tin cơ bản 
               </h4>
             </Form.Label>
             <Row>
-              <Col xs={8} className="add-col">
+              <Col lg={8} className="add-col">
                 <Container className="add-form">
                   <Form.Row className="add-form-row">
-                    <Form.Group as={Col} controlId="formGridName">
+                    <Form.Group as={Col} lg={5} controlId="formGridName">
                       <Form.Label>
                         Tên khách hàng <span style={{ color: "red" }}>*</span>
                       </Form.Label>
@@ -154,7 +153,7 @@ class CustomerAddForm extends Component {
                       />
                     </Form.Group>
 
-                    <Form.Group as={Col} controlId="formGridDOB">
+                    <Form.Group as={Col} lg={4} controlId="formGridDOB">
                       <Form.Label>Ngày sinh</Form.Label>
                       <Form.Control
                         type="date"
@@ -166,7 +165,7 @@ class CustomerAddForm extends Component {
                       />
                     </Form.Group>
 
-                    <Form.Group as={Col} xs={3} controlId="formGridGender">
+                    <Form.Group as={Col} lg={3} controlId="formGridGender">
                       <Form.Label>Giới tính</Form.Label>
                       <Form.Control
                         as="select"
@@ -230,7 +229,7 @@ class CustomerAddForm extends Component {
                   </Form.Row>
                 </Container>
               </Col>
-              <Col xs={4}>
+              <Col lg={4}>
                 <Container className="add-form">
                   <Form.Row className="add-form-row">
                     <Form.Group as={Col} controlId="formGridName">

@@ -7,7 +7,6 @@ class CustomerAddForm extends Component{
     constructor(props){
         super(props);
         this.state={
-          id: '',  
           name: '',
           description:'',
           defaultPrice: '',
@@ -20,17 +19,17 @@ class CustomerAddForm extends Component{
       }
       addCustomer(obj){
         axios({
-          method: 'put',
-          url: `${url}/customer-group/${this.props.group.id}`,
+          method: 'post',
+          url: `${url}/customer-group/add`,
           data: obj,
           headers: {
                     'content-type': 'application/json',
                 }
         }).then(respone => {
-          alert("Cập nhật thông tin nhóm khách hàng thành công")
+          alert("Thêm mới nhóm khách hàng thành công")
           axios({
             method: 'get',
-            url: `${url}/customer-group/${this.props.group.id}`,
+            url: `${url}/customer-group/list`,
           }).then(respone => {
             this.onUpdateData(respone.data)
           }).catch(error => {
@@ -38,7 +37,7 @@ class CustomerAddForm extends Component{
           });          
         }).catch(error => {
           console.log(error);
-          alert("Cập nhật nhóm khách hàng không thành công")
+          alert("Thêm mới nhóm khách hàng không thành công")
         });
           }
       onChange = (event) => {
@@ -57,7 +56,6 @@ class CustomerAddForm extends Component{
       onSubmit = (event) => {
         event.preventDefault();        
         const data = {
-            "id": this.state.id,
             "name": this.state.name,
             "note": this.state.description,
             "defaultPrice": this.state.defaultPrice,
@@ -71,17 +69,6 @@ class CustomerAddForm extends Component{
           this.addCustomer(data); 
           this.props.onClick();
         }
-      }
-      componentDidMount(){
-          const group = this.props.group;
-        this.setState({
-            id : group.id,
-            name : group.name,
-            description: (group.note) ? group.note : "Chưa có ghi chú gì về nhóm khách hàng ngày",
-            defaultPrice: (group.defaultPrice) ? group.defaultPrice : 0,
-            defaultTax: (group.defaultTax) ? group.defaultTax : 0,
-            discount: (group.discount) ? group.discount : 0,
-        })
       }
     render(){
       return(

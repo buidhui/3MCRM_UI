@@ -82,29 +82,18 @@ export default class SimpleTable extends Component{
               <TableCell align="center">Cập nhật cuôi</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {history !== undefined && history.map(order => (
+          <TableBody> 
+          {history !== undefined && history.map(order => (
               <TableRow key={order.id}>
                 <TableCell align="center" component="th" scope="row">
                 <Link className="list-item" to={'/orders/' + order.id}>{order.id}</Link>
                 </TableCell>
+                <TableCell align="center"><Link className="list-item" to={'/orders/' + order.id}>{moment(order.dateOrder).format('DD/MM/YYYY')}</Link></TableCell>
                 <TableCell align="center"><Link className="list-item"  to={'/orders/' + order.id}>{order.state === 1 ? "Hoàn thành" : "Đang thực hiện"}</Link></TableCell>
                 <TableCell align="center"><Link className="list-item" to={'/orders/' + order.id}>{formatMoney(order.totalMoney)}</Link></TableCell>
-                <TableCell align="center"><Link className="list-item" to={'/orders/' + order.id}>{moment(order.dateOrder).format('DD/MM/YYYY')}</Link></TableCell>
                 <TableCell align="center"><Link className="list-item" to={'/orders/' + order.id}>{(order.updateDate) ? moment(order.updateDate).format('DD/MM/YYYY') : moment(order.dateOrder).format('DD/MM/YYYY') }</Link></TableCell>
-              </TableRow>
-            ))} 
-            
-            {/* <TableRow >
-            
-                <TableCell align="center" component="th" scope="row">
-                <Link  to={'/orders/'}>aaa</Link> 
-                </TableCell>
-                <TableCell align="center">aaaaa</TableCell>
-                <TableCell align="center">aaa</TableCell>
-                <TableCell align="center">aaa</TableCell>
-                <TableCell align="center">adsasda</TableCell>
-              </TableRow> */}
+                </TableRow>
+                ))} 
           </TableBody>
         </Table>
       </Paper>

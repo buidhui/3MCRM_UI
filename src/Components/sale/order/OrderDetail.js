@@ -3,6 +3,7 @@ import { Card, Row, Col, Table } from 'react-bootstrap';
 import axios from 'axios';
 import OrderItem from './OrderDetailItem';
 //import Status from './Status';
+import BreadCrum from "../../breadcums/BreadCrumOrderDetail"
 import url from '../../url'
 class CustomerDetail extends Component {
     constructor(props) {
@@ -95,8 +96,11 @@ class CustomerDetail extends Component {
 
             <div>
                 <Row>
+                <BreadCrum customer={this.props.id}/>
+                </Row>
+                <Row>
                     <Col xl={8}>
-                        <Card style={{ width: '100%', margin: "15px" }}>
+                        <Card style={{ width: '100%', margin: "15px 15px 15px 0px" }}>
                             <Card.Body>
                                 <Card.Title >Thông tin khách hàng</Card.Title>
                                 <Row>
@@ -124,7 +128,7 @@ class CustomerDetail extends Component {
 
                             </Card.Body>
                         </Card>
-                        <Card style={{ width: '100%', margin: "15px" }}>
+                        <Card style={{ width: '100%', margin: "15px 15px 15px 0px" }}>
                             <Card.Body>
                                 <Card.Title >Thông tin sản phẩm</Card.Title>
                                 <Table responsive hover>
@@ -181,7 +185,7 @@ class CustomerDetail extends Component {
                                 </Row>
                             </Card.Body>
                         </Card>
-                        <Card style={{ width: '100%', margin: "15px" }}>
+                        <Card style={{ width: '100%', margin: "15px 15px 15px 0px" }}>
                             <Card.Body>
                                 <Row>
                                     <Col>
@@ -223,16 +227,6 @@ class CustomerDetail extends Component {
                                             {orderDetail[0].orderOrder &&
                                                 (orderDetail[0].orderOrder.dateOrder) ?
                                                 moment(orderDetail[0].orderOrder.dateOrder).format('DD/MM/YYYY') : "Chưa có"}
-
-                                        </Card.Text>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col>
-                                        <h6 style={{ marginTop: "7px" }}> Trạng thái đơn hàng   </h6>
-                                        <Card.Text className="cus-note">
-                                            {orderDetail[0].orderOrder &&
-                                                (orderDetail[0].orderOrder.state) ? "Hoàn thành" : "Đang thực hiện"}
 
                                         </Card.Text>
                                     </Col>

@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {Card,Row,Col} from 'react-bootstrap';
 import axios from 'axios';
 import PopupFormUpdateGroup from './PopupFormUpdateGroup';
+import BreadCrum from "../../breadcums/BreadCrumCusGroupDetail"
 import url from '../../url'
 class CustomerDetail extends Component{
     constructor(props){
@@ -62,6 +63,9 @@ class CustomerDetail extends Component{
         const groupDetail = this.state.groupDetail;
         return(
             <div>
+                <Row>
+                <BreadCrum customer={groupDetail}/>
+                </Row>
                 <Row>
                     <Col xl={8}>
                         <Card className="detail-card" style={{ width: '100%' }}>

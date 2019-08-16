@@ -60,7 +60,7 @@ class StaffDetail extends Component {
                 </Row>
                 <Row>
                     <Col xl={6}>
-                        <Card style={{ width: '100%', margin: "15px 15px 15px 0px" }}>
+                        <Card style={{ width: '100%', margin: "15px" }}>
                             <Row>
                                 <Col xl={6}>
                                     <span>

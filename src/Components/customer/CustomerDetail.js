@@ -3,7 +3,7 @@ import { Card, Row, Col, Carousel } from 'react-bootstrap';
 import TabViewDatil from './TabViewDetail';
 import axios from 'axios';
 import PopupFormUpdate from './PopupFormUpdateCus';
-//import TabViewGroup from './TabViewGroup';
+import BreadCrum from "../breadcums/BreadCrumCusDetail"
 import url from '../url'
 class CustomerDetail extends Component {
     constructor(props) {
@@ -82,23 +82,32 @@ class CustomerDetail extends Component {
         return (
             <div>
                 <Row>
-                    <Col xl={8}>
-                        <Card style={{ width: '100%', margin: "15px" }}>
+                <BreadCrum customer={customerDetail}/>
+                </Row>
+                <Row>
+                    <Col  xl={8}>
+                        <Card style={{ width: '100%', margin: "15px 15px 15px 0px" }}>
                             <Row>
                                 <Col xl={6}>
                                     <span>
-                                        <h5 className="debt">{customerDetail.name}</h5>
+                                    
+                                        <h5 className="debt"><i className="fas fa-user fa-2x" />    {customerDetail.name}</h5>
+                                    </span>
+                                </Col>
+                                <Col xl={6}>
+                                    <span>
+                                        <h5 className="debt float-right">Điểm tích lũy : {customerDetail.point} <i className="fas fa-trophy"></i></h5>
                                     </span>
                                 </Col>
                             </Row>
                             <Card.Body>
-                                <Card.Title style={{ marginTop: '30px' }}>Ghi chú</Card.Title>
+                                <Card.Title style={{ marginTop: '15px' }}>Ghi chú</Card.Title>
                                 <Card.Text className="cus-note">
                                     {(customerDetail.note) ? customerDetail.note : "Hiện tại chưa có ghi chú nào"}
                                 </Card.Text>
                             </Card.Body>
                         </Card>
-                        <Card style={{ width: '100%', margin: "15px" }}>
+                        <Card style={{ width: '100%', margin: "15px 15px 15px 0px " }}>
                             <Card.Body>
                                 <TabViewDatil customer={this.props.id} />
                             </Card.Body>
@@ -137,32 +146,8 @@ class CustomerDetail extends Component {
                             <Card.Body>
                                 <Card.Title>Ưu đãi</Card.Title>
                                 <Carousel>
-                                {CarItem}
-                                    {/* <Carousel.Item>
-                                    Nhóm khách hàng     :  {(customer_group) ? customer_group.name : "Đang cập nhật"}
-                                    <br/>
-                                    Giá mặc định     :  {(customer_group) ? customer_group.default_price : "Đang cập nhật"}
-                                    <br/>
-                                    Thuế mặc định       :  {(customer_group) ? customer_group.default_tax : "Đang cập nhật"}
-                                    <br/>
-                                    Chiết khấu : {(customer_group) ? customer_group.discount : "Đang cập nhật"}
-                                    <br/>
-                                    Phương thức thanh toán           : Đang cập nhật
-                                    <br/>
-                                    </Carousel.Item> */}
+                                {CarItem}                                
                                 </Carousel>
-                                {/* <Card.Text>
-                                    Nhóm khách hàng     :  {(customer_group) ? customer_group.name : "Đang cập nhật"}
-                                    <br/>
-                                    Giá mặc định     :  {(customer_group) ? customer_group.default_price : "Đang cập nhật"}
-                                    <br/>
-                                    Thuế mặc định       :  {(customer_group) ? customer_group.default_tax : "Đang cập nhật"}
-                                    <br/>
-                                    Chiết khấu : {(customer_group) ? customer_group.discount : "Đang cập nhật"}
-                                    <br/>
-                                    Phương thức thanh toán           : Đang cập nhật
-                                    <br/>
-                                </Card.Text> */}
                             </Card.Body>
                         </Card>
                     </Col>

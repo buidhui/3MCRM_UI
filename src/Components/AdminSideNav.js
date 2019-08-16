@@ -71,7 +71,7 @@ const SideNavigation = () => {
           <li>
             <a href="top#" className="has-dropdown">
               <i className="fas fa-shopping-cart" />
-              <span>Sales</span>
+              <span>Quản lí bán hàng</span>
             </a>
             <ul className="menu-dropdown">
               <li>
