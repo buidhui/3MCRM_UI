@@ -44,7 +44,7 @@ const SideNavigation = () => {
           </li>
           <li>
             <Link to="/leads">
-              <i className="fas fa-user" />
+              <i class="fas fa-users" />
               <span>Đầu mối</span>
             </Link>
           </li>
@@ -112,8 +112,8 @@ const SideNavigation = () => {
             to="/setting"
             className="btn btn-info btn-shadow btn-round has-icon has-icon-nofloat btn-block"
           >
-            <i className="ion ion-help-buoy" />
-            <div>Cài đặt</div>
+            <i class="fas fa-sign-out-alt" />
+            <div>Đăng xuất</div>
           </Link>
         </div>
       </aside>
