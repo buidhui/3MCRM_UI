@@ -3,7 +3,10 @@ import { Form, Col, Row, Container, Button } from "react-bootstrap";
 import axios from "axios";
 import { Link, Prompt } from "react-router-dom";
 import url from "../url";
-//const url= 'http://192.168.43.95:8080/customers/add'
+import Select from "react-select";
+const staff = [];
+const group = [];
+
 class CustomerAddForm extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +20,9 @@ class CustomerAddForm extends Component {
       phone: "",
       description: "",
       staff: "",
-      customerType: ""
+      customerType: [],
+      staffList: [],
+      groupList: [],
     };
   }
   onUpdateData = data => {
@@ -48,6 +53,7 @@ class CustomerAddForm extends Component {
       .catch(error => {
         alert("Không thể thêm mới khách hàng");
         console.log(error);
+        console.log(obj)
       });
   }
   onChange = event => {
@@ -78,21 +84,39 @@ class CustomerAddForm extends Component {
       phone: this.state.phone ? this.state.phone : null,
       note: this.state.description ? this.state.description : null,
       staff: {
-        id: this.state.staff ? this.state.staff : null
+        id: this.state.staff ? this.state.staff.id : null
       },
-      customer_group: {
-        id: this.state.customerType ? this.state.customerType : null
-      },
+      groups: this.state.customerType ? this.state.customerType : null,
       idLead: this.state.id
     };
-    if (!data.name || !data.email || !data.phone) {
-      alert("Tên khách hàng, email và số điện thoại không được để trống!");
+    if (!data.name || !data.email || !data.phone || !data.dob) {
+      alert("Một số thông tin không được để trống!");
     } else {
       this.addCustomer(data);
       this.props.onClick();
     }
   };
   componentDidMount(){
+    axios({
+      method: 'get',
+      url: `${url}/staffs/list`
+    }).then(respone => {
+      this.setState({
+        staffList: respone.data,
+      })
+    }).catch(error => {
+      console.log(error)
+    });
+    axios({
+      method: 'get',
+      url: `${url}/vinh`
+    }).then(respone => {
+      this.setState({
+        groupList: respone.data,
+      })
+    }).catch(error => {
+      console.log(error)
+    });
       let {customer} = this.props;
       this.setState({
           name : customer.name,
@@ -100,8 +124,44 @@ class CustomerAddForm extends Component {
           phone: (customer.phone) ? customer.phone : "Chưa có",
       })
   }
+  pushCustomer = (staffList, staff) => {
+    if (staffList.length !== 0 && staff.length === 0) {
+      for (var i = 0; i < staffList.length; i++) {
+        var value = staffList[i];
+        var label = staffList[i].name + " - " + staffList[i].id;
+        staff.push({ value: value, label: label });
+      }
+    }
+  };
+  pushGroup = (groupList, group) => {
+    if (groupList.length !== 0 && group.length === 0) {
+      for (var i = 0; i < groupList.length; i++) {
+        var value = groupList[i].id;
+        var label = groupList[i].name
+        group.push({ value: value,id:value, label: label });
+      }
+    }
+  };
+  handleChangeCus = selectedStaff => {
+    this.setState({
+      staff: selectedStaff.value
+    },()=>{
+      console.log(this.state)
+    });
+  };
+  handleChangeGroup = selectedGroup => {
+    this.setState({
+      customerType: selectedGroup
+    }, () => {
+      console.log(this.state)
+    })
+  };
   render() {
-      console.log(this.props)
+    const { staffList, groupList} = this.state;
+    this.pushCustomer(staffList, staff);
+    this.pushGroup(groupList, group);
+    const selectedGroup = undefined;
+    const selectedStaff = undefined;
     return (
       <Row>
         <Prompt
@@ -112,8 +172,7 @@ class CustomerAddForm extends Component {
           <Form>
             <Form.Label>
               <h4>
-                Thông tin cơ bản ("<span style={{ color: "red" }}>*</span>" Bắt
-                buộc)
+                Thông tin cơ bản 
               </h4>
             </Form.Label>
             <Row>
@@ -134,7 +193,7 @@ class CustomerAddForm extends Component {
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridDOB">
-                      <Form.Label>Ngày sinh</Form.Label>
+                      <Form.Label>Ngày sinh <span style={{ color: "red" }}>*</span></Form.Label>
                       <Form.Control
                         type="date"
                         required="required"
@@ -198,20 +257,13 @@ class CustomerAddForm extends Component {
                   <Form.Row className="add-form-row">
                     <Form.Group as={Col} controlId="formGridCusType">
                       <Form.Label>Nhóm khách hàng</Form.Label>
-                      <Form.Control
-                        as="select"
-                        name="customerType"
-                        value={this.state.customerType}
-                        onChange={this.onChange}
-                      >
-                        <option value={null}>Nhóm khách hàng</option>
-                        <option value={1}>Nhóm 1</option>
-                        <option value={2}>Nhóm 2</option>
-                        <option value={3}>Nhóm 3</option>
-                        <option value={4}>Nhóm 4</option>
-                        <option value={5}>Nhóm 5</option>
-                        <option value={6}>Nhóm 6</option>
-                      </Form.Control>
+                      <Select
+                        isMulti
+                        value={selectedGroup}
+                        onChange={this.handleChangeGroup}
+                        options={group}
+                        placeholder="Nhập nhóm khách hàng"
+                      />
                     </Form.Group>
                   </Form.Row>
                 </Container>
@@ -234,11 +286,11 @@ class CustomerAddForm extends Component {
                   <Form.Row className="add-form-row">
                     <Form.Group as={Col} controlId="formGridName">
                       <Form.Label>Nhân viên chăm sóc</Form.Label>
-                      <Form.Control
-                        name="staff"
-                        value={this.state.staff}
-                        placeholder=""
-                        onChange={this.onChange}
+                      <Select
+                        value={selectedStaff}
+                        onChange={this.handleChangeCus}
+                        options={staff}
+                        placeholder="Nhập nhân viên"
                       />
                     </Form.Group>
                   </Form.Row>

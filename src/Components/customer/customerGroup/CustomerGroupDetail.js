@@ -108,7 +108,7 @@ class CustomerDetail extends Component{
                                     <Col >
                                     <Card.Subtitle className="cus-sub"><h6>Chiết khấu</h6></Card.Subtitle>
                                         <Card.Text className="cus-note">
-                                            {(groupDetail.discount) ? groupDetail.discount : "Đang cập nhật"}
+                                            {(groupDetail.discount) ? groupDetail.discount + "%" : "Đang cập nhật"}
                                         </Card.Text>  
                                     </Col>
                                     <Col >

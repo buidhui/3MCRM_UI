@@ -3,19 +3,15 @@ import React, { Component } from "react";
 import CustomerListItem from "./CustomerListItem";
 //import DropDownCus from './DropDownCus';
 //import PopupForm from './PopupFormCus';
-import { Table } from "react-bootstrap";
+import { Table, Form} from "react-bootstrap";
 import url from "../url";
 class CustomerList extends Component {
   state = {
     customerList: [],
-    filter: {
-      filterName: "",
-      filterEmail: "",
-      filterPhone: ""
-    }
+    filterStatus: 2,
+    
   };
   onUpdateData = data => {
-    console.log(data);
     this.setState({
       customerList: data
     });
@@ -26,64 +22,39 @@ class CustomerList extends Component {
       url: `${url}/lead/list`
     })
       .then(respone => {
-        // console.log(respone.data);
         this.setState({
           customerList: respone.data
+        },()=>{
+          console.log(this.state)
         });
       })
       .catch(error => {
         console.log(error);
       });
   }
-  onFilter = (filterName1, filterEmail1, filterPhone1) => {
-    if (!filterName1 && !filterEmail1 && !filterPhone1) {
-      this.setState(
-        {
-          filter: {
-            filterName: "",
-            filterEmail: "",
-            filterPhone: ""
-          }
-        },
-        () => {
-          console.log(this.state);
-        }
-      );
-    } else {
-      this.setState(
-        {
-          filter: {
-            filterName: filterName1
-              ? filterName1.toLowerCase()
-              : this.state.filter.filterName,
-            filterEmail: filterEmail1
-              ? filterEmail1.toLowerCase()
-              : this.state.filter.filterEmail,
-            filterPhone: filterPhone1
-              ? filterPhone1
-              : this.state.filter.filterPhone
-          }
-        },
-        () => {
-          console.log(this.state);
-        }
-      );
+  onChange = event => {
+    var target = event.target;
+    var name = target.name;
+    var value = target.value;
+    if(name === "filterStatus"){
+      value = parseInt(target.value,10)
     }
+    this.setState(
+      {
+        [name]: value
+      },()=>{
+        console.log(this.state)
+      });
   };
 
   render() {
     var customerList = this.state.customerList;
-    // const {filter} = this.state;
-
-    // if(filter){
-    // 		customerList = customerList.filter((customer) =>{
-    // 		return customer.name.toLowerCase().indexOf(filter.filterName) !== -1 &&
-    // 		customer.email.toLowerCase().indexOf(filter.filterEmail) !== -1 &&
-    // 		customer.phone.toLowerCase().indexOf(filter.filterPhone) !== -1;
-    // 		});
-    // }else{
-    // 	return customerList;
-    // }
+    const {filterStatus} = this.state;
+    customerList = customerList.filter((customer) =>{
+      if(filterStatus === 2){
+        return customer;
+      }else {return customer.opportunity === (filterStatus === 1 ? 1 : 0) }
+    })
     const eleCustomer = customerList.map((customer, index) => {
       return (
         <CustomerListItem
@@ -98,12 +69,6 @@ class CustomerList extends Component {
       <div className="row mt-15">
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <div className="row">
-            {/* <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-							//<DropDownCus onFilter ={this.onFilter }/>
-						</div>
-						<div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-							<PopupForm open={this.props.open} />
-						</div> */}
           </div>
           <Table responsive hover>
             <thead>
@@ -113,7 +78,13 @@ class CustomerList extends Component {
 							<th className="text-center">Ngày sinh</th> */}
                 <th className="text-center">Email</th>
                 <th className="text-center">Điện thoại</th>
-                <th className="text-center">Trạng thái</th>
+                <th className="text-center">
+                  <Form.Control as="select" name="filterStatus" value={this.state.filterStatus} onChange={this.onChange}>
+                    <option value={2}>Trạng thái</option>
+                    <option value={1}>Tiềm năng</option>
+                    <option value={0}>Đầu mối</option>
+                  </Form.Control>
+                  </th>
                 <th className="text-center"></th>
               </tr>
             </thead>

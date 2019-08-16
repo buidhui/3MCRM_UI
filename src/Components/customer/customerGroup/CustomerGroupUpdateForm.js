@@ -114,7 +114,7 @@ class CustomerAddForm extends Component{
                             <Form.Control type="text" name="defaultTax" value={this.state.defaultTax} onChange={this.onChange} />
                         </Form.Group>
                         <Form.Group as={Col} >
-                                <Form.Label>Chiết khấu</Form.Label>
+                                <Form.Label>Chiết khấu(%)</Form.Label>
                                 <Form.Control type="text" name="discount" value={this.state.discount} onChange={this.onChange} />
                         </Form.Group>
                     </Form.Row>

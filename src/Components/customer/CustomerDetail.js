@@ -70,7 +70,7 @@ class CustomerDetail extends Component {
                 <br/>
                 Thuế mặc định       :  {group.default_tax}
                 <br/>
-                Chiết khấu : {group.discount}
+                Chiết khấu : {group.discount}%
                 <br/>
                 Phương thức thanh toán           : Đang cập nhật
                 <br/>

@@ -14,7 +14,7 @@ export default function PopupForm(props) {
   
         <Modal
           className="modal-form"  
-          size="xl"
+          size="lg"
           show={show}
           onHide={() => setShow(false)}
           centered

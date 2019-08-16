@@ -90,11 +90,7 @@ class CustomerAddForm extends Component {
     this.setState(
       {
         [name]: value
-      },
-      () => {
-        console.log(this.state);
-      }
-    );
+      });
   };
   onSubmit = event => {
     event.preventDefault();
