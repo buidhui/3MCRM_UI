@@ -1371,6 +1371,7 @@ body.sidebar-gone .main-content {
 }
 .detail-card{
   margin: 15px;
+  margin-left: 0px;
 }
 /* .detail-card-8t{
   margin: 15px 15px 50px;

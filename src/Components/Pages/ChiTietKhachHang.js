@@ -5,7 +5,7 @@ const ChiTietKhachHang =  ({match}) => {
         <React.Fragment>
         <section className="section">
           <h1 className="section-header">
-            <div>Thông tin cơ bản </div>
+            <div>Thông tin chi tiết khách hàng </div>
           </h1>
           <CustomerDetail id={match.params.id} />
         </section>

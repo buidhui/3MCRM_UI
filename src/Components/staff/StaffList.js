@@ -5,6 +5,7 @@ import DropDownCus from './DropDownCus';
 import PopupForm from './PopupFormStaff';
 import {Table} from 'react-bootstrap';
 import url from '../url'
+import BreadCrum from "../breadcums/BreadCrumStaffList"
 class StaffList extends Component{
     state ={
 		staffList : [],
@@ -74,6 +75,9 @@ class StaffList extends Component{
 			
 			<div className="row mt-15">
 				<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div className="row" style={{marginBottom: "15px"}}>
+				<BreadCrum />
+				</div>
 					<div className="row">
 						<div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
 							<DropDownCus onFilter ={this.onFilter }/>

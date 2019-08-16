@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, {Component} from 'react'
 import CustomerGroupItem from './CustomerGroupItem';
+import PopupFormGroup from './PopupFormGroup';
 import FilterGroup from './FilterGroup';
 import url from '../../url'
 import {Table} from 'react-bootstrap';
+import BreadCrum from '../../breadcums/BreadCrumCusGroupList'
 class CustomerList extends Component{
     state ={
 		customerGroupList : [],
@@ -15,7 +17,7 @@ class CustomerList extends Component{
     componentDidMount(){
 		axios({
 			method: 'get',
-			url: `${url}/customer-group/list`
+			url: `${url}/vinh`
 		}).then(respone => {
 			this.setState({
 				customerGroupList: respone.data,
@@ -43,7 +45,11 @@ class CustomerList extends Component{
 			})
 		}
 	}
-	
+	onUpdateData = (data) =>{
+        this.setState({
+			customerGroupList: data
+		})
+    }
     render(){
 		var customerGroupList = this.state.customerGroupList;
 		const {filter} = this.state;		
@@ -59,9 +65,15 @@ class CustomerList extends Component{
         return(
 			<div className="row mt-15">
 				<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div className="row" style={{marginBottom: "15px"}}>
+				<BreadCrum />
+				</div>
 					<div className="row">
 						<div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 							<FilterGroup onFilter ={this.onFilter }/>
+						</div>
+						<div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+							<PopupFormGroup open={this.props.open} onUpdateData={this.onUpdateData}/>
 						</div>
 					</div>												
 					<Table responsive  hover>

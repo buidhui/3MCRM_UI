@@ -43,10 +43,6 @@ class CustomerListItem extends Component{
                 <td className="text-center" ><Link className="list-item" to={"/orders/" + order.id} >{order.customerOrder && (order.customerOrder.name) ? order.customerOrder.name : "Đang cập nhật"}</Link> </td>
                 <td className="text-center" ><Link className="list-item" to={"/orders/" + order.id} >{(order.totalMoney ) ? formatMoney(order.totalMoney) + " VNĐ": "Đang cập nhật"}</Link></td>
                 <td className="text-center" ><Link className="list-item" to={"/orders/" + order.id} >{(order.dateShip) ?  moment(order.dateShip).format('DD/MM/YYYY') : "Đang cập nhật"}</Link> </td>
-                <td className="text-center" ><Link className="list-item" to={"/orders/" + order.id} >{(order.state) ? "Hoàn thành" : "Đang thực hiện"} </Link></td>
-                {/* <td className="text-center" >
-                    <Status />
-                </td> */}
             </tr>          
         );
     }

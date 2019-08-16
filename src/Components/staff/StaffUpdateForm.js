@@ -80,7 +80,7 @@ class StaffUpdateForm extends Component{
             id: staff.id,
             name : staff.name,
             dob: staff.dob,
-            gender: (staff.gender) ? staff.gender : "",
+            gender: staff.gender,
             role:  (staff.jobTitle) ? staff.jobTitle : "Chưa cập nhật",
             email: staff.email,
             phone: staff.phone,
@@ -95,7 +95,7 @@ class StaffUpdateForm extends Component{
         <Row>
           <Col xs={12}>
           <Form onSubmit={this.onSubmit}>
-            <Form.Label><h4>Thông tin cơ bản ("<span style={{color: "red"}}>*</span>" Bắt buộc)</h4></Form.Label>
+            <Form.Label><h4>Thông tin cơ bản </h4></Form.Label>
             <Row>
               <Col xs={8} className="add-col">
                 <Container className="add-form">

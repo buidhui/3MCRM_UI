@@ -14,7 +14,9 @@ class AdminLayout extends Component {
     return (
       <BrowserRouter>
         <div id="app">
+          
           <div className="main-wrapper">
+            
             {/* Top Navigation Start */}
             <TopNavigation />
             {/* Top Navigation End */}

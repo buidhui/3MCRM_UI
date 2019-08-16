@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import CustomerListItem from './OrderListItem';
 import DropDownCus from './DropDownOrder';
 // import PopupForm from './PopupFormOrder';
+import BreadCrum from '../../breadcums/BreadCrumOrderList'
 import {Table} from 'react-bootstrap';
 import url from '../../url'
 class CustomerList extends Component{
@@ -65,6 +66,9 @@ class CustomerList extends Component{
         return(
 			<div className="row mt-15">
 				<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div className="row" style={{marginBottom: "15px"}}>
+				<BreadCrum />
+				</div>
 					<div className="row">
 						<div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 							<DropDownCus onFilter ={this.onFilter }/>
@@ -81,7 +85,6 @@ class CustomerList extends Component{
 							<th className="text-center">Tên khách hàng</th>
 							<th className="text-center">Khách phải trả</th>
 							<th className="text-center">Ngày hẹn giao</th>
-							<th className="text-center">Trạng thái</th>
 							</tr>
 						</thead>
 						<tbody> 

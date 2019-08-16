@@ -5,6 +5,7 @@ import DropDownCus from './DropDownCus';
 import PopupForm from './PopupFormCus';
 import {Table} from 'react-bootstrap';
 import url from '../url'
+import BreadCrum from "../breadcums/BreadCrumCusList"
 class CustomerList extends Component{
     state ={
 		customerList : [],
@@ -73,7 +74,11 @@ class CustomerList extends Component{
 		});
         return(
 			<div className="row mt-15">
+				
 				<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div className="row" style={{marginBottom: "15px"}}>
+				<BreadCrum />
+				</div>
 					<div className="row">
 						<div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
 							<DropDownCus onFilter ={this.onFilter }/>
@@ -81,7 +86,7 @@ class CustomerList extends Component{
 						<div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 							<PopupForm open={this.props.open} onUpdateData={this.onUpdateData}/>
 						</div>
-					</div>												
+					</div>											
 					<Table responsive  hover>
 						<thead>
 							<tr>

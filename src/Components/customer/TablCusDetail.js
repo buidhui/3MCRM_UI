@@ -88,14 +88,14 @@ export default class SimpleTable extends Component{
                 <TableCell align="center" component="th" scope="row">
                 <Link className="list-item" to={'/orders/' + order.id}>{order.id}</Link>
                 </TableCell>
+                <TableCell align="center"><Link className="list-item" to={'/orders/' + order.id}>{moment(order.dateOrder).format('DD/MM/YYYY')}</Link></TableCell>
                 <TableCell align="center"><Link className="list-item"  to={'/orders/' + order.id}>{order.state === 1 ? "Hoàn thành" : "Đang thực hiện"}</Link></TableCell>
                 <TableCell align="center"><Link className="list-item" to={'/orders/' + order.id}>{formatMoney(order.totalMoney)}</Link></TableCell>
-                <TableCell align="center"><Link className="list-item" to={'/orders/' + order.id}>{moment(order.dateOrder).format('DD/MM/YYYY')}</Link></TableCell>
                 <TableCell align="center"><Link className="list-item" to={'/orders/' + order.id}>{(order.updateDate) ? moment(order.updateDate).format('DD/MM/YYYY') : moment(order.dateOrder).format('DD/MM/YYYY') }</Link></TableCell>
+                {/* <TableRow >
               </TableRow>
             ))} 
             
-            {/* <TableRow >
             
                 <TableCell align="center" component="th" scope="row">
                 <Link  to={'/orders/'}>aaa</Link> 
