@@ -145,7 +145,8 @@ class CustomerDetail extends Component {
                         <Card className="detail-card" style={{ width: '100%' }}>
                             <Card.Body>
                                 <Card.Title>Ưu đãi</Card.Title>
-                                <Carousel>
+                                <Carousel nextIcon ={<i className="fas fa-chevron-right"></i>} prevIcon ={<i className="fas fa-chevron-left"></i>} className="leuleu">
+                                
                                 {CarItem}                                
                                 </Carousel>
                             </Card.Body>

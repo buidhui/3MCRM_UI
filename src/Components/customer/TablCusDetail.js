@@ -76,9 +76,8 @@ export default class SimpleTable extends Component{
           <TableHead>
             <TableRow>
               <TableCell align="center">Mã đơn</TableCell>
-              <TableCell align="center">Trạng thái</TableCell>
-              <TableCell align="center">Giá trị (VNĐ)</TableCell>
               <TableCell align="center">Ngày ghi nhận</TableCell>
+              <TableCell align="center">Giá trị (VNĐ)</TableCell>
               <TableCell align="center">Cập nhật cuôi</TableCell>
             </TableRow>
           </TableHead>
@@ -89,7 +88,6 @@ export default class SimpleTable extends Component{
                 <Link className="list-item" to={'/orders/' + order.id}>{order.id}</Link>
                 </TableCell>
                 <TableCell align="center"><Link className="list-item" to={'/orders/' + order.id}>{moment(order.dateOrder).format('DD/MM/YYYY')}</Link></TableCell>
-                <TableCell align="center"><Link className="list-item"  to={'/orders/' + order.id}>{order.state === 1 ? "Hoàn thành" : "Đang thực hiện"}</Link></TableCell>
                 <TableCell align="center"><Link className="list-item" to={'/orders/' + order.id}>{formatMoney(order.totalMoney)}</Link></TableCell>
                 <TableCell align="center"><Link className="list-item" to={'/orders/' + order.id}>{(order.updateDate) ? moment(order.updateDate).format('DD/MM/YYYY') : moment(order.dateOrder).format('DD/MM/YYYY') }</Link></TableCell>
                 </TableRow>
