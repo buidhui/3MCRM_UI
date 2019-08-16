@@ -4,22 +4,56 @@ import CustomerListItem from './ProductListItem';
 import DropDownCus from './DropDownProduct';
 //import PopupForm from './PopupFormProduct';
 import BreadCrum from "../../breadcums/BreadCrumProductList"
-import {Table} from 'react-bootstrap';
+import {Table,Form} from 'react-bootstrap';
 import url from '../../url'
 class CustomerList extends Component{
     state ={
 		customerList : [],
+		filterType: -1,
 		filter:{
 			filterName: '',
 			filterEmail: '',
-		}		
+			
+		},
+		catList: []		
 	}
+	onChange = event => {
+		var target = event.target;
+		var name = target.name;
+		var value = target.value;
+		if(name === "filterType"){
+		  value = parseInt(target.value,10)
+		}
+		this.setState(
+		  {
+			[name]: value
+		  },()=>{
+			console.log(this.state)
+		  });
+	  };
 	onUpdateData = (data) =>{
         this.setState({
 			customerList: data
 		})
     }
     componentDidMount(){
+		axios({
+			method: "get",
+			url: `${url}/category/list`
+		  })
+			.then(respone => {
+			  this.setState(
+				{
+				  catList: respone.data
+				},
+				() => {
+				  console.log(this.state);
+				}
+			  );
+			})
+			.catch(error => {
+			  console.log(error);
+			});
 		axios({
 			method: 'get',
 			url: `${url}/products/list`
@@ -53,15 +87,20 @@ class CustomerList extends Component{
 	}
 	
     render(){
-		let {customerList} = this.state;
-		const {filter} = this.state;
+		let {customerList,catList} = this.state;
+		const {filter,filterType} = this.state;
 		if(filter){			
 				customerList = customerList.filter((customer) =>{
 				return customer.name.toLowerCase().indexOf(filter.filterName) !== -1 || customer.id.toString().toLowerCase().indexOf(filter.filterName) !== -1;					
-				});													
+				});	
 		}else{
 			return customerList;
 		}
+		customerList = customerList.filter((customer) =>{
+			if(filterType === -1){
+			  return customer;
+			}else {return customer.categoryProduct.id === filterType }
+		  })
 		const eleCustomer = customerList.map((customer,index) =>{			
 			return <CustomerListItem  key={customer.id} index={index} customer={customer} onUpdateData={this.onUpdateData}></CustomerListItem>;		
 		});
@@ -84,7 +123,14 @@ class CustomerList extends Component{
 							<tr>
 							<th >Mã sản phẩm</th>
 							<th >Tên sản phẩm</th>
-							<th className="text-center">Loại</th>
+							<th className="text-center">
+								<Form.Control as="select" name="filterType" value={this.state.filterType} onChange={this.onChange}>
+									<option value={-1}>Loại</option>
+									{catList && catList.map((cat) => {
+										return <option key={cat.id} value={cat.id}>{cat.name} </option>
+									})}
+								</Form.Control>
+							</th>
 							<th className="text-center">Nhãn hiệu</th>
 							<th className="text-center">Xuất xứ</th>
 							<th className="text-center">Số lượng đã bán</th>
