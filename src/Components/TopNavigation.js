@@ -114,7 +114,7 @@ export default class TopNavigation extends React.Component {
               </div>
             </li> */}
 
-            <div className="dropdown  ">
+            {/* <div className="dropdown  ">
               <button
                 className="btn btn-default dropdown-toggle text-light"
                 type="button"
@@ -134,7 +134,7 @@ export default class TopNavigation extends React.Component {
                   <i className="ion ion-log-out tkdx" /> Đăng xuất
                 </a>
               </div>
-            </div>
+            </div> */}
           </ul>
         </nav>
       </div>
