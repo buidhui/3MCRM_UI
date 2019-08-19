@@ -78,6 +78,8 @@ class CustomerList extends Component {
 							<th className="text-center">Ngày sinh</th> */}
                 <th className="text-center">Email</th>
                 <th className="text-center">Điện thoại</th>
+                <th className="text-center">Nguồn thu thập</th>
+                <th className="text-center">Quan tâm</th>
                 <th className="text-center">
                   <Form.Control as="select" name="filterStatus" value={this.state.filterStatus} onChange={this.onChange}>
                     <option value={2}>Trạng thái</option>

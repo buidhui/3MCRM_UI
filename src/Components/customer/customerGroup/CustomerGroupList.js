@@ -52,7 +52,7 @@ class CustomerList extends Component{
     }
     render(){
 		var customerGroupList = this.state.customerGroupList;
-		const {filter} = this.state;		
+		const {filter} = this.state;	
 		if(filter){			
 			customerGroupList = customerGroupList.filter((group) =>{
 				return group.name.toLowerCase().indexOf(filter.filterName) !== -1});													
@@ -82,6 +82,7 @@ class CustomerList extends Component{
 							<th >Mã nhóm</th>
 							<th >Tên nhóm</th>
 							<th >Mô tả</th>
+							<th >Số lượng khách hàng</th>
 							<th className="text-center">Ngày cập nhật</th>
 							</tr>
 						</thead>

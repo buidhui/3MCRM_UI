@@ -112,9 +112,9 @@ class CustomerDetail extends Component{
                                         </Card.Text>  
                                     </Col>
                                     <Col >
-                                    <Card.Subtitle className="cus-sub"><h6>Phương thức thanh toán</h6></Card.Subtitle>
+                                    <Card.Subtitle className="cus-sub"><h6>Số lượng khách hàng trong nhóm</h6></Card.Subtitle>
                                         <Card.Text className="cus-note">
-                                            {(groupDetail.payMethod) ? groupDetail.payMethod : "Đang cập nhật"}
+                                            {(groupDetail.quantity) ? groupDetail.quantity : 0}
                                         </Card.Text>  
                                     </Col>
                                 </Row>                                                                  

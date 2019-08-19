@@ -1423,4 +1423,6 @@ h4 {
 .fa-chevron-left{
   color: white
 } 
-
+.MuiTab-wrapper{
+      text-transform: none;
+}

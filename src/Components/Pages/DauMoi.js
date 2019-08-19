@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CustomerList from "../leads/CustomerList";
+import CustomerList from "../leads/TabViewLead";
 import { post } from "axios";
 
 class DsKhachHang extends Component {

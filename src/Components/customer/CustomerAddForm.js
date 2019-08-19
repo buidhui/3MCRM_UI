@@ -25,7 +25,7 @@ class CustomerAddForm extends Component {
   componentDidMount() {
     axios({
       method: 'get',
-      url: `${url}/customer-group/list`
+      url: `${url}/vinh`
     }).then(respone => {
       this.setState({
         groupList: respone.data,
