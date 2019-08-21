@@ -4,25 +4,25 @@ import url from "../url";
 import axios from "axios";
 const color = ["danger", "info", "success", "dark", "warning", "primary"]
 export default class Statistics extends Component {
-    state = {
-        customerList: [],
-    };
-    componentDidMount() {
-        axios({
-            method: "get",
-            url: `${url}/source/list`
-        })
-            .then(respone => {
-                this.setState({
-                    customerList: respone.data
-                }, () => {
-                    console.log(this.state)
-                });
+        state = {
+            customerList: [],
+        };
+        componentDidMount() {
+            axios({
+                method: "get",
+                url: `${url}/source/list`
             })
-            .catch(error => {
-                console.log(error);
-            });
-    }
+                .then(respone => {
+                    this.setState({
+                        customerList: respone.data
+                    }, () => {
+                        console.log(this.state)
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
     render() {
         const {customerList} = this.state;
         return (
