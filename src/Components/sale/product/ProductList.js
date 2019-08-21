@@ -116,7 +116,7 @@ class CustomerList extends Component{
 						</div>
 						<div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 							 <Form.Control as="select" name="filterType" value={this.state.filterType} onChange={this.onChange}>
-									<option value={-1}>Loại</option>
+									<option value={-1}>Tất cả</option>
 									{catList && catList.map((cat) => {
 										return <option key={cat.id} value={cat.id}>{cat.name} </option>
 									})}

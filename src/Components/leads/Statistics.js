@@ -23,6 +23,9 @@ export default class Statistics extends Component {
                 console.log(error);
             });
     }
+    calculate = (a,b) =>{
+        return (parseInt(a)/parseInt(b))*100 ;
+    }
     render() {
         const {customerList} = this.state;
         return (
@@ -36,7 +39,7 @@ export default class Statistics extends Component {
                                     Số lượng lead: <strong className="float-right">{customer.total}</strong>
                                 </Card.Text>
                                 <Card.Text>
-                                    Phân trăm chuyển đổi: <strong className="float-right">{customer.rate}</strong>
+                                    Phân trăm chuyển đổi: <strong className="float-right">{this.calculate(customer.convert,customer.total).toFixed(2)}%</strong>
                                 </Card.Text>
                                 <Card.Text>
                                     Ngày thêm: <strong className="float-right">{customer.date}</strong>
