@@ -6,8 +6,7 @@ const color = ["danger", "info", "success", "dark", "warning", "primary"];
 
 class Marketing extends Component {
   state = {
-    marketing: [],
-    
+    marketing: []
   };
   componentDidMount() {
     axios({
@@ -17,7 +16,7 @@ class Marketing extends Component {
       .then(respone => {
         this.setState(
           {
-            marketing: respone.data,
+            marketing: respone.data
           },
           () => {
             // console.log(this.state);
@@ -35,7 +34,7 @@ class Marketing extends Component {
     //     groupMarketing: marketing.marketing
     //   };
     // });
-    console.log(marketing);
+    // console.log(marketing);
     return (
       <React.Fragment>
         <section className="section">
@@ -64,9 +63,10 @@ class Marketing extends Component {
                       <Card.Text>
                         Đối Tượng:{" "}
                         <strong className="float-right">
-                          {marketing.groupMarketing && marketing.groupMarketing.map((group) => {
-                            return group.name + ", ";
-                          })}
+                          {marketing.groupMarketing &&
+                            marketing.groupMarketing
+                              .map(group => " " + group.name)
+                              .toString()}
                         </strong>
                       </Card.Text>
                       <Card.Text>
