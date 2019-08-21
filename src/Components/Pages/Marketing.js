@@ -30,11 +30,12 @@ class Marketing extends Component {
   render() {
     const { marketing } = this.state;
     // const { groupMarketing } = this.state.groupMarketing;
-    // const groupMarketing = marketing.groupMarketing.map(mkt => {
-    //   var mkt = marketing.groupMarketing;
-    // });
-
-    // console.log(groupMarketing);
+    var groupMarketing = marketing.map(function(groupMarketing) {
+      return {
+        groupMarketing: marketing.marketing
+      };
+    });
+    console.log(groupMarketing);
     return (
       <React.Fragment>
         <section className="section">
