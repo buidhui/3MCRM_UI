@@ -7,7 +7,7 @@ class CustomerListItem extends Component{
         return(
             <tr> 
                 <td >{customer.id} </td>
-                <td style={{width:'25%'}} >{(customer.name) ? customer.name : "Đang cập nhật"} </td>
+                <td className="text-center"  style={{width:'25%'}} >{(customer.name) ? customer.name : "Đang cập nhật"} </td>
                 <td className="text-center" >{(customer.catName) ? customer.catName : "Đang cập nhật"} </td>
                 <td className="text-center" >{(customer.brand ) ? customer.brand : "Đang cập nhật"}</td>
                 <td className="text-center" >{(customer.origin) ? customer.origin : "Đang cập nhật"} </td>

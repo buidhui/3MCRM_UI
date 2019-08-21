@@ -173,7 +173,7 @@ class CustomerDetail extends Component {
                                 </Row>
                             </Card.Body>
                         </Card>
-                        <Card style={{ width: '100%', margin: "15px" }}>
+                        <Card style={{ width: '100%', margin: "15px 15px 15px 0px" }}>
                             <Card.Body>
                                 <Row>
                                     <Col>

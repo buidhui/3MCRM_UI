@@ -17,7 +17,7 @@ class CustomerList extends Component{
     componentDidMount(){
 		axios({
 			method: 'get',
-			url: `${url}/vinh`
+			url: `${url}/customer-group/list`
 		}).then(respone => {
 			this.setState({
 				customerGroupList: respone.data,
@@ -79,11 +79,11 @@ class CustomerList extends Component{
 					<Table responsive  hover>
 						<thead>
 							<tr>
-							<th >Mã nhóm</th>
-							<th >Tên nhóm</th>
-							<th >Mô tả</th>
-							<th >Số lượng khách hàng</th>
-							<th className="text-center">Ngày cập nhật</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}} >Mã nhóm</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}} >Tên nhóm</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}} >Mô tả</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}} >Số lượng khách hàng</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}} className="text-center">Ngày cập nhật</th>
 							</tr>
 						</thead>
 						<tbody> 

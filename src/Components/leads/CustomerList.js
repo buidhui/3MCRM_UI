@@ -24,8 +24,6 @@ class CustomerList extends Component {
       .then(respone => {
         this.setState({
           customerList: respone.data
-        },()=>{
-          console.log(this.state)
         });
       })
       .catch(error => {
@@ -73,14 +71,14 @@ class CustomerList extends Component {
           <Table responsive hover>
             <thead>
               <tr>
-                <th>Tên khách hàng</th>
+                <th style={{display: "table-cell", verticalAlign: "middle"}}>Tên khách hàng</th>
                 {/* <th >Địa chỉ</th>
 							<th className="text-center">Ngày sinh</th> */}
-                <th className="text-center">Email</th>
-                <th className="text-center">Điện thoại</th>
-                <th className="text-center">Nguồn thu thập</th>
-                <th className="text-center">Quan tâm</th>
-                <th className="text-center">
+                <th style={{display: "table-cell", verticalAlign: "middle"}} >Email</th>
+                <th style={{display: "table-cell", verticalAlign: "middle"}} className="text-center">Điện thoại</th>
+                <th style={{display: "table-cell", verticalAlign: "middle"}} className="text-center">Nguồn đầu mối</th>
+                <th style={{display: "table-cell", verticalAlign: "middle"}} className="text-center">Quan tâm</th>
+                <th style={{display: "table-cell", verticalAlign: "middle"}} className="text-center">
                   <Form.Control as="select" name="filterStatus" value={this.state.filterStatus} onChange={this.onChange}>
                     <option value={2}>Trạng thái</option>
                     <option value={1}>Tiềm năng</option>

@@ -7,30 +7,30 @@ import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
 import TablCusDetail from './TablCusDetail';
 function TabContainer(props) {
-    return (
-      <Typography component="div" style={{ padding: 8 * 3 }}>
-        {props.children}
-      </Typography>
-    );
-  }
-  
-  TabContainer.propTypes = {
-    children: PropTypes.node.isRequired,
-  };
-  
-  const useStyles = makeStyles(theme => ({
-    root: {
-      flexGrow: 1,
-      width: '100%',
-    },
-  }));
+  return (
+    <Typography component="div" style={{ padding: 8 * 3 }}>
+      {props.children}
+    </Typography>
+  );
+}
+
+TabContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+    width: '100%',
+  },
+}));
 export default function DisabledTabs(props) {
-    const classes = useStyles();
-    const [value, setValue] = React.useState(0);
-  
-    function handleChange(event, newValue) {
-      setValue(newValue);
-    }
+  const classes = useStyles();
+  const [value, setValue] = React.useState(0);
+
+  function handleChange(event, newValue) {
+    setValue(newValue);
+  }
   return (
     <div className={classes.root}>
       <AppBar position="static" color="inherit">
@@ -43,10 +43,16 @@ export default function DisabledTabs(props) {
           scrollButtons="auto"
         >
           <Tab label="Lịch sử đơn hàng" />
+          <Tab label="Lịch sử email" />
+          <Tab label="Lịch sử hội thoại" />
         </Tabs>
       </AppBar>
       {value === 0 && <TabContainer>
-          <TablCusDetail customer={props.customer}/></TabContainer>}
+        <TablCusDetail customer={props.customer} /></TabContainer>}
+      {value === 1 && <TabContainer>
+        <TablCusDetail customer={props.customer} /></TabContainer>}
+      {value === 2 && <TabContainer>
+        <TablCusDetail customer={props.customer} /></TabContainer>}
     </div>
   );
 }

@@ -12,13 +12,14 @@ class DropDownCus extends Component{
         var name = target.name;
         var value = target.value;
         this.props.onFilter ( 
-            name === 'filterName' ? value : this.filterName,
+            name === 'filterName' ? value : this.state.filterName,
         );
         this.setState({
             [name] : value,
         });
 
     }
+   
     render(){
         var {filterName} = this.state;
         return(

@@ -1,140 +1,50 @@
 import React, { Component } from 'react'
-import { Card, Row, Col } from 'react-bootstrap'
+import { Card, Row, Col } from 'react-bootstrap';
+import url from "../url";
+import axios from "axios";
+const color = ["danger", "info", "success", "dark", "warning", "primary"]
 export default class Statistics extends Component {
-
+    state = {
+        customerList: [],
+    };
+    componentDidMount() {
+        axios({
+            method: "get",
+            url: `${url}/source/list`
+        })
+            .then(respone => {
+                this.setState({
+                    customerList: respone.data
+                }, () => {
+                    console.log(this.state)
+                });
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
     render() {
+        const {customerList} = this.state;
         return (
             <Row>
-                <Col lg={3}>
-                <Card bg="danger" style={{ width: '100%'}}>
-                    <Card.Header>Nguồn</Card.Header>
-                    <Card.Body>
-                            <Card.Text>
-                                Số lượng lead: <strong>100</strong>
-                             </Card.Text>
-                            <Card.Text>
-                                Phân trăm chuyển đổi: <strong>50%</strong>
-                             </Card.Text>
-                             <Card.Text>
-                                Ngày thêm: <strong>14/09/1998</strong>
-                             </Card.Text>
-                    </Card.Body>
-                </Card>
-                </Col>
-                <Col lg={3}>
-                <Card bg="warning" style={{ width: '100%'}}>
-                    <Card.Header>Nguồn</Card.Header>
-                    <Card.Body>
-                            <Card.Text>
-                                Số lượng lead: <strong>100</strong>
-                             </Card.Text>
-                            <Card.Text>
-                                Phân trăm chuyển đổi: <strong>50%</strong>
-                             </Card.Text>
-                             <Card.Text>
-                                Ngày thêm: <strong>14/09/1998</strong>
-                             </Card.Text>
-                    </Card.Body>
-                </Card>
-                </Col>
-                <Col lg={3}>
-                <Card bg="primary" style={{ width: '100%'}}>
-                    <Card.Header>Nguồn</Card.Header>
-                    <Card.Body>
-                            <Card.Text>
-                                Số lượng lead: <strong>100</strong>
-                             </Card.Text>
-                            <Card.Text>
-                                Phân trăm chuyển đổi: <strong>50%</strong>
-                             </Card.Text>
-                             <Card.Text>
-                                Ngày thêm: <strong>14/09/1998</strong>
-                             </Card.Text>
-                    </Card.Body>
-                </Card>
-                </Col>
-                <Col lg={3}>
-                <Card bg="secondary" style={{ width: '100%'}}>
-                    <Card.Header>Nguồn</Card.Header>
-                    <Card.Body>
-                            <Card.Text>
-                                Số lượng lead: <strong>100</strong>
-                             </Card.Text>
-                            <Card.Text>
-                                Phân trăm chuyển đổi: <strong>50%</strong>
-                             </Card.Text>
-                             <Card.Text>
-                                Ngày thêm: <strong>14/09/1998</strong>
-                             </Card.Text>
-                    </Card.Body>
-                </Card>
-                </Col>
-                <Col lg={3}>
-                <Card bg="dark" style={{ width: '100%'}}>
-                    <Card.Header>Nguồn</Card.Header>
-                    <Card.Body>
-                            <Card.Text>
-                                Số lượng lead: <strong>100</strong>
-                             </Card.Text>
-                            <Card.Text>
-                                Phân trăm chuyển đổi: <strong>50%</strong>
-                             </Card.Text>
-                             <Card.Text>
-                                Ngày thêm: <strong>14/09/1998</strong>
-                             </Card.Text>
-                    </Card.Body>
-                </Card>
-                </Col>
-                <Col lg={3}>
-                <Card bg="light" style={{ width: '100%'}}>
-                    <Card.Header>Nguồn</Card.Header>
-                    <Card.Body>
-                            <Card.Text>
-                                Số lượng lead: <strong>100</strong>
-                             </Card.Text>
-                            <Card.Text>
-                                Phân trăm chuyển đổi: <strong>50%</strong>
-                             </Card.Text>
-                             <Card.Text>
-                                Ngày thêm: <strong>14/09/1998</strong>
-                             </Card.Text>
-                    </Card.Body>
-                </Card>
-                </Col>
-                <Col lg={3}>
-                <Card bg="success" style={{ width: '100%'}}>
-                    <Card.Header>Nguồn</Card.Header>
-                    <Card.Body>
-                            <Card.Text>
-                                Số lượng lead: <strong>100</strong>
-                             </Card.Text>
-                            <Card.Text>
-                                Phân trăm chuyển đổi: <strong>50%</strong>
-                             </Card.Text>
-                             <Card.Text>
-                                Ngày thêm: <strong>14/09/1998</strong>
-                             </Card.Text>
-                    </Card.Body>
-                </Card>
-                </Col>
-                <Col lg={3}>
-                <Card bg="info" style={{ width: '100%'}}>
-                    <Card.Header>Nguồn</Card.Header>
-                    <Card.Body>
-                            <Card.Text>
-                                Số lượng lead: <strong>100</strong>
-                             </Card.Text>
-                            <Card.Text>
-                                Phân trăm chuyển đổi: <strong>50%</strong>
-                             </Card.Text>
-                             <Card.Text>
-                                Ngày thêm: <strong>14/09/1998</strong>
-                             </Card.Text>
-                    </Card.Body>
-                </Card>
-                </Col>
-
-                
+                {customerList && customerList.map((customer) => {
+                    return <Col key={customer.id} lg={3}>
+                        <Card bg={color[Math.floor(Math.random()*color.length)]} style={{ width: '100%' }}>
+                            <Card.Header>{customer.name}</Card.Header>
+                            <Card.Body>
+                                <Card.Text>
+                                    Số lượng lead: <strong className="float-right">{customer.total}</strong>
+                                </Card.Text>
+                                <Card.Text>
+                                    Phân trăm chuyển đổi: <strong className="float-right">{customer.rate}</strong>
+                                </Card.Text>
+                                <Card.Text>
+                                    Ngày thêm: <strong className="float-right">{customer.date}</strong>
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                })}
             </Row>
         );
 

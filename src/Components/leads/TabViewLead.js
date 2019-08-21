@@ -46,7 +46,7 @@ export default function ScrollableTabsButtonAuto(props) {
           scrollButtons="auto"
         >
           <Tab label="Tất cả"/>
-          <Tab label="Thống kê nguồn"/>
+          <Tab label="Nguồn đầu mối"/>
         </Tabs>
       </AppBar>
       {value === 0 && <TabContainer><CustomerList /></TabContainer>}

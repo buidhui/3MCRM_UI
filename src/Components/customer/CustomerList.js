@@ -90,12 +90,12 @@ class CustomerList extends Component{
 					<Table responsive  hover>
 						<thead>
 							<tr>
-							<th >Tên khách hàng</th>
-							<th >Địa chỉ</th>
-							<th className="text-center">Ngày sinh</th>
-							<th className="text-center">Email</th>
-							<th className="text-center">Điện thoại</th>
-							<th className="text-center">Giới tính</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}}>Tên khách hàng</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}}>Địa chỉ</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}} className="text-center">Ngày sinh</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}} >Email</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}} className="text-center">Điện thoại</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}} className="text-center">Giới tính</th>
 							</tr>
 						</thead>
 						<tbody> 

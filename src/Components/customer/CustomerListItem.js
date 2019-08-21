@@ -9,7 +9,7 @@ class CustomerListItem extends Component{
                 <td ><Link className="list-item"  to={'customers/' + customer.id}>{customer.name}</Link> </td>
                 <td ><Link className="list-item" to={'customers/' + customer.id}>{(customer.address) ? customer.address : "Đang cập nhật"}</Link> </td>
                 <td className="text-center" ><Link className="list-item" to={'customers/' + customer.id}>{(customer.dob) ? moment(customer.dob).format('DD/MM/YYYY') : "Đang cập nhật"}</Link> </td>
-                <td className="text-center" ><Link className="list-item" to={'customers/' + customer.id}>{customer.email}</Link> </td>
+                <td ><Link className="list-item" to={'customers/' + customer.id}>{customer.email}</Link> </td>
                 <td className="text-center" ><Link className="list-item" to={'customers/' + customer.id}>{customer.phone}</Link> </td>
                 <td className="text-center" ><Link className="list-item" to={'customers/' + customer.id}>{customer.gender === 1 ? "Nam" : "Nữ"}</Link>  </td>
                 {/* <td>{customer.customerName}</td>

@@ -114,27 +114,28 @@ class CustomerList extends Component{
 						<div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
 							<DropDownCus onFilter ={this.onFilter }/>
 						</div>
-						{/* <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-							<PopupForm open={this.props.open} onUpdateData={this.onUpdateData}/>
-						</div> */}
+						<div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+							 <Form.Control as="select" name="filterType" value={this.state.filterType} onChange={this.onChange}>
+									<option value={-1}>Loại</option>
+									{catList && catList.map((cat) => {
+										return <option key={cat.id} value={cat.id}>{cat.name} </option>
+									})}
+								</Form.Control> 
+						</div> 
+						
 					</div>												
 					<Table responsive  hover>
 						<thead>
 							<tr>
 							<th >Mã sản phẩm</th>
-							<th >Tên sản phẩm</th>
-							<th className="text-center">
-								<Form.Control as="select" name="filterType" value={this.state.filterType} onChange={this.onChange}>
-									<option value={-1}>Loại</option>
-									{catList && catList.map((cat) => {
-										return <option key={cat.id} value={cat.id}>{cat.name} </option>
-									})}
-								</Form.Control>
+							<th style={{display: "table-cell", verticalAlign: "middle"}} className="text-center">Tên sản phẩm</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}} className="text-center">Loại
+								
 							</th>
-							<th className="text-center">Nhãn hiệu</th>
-							<th className="text-center">Xuất xứ</th>
-							<th className="text-center">Số lượng đã bán</th>
-							<th className="text-center">Số lượng có thể bán</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}} className="text-center">Nhãn hiệu</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}} className="text-center">Xuất xứ</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}} className="text-center">Số lượng đã bán</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}} className="text-center">Số lượng có thể bán</th>
 							</tr>
 						</thead>
 						<tbody> 

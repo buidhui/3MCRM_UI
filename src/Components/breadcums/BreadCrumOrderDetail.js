@@ -26,7 +26,7 @@ export default function SimpleBreadcrumbs(props) {
           <Link className="list-item" to="/" >
             Tổng quan
           </Link>
-          <Link className="list-item" to="/customers" >
+          <Link className="list-item" to="/orders" >
             Danh sách đơn hàng
           </Link>
           <Typography color="textPrimary">Mã đơn {props.customer && props.customer}</Typography>

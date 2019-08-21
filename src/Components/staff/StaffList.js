@@ -89,12 +89,12 @@ class StaffList extends Component{
 					<Table responsive  hover>
 						<thead>
 							<tr>
-							<th >Tên nhân viên</th>
-							<th >Chức vụ</th>
-							<th className="text-center">Ngày sinh</th>
-							<th >Email</th>
-							<th className="text-center">Điện thoại</th>
-							<th className="text-center">Giới tính</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}}>Tên nhân viên</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}}>Chức vụ</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}}className="text-center">Ngày sinh</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}}>Email</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}}className="text-center">Điện thoại</th>
+							<th style={{display: "table-cell", verticalAlign: "middle"}}className="text-center">Giới tính</th>
 							</tr>
 						</thead>
 						<tbody> 
