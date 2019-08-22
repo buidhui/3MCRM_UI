@@ -76,11 +76,26 @@ const SideNavigation = () => {
               <span>Báo cáo</span>
             </Link>
           </li>
+
           <li>
-            <Link to="/marketing">
+            <a href="top#" className="has-dropdown">
               <i className="ion ion-stats-bars" />
-              <span>Marketing</span>
-            </Link>
+              <span>Khách hàng</span>
+            </a>
+            <ul className="menu-dropdown">
+              <li>
+                <Link to="/marketing">
+                  <i className="ion ion-ios-circle-outline" />
+                  <span>Chiến dịch Marketing</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/groupcustomers">
+                  <i className="ion ion-ios-circle-outline" />
+                  Đặt lịch hẹn
+                </Link>
+              </li>
+            </ul>
           </li>
           {/* <li>
 									<a href="top#" className="has-dropdown"><i className="ion ion-ios-copy-outline" /><span>Mẫu views</span></a>

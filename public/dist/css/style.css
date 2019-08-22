@@ -154,6 +154,9 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
   padding: 10px 23px;
   letter-spacing: 0.4px;
 }
+.btn_save{
+  width: 30% !important;
+}
 .btn:active,
 .btn:focus,
 .btn:hover {
@@ -192,12 +195,13 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 }
 .btn-primary {
   background-color: #574b90;
+  /* width: 60%; */
 }
 .btn-primary:focus,
 .btn-primary:focus:active,
 .btn-primary:active,
 .btn-primary:hover {
-  background-color: #4b3f82 !important;
+  background-color: #1a9df0 !important;
 }
 .btn-round {
   border-radius: 30px;
@@ -212,8 +216,9 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 }
 
 .sidebar-brand {
-  margin-bottom: 35px;
-  background-color: transparent;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  background-color: #212330 !important;
 }
 
 .sidebar-user{
@@ -745,17 +750,24 @@ body.sidebar-gone .main-content {
 .card.card-sm-3 .card-header,
 .card.card-sm-4 .card-header {
 	padding-bottom: 0;
-	padding-top: 25px;
+  padding-top: 25px;
+}
+.card-chart h4 {
+  font-size: 22px;
+	color: #3b4449;
+	letter-spacing: 1px;
+text-align: center;
 }
 .card.card-sm-3 .card-header h4,
 .card.card-sm-4 .card-header h4 {
-	font-size: 10px;
+	font-size: 12px;
 	letter-spacing: 1px;
 	color: #3b4449;
 }
 .card.card-sm-3 .card-body,
 .card.card-sm-4 .card-body {
-	font-size: 20px;
+  margin-top: 8px;
+	font-size: 16px;
 }
 .card.card-sm-4 .card-icon {
 	border-radius: 50%;
@@ -812,6 +824,10 @@ body.sidebar-gone .main-content {
 	color: #fff;
 	opacity: .9;
 }
+
+
+
+
 /*end card*/
 .file-input {
   display: inline-block;
@@ -844,25 +860,26 @@ body.sidebar-gone .main-content {
   margin-right: 14px;
 }
  .btn_upload{
-  background-color: white;
-  color: dodgerblue;
-  border: none;
-  border-radius: 5px;
-  width: 60px;
-  height: 60px;
+  background-color: white !important;
+  /* color: dodgerblue !important; */
+  /* border: none !important; */
+  /* border-radius: 5px !important; */
+  margin: 0px !important;
+  box-shadow: none !important;
+height: 0px;
+font-size: 50px !important;
+color: rgb(161, 161, 161) !important;
+text-align: justify;  
 }
-/* .btn_upload:hover{
-  background-color: dodgerblue;
-} */
+
 .upload{
-  color: rgb(161, 161, 161);
-  font-size: 40px;
+  transform: translate(-10px,-25px);
 }
 .btn_upload:hover > .upload{
-  color: dodgerblue;
+  color: dodgerblue !important;
 }
 .file-input:hover > .button {
-  background: dodgerblue;
+  background: dodgerblue ;
   color: white;
 }
 

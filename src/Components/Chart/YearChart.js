@@ -92,7 +92,7 @@ class YearChart extends React.Component {
     return (
       <MDBContainer>
         <Bar
-          height={255}
+          height={260}
           data={this.state.dataBar}
           //   options={this.state.barChartOptions}
         />

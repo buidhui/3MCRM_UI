@@ -11,7 +11,10 @@ class DashBoardChart extends Component {
           <div className="card ">
             <div className="card-body">
               <div className="card-chart">
-                <h4>Tỉ lệ các nhóm khách hàng</h4>
+                <h4>
+                  {" "}
+                  <b>Tỉ lệ các nhóm khách hàng</b>
+                </h4>
                 <br />
                 <Tabs
                   defaultActiveKey="week"

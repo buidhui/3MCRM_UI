@@ -141,7 +141,7 @@ class WeekChart extends React.Component {
     return (
       <MDBContainer>
         <Line
-          height={255}
+          height={260}
           data={this.state.dataLine}
           options={{ responsive: true }}
         />

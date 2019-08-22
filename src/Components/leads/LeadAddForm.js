@@ -22,7 +22,7 @@ class CustomerAddForm extends Component {
       staff: "",
       customerType: [],
       staffList: [],
-      groupList: [],
+      groupList: []
     };
   }
   onUpdateData = data => {
@@ -53,7 +53,7 @@ class CustomerAddForm extends Component {
       .catch(error => {
         alert("Không thể thêm mới khách hàng");
         console.log(error);
-        console.log(obj)
+        console.log(obj);
       });
   }
   onChange = event => {
@@ -96,33 +96,37 @@ class CustomerAddForm extends Component {
       this.props.onClick();
     }
   };
-  componentDidMount(){
+  componentDidMount() {
     axios({
-      method: 'get',
+      method: "get",
       url: `${url}/staffs/list`
-    }).then(respone => {
-      this.setState({
-        staffList: respone.data,
+    })
+      .then(respone => {
+        this.setState({
+          staffList: respone.data
+        });
       })
-    }).catch(error => {
-      console.log(error)
-    });
+      .catch(error => {
+        console.log(error);
+      });
     axios({
-      method: 'get',
+      method: "get",
       url: `${url}/vinh`
-    }).then(respone => {
-      this.setState({
-        groupList: respone.data,
+    })
+      .then(respone => {
+        this.setState({
+          groupList: respone.data
+        });
       })
-    }).catch(error => {
-      console.log(error)
+      .catch(error => {
+        console.log(error);
+      });
+    let { customer } = this.props;
+    this.setState({
+      name: customer.name,
+      email: customer.email ? customer.email : "Chưa có",
+      phone: customer.phone ? customer.phone : "Chưa có"
     });
-      let {customer} = this.props;
-      this.setState({
-          name : customer.name,
-          email: (customer.email) ? customer.email : "Chưa có",
-          phone: (customer.phone) ? customer.phone : "Chưa có",
-      })
   }
   pushCustomer = (staffList, staff) => {
     if (staffList.length !== 0 && staff.length === 0) {
@@ -137,27 +141,33 @@ class CustomerAddForm extends Component {
     if (groupList.length !== 0 && group.length === 0) {
       for (var i = 0; i < groupList.length; i++) {
         var value = groupList[i].id;
-        var label = groupList[i].name
-        group.push({ value: value,id:value, label: label });
+        var label = groupList[i].name;
+        group.push({ value: value, id: value, label: label });
       }
     }
   };
   handleChangeCus = selectedStaff => {
-    this.setState({
-      staff: selectedStaff.value
-    },()=>{
-      console.log(this.state)
-    });
+    this.setState(
+      {
+        staff: selectedStaff.value
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
   };
   handleChangeGroup = selectedGroup => {
-    this.setState({
-      customerType: selectedGroup
-    }, () => {
-      console.log(this.state)
-    })
+    this.setState(
+      {
+        customerType: selectedGroup
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
   };
   render() {
-    const { staffList, groupList} = this.state;
+    const { staffList, groupList } = this.state;
     this.pushCustomer(staffList, staff);
     this.pushGroup(groupList, group);
     const selectedGroup = undefined;
@@ -171,9 +181,7 @@ class CustomerAddForm extends Component {
         <Col xs={12}>
           <Form>
             <Form.Label>
-              <h4>
-                Thông tin cơ bản 
-              </h4>
+              <h4>Thông tin cơ bản</h4>
             </Form.Label>
             <Row>
               <Col xs={8} className="add-col">
@@ -193,7 +201,9 @@ class CustomerAddForm extends Component {
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridDOB">
-                      <Form.Label>Ngày sinh <span style={{ color: "red" }}>*</span></Form.Label>
+                      <Form.Label>
+                        Ngày sinh <span style={{ color: "red" }}>*</span>
+                      </Form.Label>
                       <Form.Control
                         type="date"
                         required="required"
@@ -302,7 +312,7 @@ class CustomerAddForm extends Component {
               <Button
                 variant="primary"
                 type="submit"
-                className="float-right"
+                className="btn_save float-right"
                 onClick={this.onSubmit}
               >
                 Lưu thông tin

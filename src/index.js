@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-// import App from "./App";
-import AdminLayout from "./Layout/AdminLayout";
+import App from "./App";
+// import AdminLayout from "./Layout/AdminLayout";
 // import Layout from "./Layout/Layout";
 
 ReactDOM.render(
   <div>
-    {/* <App /> */}
+    <App />
     {/* <Layout /> */}
-    <AdminLayout />
+    {/* <AdminLayout /> */}
   </div>,
 
   document.getElementById("root")

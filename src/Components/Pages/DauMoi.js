@@ -72,7 +72,6 @@ class DsKhachHang extends Component {
             <div className="col-lg-1 col-md-1 col-sm-1">
               <button type="submit" className="btn_upload">
                 <i className="fas fa-arrow-circle-up upload" />
-                {/* <i className="fas fa-cloud-upload-alt upload" /> */}
               </button>
             </div>
 

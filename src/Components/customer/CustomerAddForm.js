@@ -19,36 +19,41 @@ class CustomerAddForm extends Component {
       description: "",
       staff: "",
       customerType: [],
-      groupList: [],
+      groupList: []
     };
   }
   componentDidMount() {
     axios({
-      method: 'get',
+      method: "get",
       url: `${url}/vinh`
-    }).then(respone => {
-      this.setState({
-        groupList: respone.data,
+    })
+      .then(respone => {
+        this.setState({
+          groupList: respone.data
+        });
       })
-    }).catch(error => {
-      console.log(error)
-    });
+      .catch(error => {
+        console.log(error);
+      });
   }
   pushGroup = (groupList, group) => {
     if (groupList.length !== 0 && group.length === 0) {
       for (var i = 0; i < groupList.length; i++) {
         var value = groupList[i].id;
-        var label = groupList[i].name
+        var label = groupList[i].name;
         group.push({ value: value, id: value, label: label });
       }
     }
   };
   handleChangeGroup = selectedGroup => {
-    this.setState({
-      customerType: selectedGroup
-    },()=>{
-      console.log(this.state)
-    })
+    this.setState(
+      {
+        customerType: selectedGroup
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
   };
   onUpdateData = data => {
     this.props.onUpdateData(data);
@@ -87,26 +92,25 @@ class CustomerAddForm extends Component {
     if (name === "gender") {
       value = target.value === "1" ? 1 : 0;
     }
-    this.setState(
-      {
-        [name]: value
-      });
+    this.setState({
+      [name]: value
+    });
   };
   onSubmit = event => {
     event.preventDefault();
 
     const data = {
-      "name": this.state.name ? this.state.name : null,
-      "address": this.state.address ? this.state.address : null,
-      "dob": this.state.DOB ? this.state.DOB : null,
-      "email": this.state.email ? this.state.email : null,
-      "gender": this.state.gender ? this.state.gender : null,
-      "phone": this.state.phone ? this.state.phone : null,
-      "note": this.state.description ? this.state.description : null,
-      "staff": {
+      name: this.state.name ? this.state.name : null,
+      address: this.state.address ? this.state.address : null,
+      dob: this.state.DOB ? this.state.DOB : null,
+      email: this.state.email ? this.state.email : null,
+      gender: this.state.gender ? this.state.gender : null,
+      phone: this.state.phone ? this.state.phone : null,
+      note: this.state.description ? this.state.description : null,
+      staff: {
         id: this.state.staff ? this.state.staff : null
       },
-      "groups": this.state.customerType ? this.state.customerType : null
+      groups: this.state.customerType ? this.state.customerType : null
     };
     if (!data.name || !data.email || !data.phone) {
       alert("Tên khách hàng, email và số điện thoại không được để trống!");
@@ -128,9 +132,7 @@ class CustomerAddForm extends Component {
         <Col xs={12}>
           <Form>
             <Form.Label>
-              <h4>
-                Thông tin cơ bản 
-              </h4>
+              <h4>Thông tin cơ bản</h4>
             </Form.Label>
             <Row>
               <Col lg={8} className="add-col">
@@ -259,7 +261,7 @@ class CustomerAddForm extends Component {
               <Button
                 variant="primary"
                 type="submit"
-                className="float-right"
+                className="btn_save float-right"
                 onClick={this.onSubmit}
               >
                 Lưu thông tin

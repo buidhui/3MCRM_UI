@@ -85,9 +85,7 @@ class StaffAddFrom extends Component {
         <Col xs={12}>
           <Form onSubmit={this.onSubmit}>
             <Form.Label>
-              <h4>
-                Thông tin cơ bản 
-              </h4>
+              <h4>Thông tin cơ bản</h4>
             </Form.Label>
             <Row>
               <Col lg={8} className="add-col">
@@ -189,7 +187,11 @@ class StaffAddFrom extends Component {
               </Col>
             </Row>
             <hr className="form-line" />
-            <Button variant="primary" type="submit" className="float-right">
+            <Button
+              variant="primary"
+              type="submit"
+              className="btn_save float-right"
+            >
               Lưu thông tin
             </Button>
           </Form>
