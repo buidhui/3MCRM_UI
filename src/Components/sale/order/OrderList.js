@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, {Component} from 'react'
 import CustomerListItem from './OrderListItem';
 import DropDownCus from './DropDownOrder';
-// import PopupForm from './PopupFormOrder';
+import PopupForm from './PopupFormOrder';
 import BreadCrum from '../../breadcums/BreadCrumOrderList'
 import {Table} from 'react-bootstrap';
 import url from '../../url'
@@ -73,9 +73,9 @@ class CustomerList extends Component{
 						<div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 							<DropDownCus onFilter ={this.onFilter }/>
 						</div>
-						{/* <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 							<PopupForm open={this.props.open} onUpdateData={this.onUpdateData} />
-						</div> */}
+						</div>
 					</div>												
 					<Table responsive  hover>
 						<thead>

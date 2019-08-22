@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { DayPilotCalendar } from "daypilot-pro-react";
+// import { DayPilotCalendar } from "daypilot-pro-react";
 
 class Scheduler extends Component {
   render() {
@@ -10,7 +10,7 @@ class Scheduler extends Component {
             <div>Đặt lịch hẹn</div>
           </h1>
         </section>
-        <DayPilotCalendar
+        {/* <DayPilotCalendar
           viewType={"Week"}
           onTimeRangeSelected={args => {
             this.calendar.message(
@@ -23,7 +23,7 @@ class Scheduler extends Component {
           ref={component => {
             this.calendar = component && component.control;
           }}
-        />
+        /> */}
       </React.Fragment>
     );
   }

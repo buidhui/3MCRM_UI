@@ -12,6 +12,11 @@ export default class Statistics extends Component {
                 method: "get",
                 url: `${url}/source/list`
             })
+            .then((respone) =>{
+                this.setState({
+                    customerList: respone.data
+                })
+            })
             .catch(error => {
                 console.log(error);
             });
