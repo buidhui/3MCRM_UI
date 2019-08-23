@@ -60,7 +60,7 @@ class SideNavigation extends Component {
               </Link>
             </li>
             <li>
-              <a href="top#" className="has-dropdown">
+              <a href="/" className="has-dropdown">
                 <i className="fas fa-user" />
                 <span>Khách hàng</span>
               </a>
@@ -80,7 +80,7 @@ class SideNavigation extends Component {
               </ul>
             </li>
             <li>
-              <a href="top#" className="has-dropdown">
+              <a href="/" className="has-dropdown">
                 <i className="fas fa-shopping-cart" />
                 <span>Quản lí bán hàng</span>
               </a>
@@ -106,7 +106,7 @@ class SideNavigation extends Component {
             </Link>
           </li> */}
             <li>
-              <a href="top#" className="has-dropdown">
+              <a href="/" className="has-dropdown">
                 <i className="ion ion-stats-bars" />
                 <span>Marketing</span>
               </a>
