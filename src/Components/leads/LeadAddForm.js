@@ -178,13 +178,13 @@ class CustomerAddForm extends Component {
           when={!!this.state.name}
           message="Bạn có chắc chắn muốn dừng lại?"
         />
-        <Col xs={12}>
+        <Col lg={12}>
           <Form>
             <Form.Label>
               <h4>Thông tin cơ bản</h4>
             </Form.Label>
             <Row>
-              <Col xs={8} className="add-col">
+              <Col lg={8} className="add-col">
                 <Container className="add-form">
                   <Form.Row className="add-form-row">
                     <Form.Group as={Col} controlId="formGridName">
@@ -214,7 +214,7 @@ class CustomerAddForm extends Component {
                       />
                     </Form.Group>
 
-                    <Form.Group as={Col} xs={3} controlId="formGridGender">
+                    <Form.Group as={Col} lg={3} controlId="formGridGender">
                       <Form.Label>Giới tính</Form.Label>
                       <Form.Control
                         as="select"
@@ -228,7 +228,7 @@ class CustomerAddForm extends Component {
                     </Form.Group>
                   </Form.Row>
                   <Form.Row className="add-form-row">
-                    <Form.Group as={Col} xs={12} controlId="formGridAddress">
+                    <Form.Group as={Col} lg={12} controlId="formGridAddress">
                       <Form.Label>Địa chỉ</Form.Label>
                       <Form.Control
                         type="address"
@@ -278,7 +278,7 @@ class CustomerAddForm extends Component {
                   </Form.Row>
                 </Container>
               </Col>
-              <Col xs={4}>
+              <Col lg={4}>
                 <Container className="add-form">
                   <Form.Row className="add-form-row">
                     <Form.Group as={Col} controlId="formGridName">
@@ -311,7 +311,7 @@ class CustomerAddForm extends Component {
             <Link to="/customers">
               <Button
                 variant="primary"
-                type="submit"
+                // type="submit"
                 className="btn_save float-right"
                 onClick={this.onSubmit}
               >

@@ -154,9 +154,9 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
   padding: 10px 23px;
   letter-spacing: 0.4px;
 }
-.btn_save{
+/* .btn_save{
   width: 30% !important;
-}
+} */
 .btn:active,
 .btn:focus,
 .btn:hover {

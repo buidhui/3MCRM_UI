@@ -100,7 +100,7 @@ class StaffUpdateForm extends Component {
     return (
       <Row>
         <Col xs={12}>
-          <Form onSubmit={this.onSubmit}>
+          <Form >
             <Form.Label>
               <h4>Thông tin cơ bản </h4>
             </Form.Label>
@@ -198,8 +198,9 @@ class StaffUpdateForm extends Component {
             <hr className="form-line" />
             <Button
               variant="primary"
-              type="submit"
+              // type="submit"
               className="btn_save float-right"
+              onClick={this.onSubmit}
             >
               Lưu thông tin
             </Button>

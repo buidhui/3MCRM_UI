@@ -260,7 +260,7 @@ class CustomerAddForm extends Component {
             <Link to="/customers">
               <Button
                 variant="primary"
-                type="submit"
+                // type="submit"
                 className="btn_save float-right"
                 onClick={this.onSubmit}
               >
