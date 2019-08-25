@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import CustomerList from "../leads/TabViewLead";
 import { post } from "axios";
 
-class DsKhachHang extends Component {
+class Lead extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -95,4 +95,4 @@ class DsKhachHang extends Component {
   }
 }
 
-export default DsKhachHang;
+export default Lead;

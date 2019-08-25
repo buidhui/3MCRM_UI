@@ -6,7 +6,7 @@ import PopupForm from "./PopupFormStaff";
 import { Table } from "react-bootstrap";
 import url from "../url";
 import BreadCrum from "../breadcums/BreadCrumStaffList";
-import ChangePassword from "./ChangePassword";
+// import ChangePassword from "./ChangePassword";
 class StaffList extends Component {
   state = {
     staffList: [],

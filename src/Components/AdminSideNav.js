@@ -117,12 +117,12 @@ class SideNavigation extends Component {
                     <span>Chiến dịch Marketing</span>
                   </Link>
                 </li>
-                {/* <li>
+                <li>
                   <Link to="/scheduler">
                     <i className="ion ion-ios-circle-outline" />
-                    Đặt lịch
+                    Tạo mẫu Email
                   </Link>
-                </li> */}
+                </li>
               </ul>
             </li>
             <li className="menu-header">Thêm</li>

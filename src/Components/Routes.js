@@ -1,38 +1,36 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import TongQuan from "./Pages/TongQuan";
-import DsKhachHang from "./Pages/DsKhachHang";
-import NhomKhachHang from "./Pages/NhomKhachHang";
-import DsSanPham from "./Pages/DsSanPham";
-import DsDonHang from "./Pages/DsDonHang";
-import BaoCao from "./Pages/BaoCao";
 import Marketing from "./Pages/Marketing";
-import DsNhanVien from "./Pages/DsNhanVien";
-import ChiTietKhachHang from "./Pages/ChiTietKhachHang";
-import ChiTietDonHang from "./Pages/ChiTietDonHang";
-import ChiTietNhomKH from "./Pages/ChiTietNhomKH";
-import ChiTietNhanVien from "./Pages/ChiTietNhanVien";
-import DauMoi from "./Pages/DauMoi";
+import CustomersDetail from "./Pages/CustomersDetail";
 import Setting from "./Pages/Setting";
 import Scheduler from "./Pages/Scheduler";
+import OrderList from "./Pages/OrderList";
+// import CustomerDetail from "./sale/order/OrderDetail";
+import Lead from "./Pages/Lead";
+import DashBoard from "./Pages/DashBoard";
+import GroupsCustomer from "./Pages/GroupsCustomer";
+import ProductsList from "./Pages/ProductsList";
+import StaffsList from "./Pages/StaffsList";
+import OrdersList from "./Pages/OrdersList";
+import GroupCusDetail from "./Pages/GroupCusDetail";
+import StaffsDetail from "./Pages/StaffsDetail";
 class Routes extends React.Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/" component={TongQuan} />
-        <Route path="/dashboard" component={TongQuan} />
-        <Route path="/staffs" exact component={DsNhanVien} />
-        <Route path="/staffs/:id" component={ChiTietNhanVien} />
-        <Route path="/customers" exact component={DsKhachHang} />
-        <Route path="/customers/:id" component={ChiTietKhachHang} />
-        <Route path="/groupcustomers" exact component={NhomKhachHang} />
-        <Route path="/groupcustomers/:id" component={ChiTietNhomKH} />
-        <Route path="/products" exact component={DsSanPham} />
-        <Route path="/orders" exact component={DsDonHang} />
-        <Route path="/orders/:id" component={ChiTietDonHang} />
-        <Route path="/report" component={BaoCao} />
+        <Route exact path="/" component={DashBoard} />
+        <Route path="/dashboard" component={DashBoard} />
+        <Route path="/staffs" exact component={StaffsList} />
+        <Route path="/staffs/:id" component={StaffsDetail} />
+        <Route path="/customers" exact component={Lead} />
+        <Route path="/customers/:id" component={CustomersDetail} />
+        <Route path="/groupcustomers" exact component={GroupsCustomer} />
+        <Route path="/groupcustomers/:id" component={GroupCusDetail} />
+        <Route path="/products" exact component={ProductsList} />
+        <Route path="/orders" exact component={OrdersList} />
+        <Route path="/orders/:id" component={OrderList} />
         <Route path="/marketing" component={Marketing} />
-        <Route path="/leads" component={DauMoi} />
+        <Route path="/leads" component={Lead} />
         <Route path="/scheduler" component={Scheduler} />
 
         <Route path="/setting" component={Setting} />

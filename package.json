@@ -4,9 +4,9 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.3.0",
+    "@tinymce/tinymce-react": "^3.3.1",
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
-    "daypilot-pro-react": "https://npm.daypilot.org/daypilot-pro-react/trial/2018.2.3297.tar.gz",
     "jquery": "^3.4.1",
     "mdbreact": "^4.18.1",
     "moment": "^2.24.0",

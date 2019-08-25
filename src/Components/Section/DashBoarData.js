@@ -28,39 +28,40 @@ class DashBoarData extends Component {
 
   render() {
     var { statistics } = this.state;
-    function formatMoney(
-      amount,
-      decimalCount = 2,
-      decimal = "",
-      thousands = ","
-    ) {
-      try {
-        decimalCount = Math.abs(decimalCount);
-        decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+    // function formatMoney(
+    //   amount,
+    //   decimalCount = 2,
+    //   decimal = "",
+    //   thousands = ","
+    // ) {
+    //   try {
+    //     decimalCount = Math.abs(decimalCount);
+    //     decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
 
-        const negativeSign = amount < 0 ? "-" : "";
+    //     const negativeSign = amount < 0 ? "-" : "";
 
-        let i = parseInt(
-          (amount = Math.abs(Number(amount) || 0).toFixed(decimalCount))
-        ).toString();
-        let j = i.length > 3 ? i.length % 3 : 0;
+    //     let i = parseInt(
+    //       (amount = Math.abs(Number(amount) || 0).toFixed(decimalCount))
+    //     ).toString();
+    //     let j = i.length > 3 ? i.length % 3 : 0;
 
-        return (
-          negativeSign +
-          (j ? i.substr(0, j) + thousands : "") +
-          i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) +
-          (decimalCount
-            ? decimal +
-              Math.abs(amount - i)
-                .toFixed(decimalCount)
-                .slice(4)
-            : "")
-        );
-      } catch (e) {
-        console.log(e);
-      }
-    }
-    var result = formatMoney(statistics.revenue);
+    //     return (
+    //       negativeSign +
+    //       (j ? i.substr(0, j) + thousands : "") +
+    //       i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) +
+    //       (decimalCount
+    //         ? decimal +
+    //           Math.abs(amount - i)
+    //             .toFixed(decimalCount)
+    //             .slice(4)
+    //         : "")
+    //     );
+    //   } catch (e) {
+    //     console.log(e);
+    //   }
+    // }
+    // var result = formatMoney(statistics.revenue);
+    var back = Math.ceil(statistics.back);
 
     return (
       <React.Fragment>
@@ -118,10 +119,10 @@ class DashBoarData extends Component {
               </div>
               <div className="card-wrap">
                 <div className="card-header">
-                  <h4>Doanh thu</h4>
+                  <h4>Tỉ lệ KH quay lại</h4>
                 </div>
                 <div className="card-body">
-                  <small>{result} VNĐ</small>
+                  <small>{back} %</small>
                 </div>
               </div>
             </div>

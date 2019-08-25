@@ -4,7 +4,7 @@ import DashBoarData from "../Section/DashBoarData";
 import DashBoardChart from "../Section/DashBoardChart";
 import DashBoardTopNv from "../Section/DashBoardTopNv";
 
-class TongQuan extends Component {
+class DashBoard extends Component {
   render() {
     return (
       <React.Fragment>
@@ -16,7 +16,7 @@ class TongQuan extends Component {
 
           <div className="row">
             <DashBoardChart />
-            <DashBoardTopNv/>
+            <DashBoardTopNv />
           </div>
         </section>
       </React.Fragment>
@@ -24,4 +24,4 @@ class TongQuan extends Component {
   }
 }
 
-export default TongQuan;
+export default DashBoard;

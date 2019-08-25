@@ -1,17 +1,18 @@
 import React, { Component } from "react";
-
-class BaoCao extends Component {
+import OrderList from "../sale/order/OrderList";
+class OrdersList extends Component {
   render() {
     return (
       <React.Fragment>
         <section className="section">
           <h1 className="section-header">
-            <div>Báo cáo</div>
+            <div>Danh sách đơn hàng</div>
           </h1>
+          <OrderList />
         </section>
       </React.Fragment>
     );
   }
 }
 
-export default BaoCao;
+export default OrdersList;

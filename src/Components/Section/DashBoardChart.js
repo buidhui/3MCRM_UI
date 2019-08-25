@@ -21,7 +21,7 @@ class DashBoardChart extends Component {
                   transition={false}
                   id="noanim-tab-example"
                 >
-                  <Tab eventKey="week" title="Tuần" className="btn">
+                  <Tab eventKey="week" title="Tháng" className="btn">
                     <WeekChart />
                   </Tab>
                   {/* <Tab eventKey="month" title="Tháng" className="btn">

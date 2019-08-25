@@ -1,18 +1,18 @@
 import React, { Component } from "react";
-import ProductList from '../sale/product/ProductList'
-class DsSanPham extends Component {
+import CustomerGroupList from "../customer/customerGroup/CustomerGroupList";
+class GroupsCustomer extends Component {
   render() {
     return (
       <React.Fragment>
         <section className="section">
           <h1 className="section-header">
-            <div>Danh sách sản phẩm</div>
+            <div>Nhóm khách hàng</div>
           </h1>
-          <ProductList />
+          <CustomerGroupList />
         </section>
       </React.Fragment>
     );
   }
 }
 
-export default DsSanPham;
+export default GroupsCustomer;

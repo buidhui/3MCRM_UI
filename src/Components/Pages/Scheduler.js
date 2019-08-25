@@ -1,29 +1,31 @@
 import React, { Component } from "react";
-// import { DayPilotCalendar } from "daypilot-pro-react";
+import { Editor } from "@tinymce/tinymce-react";
 
 class Scheduler extends Component {
+  handleEditorChange = e => {
+    console.log("Content was updated:", e.target.getContent());
+    console.log(e.target.getContent());
+  };
   render() {
     return (
       <React.Fragment>
         <section className="section">
           <h1 className="section-header">
-            <div>Đặt lịch hẹn</div>
+            <div>Tạo mẫu Email</div>
           </h1>
         </section>
-        {/* <DayPilotCalendar
-          viewType={"Week"}
-          onTimeRangeSelected={args => {
-            this.calendar.message(
-              "Selected range: " +
-                args.start.toString("hh:mm tt") +
-                " - " +
-                args.end.toString("hh:mm tt")
-            );
+
+        <Editor
+          initialValue="<p>Soạn thảo mẫu email tại đây</p>"
+          init={{
+            plugins: "link image code",
+            toolbar:
+              "undo redo | bold italic | link image  | alignleft aligncenter alignright |",
+            min_height: 500,
+            max_height: 600
           }}
-          ref={component => {
-            this.calendar = component && component.control;
-          }}
-        /> */}
+          onChange={this.handleEditorChange}
+        />
       </React.Fragment>
     );
   }

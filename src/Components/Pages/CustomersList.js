@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import CustomerList from "../customer/CustomerList";
 
-class DsKhachHang extends Component {
+class CustomersList extends Component {
   downloadFile = () => {
     window.open("http://192.168.30.50:8080/customers/exportxlsx");
   };
@@ -32,4 +32,4 @@ class DsKhachHang extends Component {
   }
 }
 
-export default DsKhachHang;
+export default CustomersList;

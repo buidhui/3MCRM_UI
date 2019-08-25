@@ -65,9 +65,15 @@ class Marketing extends Component {
                         </strong>
                       </Card.Text>
                       <Card.Text>
-                        Trạng Thái:{" "}
+                        Nội dung:{" "}
                         <strong className="float-right">
-                          {marketing.state}
+                          {marketing.content}
+                        </strong>
+                      </Card.Text>
+                      <Card.Text>
+                        Mục tiêu:{" "}
+                        <strong className="float-right">
+                          {marketing.goal}
                         </strong>
                       </Card.Text>
                       <Card.Text>

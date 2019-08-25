@@ -1,6 +1,8 @@
 import React from "react";
 import "./LoginStyle.css";
 import { Redirect } from "react-router-dom";
+import url from "../url";
+import axios from "axios";
 
 export default function Login(props) {
   function onSignIn(e) {
@@ -16,7 +18,22 @@ export default function Login(props) {
   if (localStorage.getItem("token")) {
     return <Redirect to="/" />;
   }
-
+  axios({
+    method: "post",
+    url: `${url}/conversion`,
+    data: null,
+    headers: {
+      "content-type": "application/json"
+    }
+  })
+    .then(respone => {
+      this.setState({
+        conversion: respone.data
+      });
+    })
+    .catch(error => {
+      console.log(error);
+    });
   return (
     <React.Fragment>
       <h1 className="error">ỨNG DỤNG QUẢN LÍ KHÁCH HÀNG</h1>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import StaffList from '../staff/StaffList'
-class DsNhanVien extends Component {
+import StaffList from "../staff/StaffList";
+class StaffsList extends Component {
   render() {
     return (
       <React.Fragment>
@@ -15,4 +15,4 @@ class DsNhanVien extends Component {
   }
 }
 
-export default DsNhanVien;
+export default StaffsList;
