@@ -104,7 +104,7 @@ class WeekChart extends React.Component {
   pushData0 = (conversion, dataArr) => {
     if (conversion.length !== 0) {
       for (var i = 0; i < conversion.length; i++) {
-        var date0 =
+        let date0 =
           (conversion[i].leadToOpportunity / conversion[i].totalLead) * 100;
         dataArr.push(Math.round(date0));
       }
@@ -113,12 +113,12 @@ class WeekChart extends React.Component {
   pushData1 = (conversion, data1) => {
     if (conversion.length !== 0) {
       for (var i = 0; i < conversion.length; i++) {
-        var date1 =
+        let date1 =
           (conversion[i].opportunityToCustomer /
             conversion[i].totalOpportunity) *
           100;
-
-        data1.push(Math.round(date1));
+        let date11 = Math.round(date1);
+        data1.push(date11);
       }
     }
   };
@@ -137,7 +137,6 @@ class WeekChart extends React.Component {
     this.pushData0(conversion, this.state.dataLine.datasets[0].data);
     this.pushData1(conversion, this.state.dataLine.datasets[1].data);
     this.pushData2(conversion, this.state.dataLine.datasets[2].data);
-
     return (
       <MDBContainer>
         <Line

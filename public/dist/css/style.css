@@ -208,6 +208,16 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
   padding-left: 34px;
   padding-right: 34px;
 }
+.btn-download:hover {
+  color: #1a9df0 !important;
+  cursor: pointer;
+}
+.btn-download{
+  color: #41484d !important;
+ margin-left: -18px;
+  font-size: 25px;
+  
+}
 /* end btn */
 
 .sidebar-brand :hover{

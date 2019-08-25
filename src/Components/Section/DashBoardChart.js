@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Tabs, Tab } from "react-bootstrap";
 import WeekChart from "../Chart/WeekChart";
-import MonthChart from "../Chart/MonthChart";
-import YearChart from "../Chart/YearChart";
+// import MonthChart from "../Chart/MonthChart";
+// import YearChart from "../Chart/YearChart";
 class DashBoardChart extends Component {
   render() {
     return (
@@ -13,7 +13,7 @@ class DashBoardChart extends Component {
               <div className="card-chart">
                 <h4>
                   {" "}
-                  <b>Tỉ lệ các nhóm khách hàng</b>
+                  <b>Tỉ lệ các nhóm khách hàng (%)</b>
                 </h4>
                 <br />
                 <Tabs
@@ -24,12 +24,12 @@ class DashBoardChart extends Component {
                   <Tab eventKey="week" title="Tuần" className="btn">
                     <WeekChart />
                   </Tab>
-                  <Tab eventKey="month" title="Tháng" className="btn">
+                  {/* <Tab eventKey="month" title="Tháng" className="btn">
                     <MonthChart />
                   </Tab>
                   <Tab eventKey="years" title="Năm" className="btn">
                     <YearChart />
-                  </Tab>
+                  </Tab> */}
                 </Tabs>
               </div>
             </div>

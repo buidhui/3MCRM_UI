@@ -1,8 +1,8 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
-import StaffAddForm from "./StaffAddForm";
+import ChangePwForm from "./ChangePwForm";
 
-export default function PopupForm(props) {
+export default function ChangePassword(props) {
   const [show, setShow] = React.useState(false);
 
   return (
@@ -12,7 +12,7 @@ export default function PopupForm(props) {
         className=" btn btn-add-cus btn-primary float-right"
         onClick={() => setShow(true)}
       >
-        Thêm nhân viên
+        <i className="fas fa-exchange-alt" />
       </button>
 
       <Modal
@@ -24,11 +24,11 @@ export default function PopupForm(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="popup-form">
-            <h4>Thêm mới nhân viên</h4>
+            <h4>Đổi mật khẩu</h4>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="modal-form-body">
-          <StaffAddForm
+          <ChangePwForm
             onClick={() => setShow(false)}
             onUpdateData={props.onUpdateData}
           />

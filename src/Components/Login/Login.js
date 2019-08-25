@@ -19,15 +19,15 @@ export default function Login(props) {
 
   return (
     <React.Fragment>
-      <h1 className="error">3M CRM APPLICATION</h1>
+      <h1 className="error">ỨNG DỤNG QUẢN LÍ KHÁCH HÀNG</h1>
 
       <div className="crm-two-grids">
         <div className="mid-class">
           <div className="img-right-side">
-            <h3>Customers Relationship Managerment</h3>
+            <h3>Customers Relationship Managerment 3M CRM</h3>
             <p>
-              We bring to you a brand new kind of web app for CRM with a modern
-              UI, greate UX.
+              Chúng tôi mang đến cho bạn một ứng dụng web quản lí khách hàng
+              hoàn toàn mới, với giao diện hiện đại và trải nghiệm tuyệt vời.
             </p>
             <img
               src="https://i.imgur.com/viT98Sy.png"
@@ -36,7 +36,7 @@ export default function Login(props) {
             />
           </div>
           <div className="txt-left-side">
-            <h2> Login Here </h2>
+            <h2> Đăng nhập </h2>
             <form>
               <div className="form-left-to-3m">
                 <span className="far fa-user" aria-hidden="true" />
@@ -59,7 +59,7 @@ export default function Login(props) {
                   type="password"
                   className="form-control"
                   name="password"
-                  placeholder="Password"
+                  placeholder="Mật khẩu"
                   tabIndex="2"
                   required
                 />
@@ -68,17 +68,17 @@ export default function Login(props) {
               <div className="main-two-3ms">
                 <div className="left-side-forget">
                   <input type="checkbox" className="checked" />
-                  <span className="remenber-me">Remember me </span>
+                  <span className="remenber-me">Lưu đăng nhập</span>
                 </div>
                 <div className="right-side-forget">
                   <a href="top#" className="for">
-                    Forgot password...?
+                    Quên mật khẩu...?
                   </a>
                 </div>
               </div>
               <div className="btnn">
                 <button type="submit" onClick={onSignIn}>
-                  Sign In
+                  Đăng nhập
                 </button>
               </div>
             </form>
