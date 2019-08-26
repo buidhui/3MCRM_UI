@@ -20,19 +20,40 @@ class CustomerList extends Component {
       customerList: data
     });
   };
-  componentDidMount() {
-    axios({
-      method: "get",
-      url: `${url}/customers/list`
-    })
-      .then(respone => {
-        this.setState({
-          customerList: respone.data
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  componentWillMount() {
+      if(localStorage && localStorage.getItem("role")){
+        var role = localStorage.getItem("role");
+        var id = localStorage.getItem("token")
+        if(role === "ROLE_USER"){
+          axios({
+            method: "get",
+            url: `${url}/customers/staff_id/${id}`
+          })
+            .then(respone => {
+              this.setState({
+                customerList: respone.data
+              });
+            })
+            .catch(error => {
+              console.log(error);
+            });
+        }else if(role === "ROLE_ADMIN"){
+        axios({
+          method: "get",
+          url: `${url}/customers/list`
+        })
+          .then(respone => {
+            this.setState({
+              customerList: respone.data
+            });
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }
+    }
+    
+    
   }
   onFilter = (filterName1, filterEmail1, filterPhone1) => {
     if (!filterName1 && !filterEmail1 && !filterPhone1) {
