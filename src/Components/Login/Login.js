@@ -49,8 +49,7 @@ export default function Login(props) {
           console.log(respone.data);
           localStorage.setItem("role", respone.data.role);
           localStorage.setItem("name", respone.data.name);
-
-          localStorage.setItem("token", respone.data.phone);
+          localStorage.setItem("token", respone.data.id);
           window.location.href = "/";
           // props.history.push("/");
         }
