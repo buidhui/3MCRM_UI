@@ -81,7 +81,7 @@ class ChangePwForm extends Component {
   render() {
     return (
       <Form>
-        <Col xs={6} md={4} className="add-col">
+        <Col className="add-col">
           <Container className="add-form">
             <Form.Row className="add-form-row">
               <Form.Group as={Col} controlId="formGridName">

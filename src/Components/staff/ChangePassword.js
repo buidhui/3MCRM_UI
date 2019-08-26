@@ -8,6 +8,7 @@ export default function ChangePassword(props) {
   return (
     <>
       <button
+        style={{marginRight: "5px"}}
         type="button"
         className=" btn btn-add-cus btn-primary float-right"
         onClick={() => setShow(true)}
@@ -17,7 +18,7 @@ export default function ChangePassword(props) {
 
       <Modal
         className="modal-form"
-        size="xl"
+        size="sm"
         show={show}
         onHide={() => setShow(false)}
         centered

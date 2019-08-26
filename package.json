@@ -18,7 +18,8 @@
     "react-scripts": "3.0.1",
     "react-select": "^3.0.4",
     "recharts": "^1.7.1",
-    "redux": "^4.0.4"
+    "redux": "^4.0.4",
+    "tinymce": "^5.0.14"
   },
   "scripts": {
     "start": "set PORT=7000 && react-scripts start",

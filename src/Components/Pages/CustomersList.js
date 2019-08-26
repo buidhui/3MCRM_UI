@@ -20,7 +20,7 @@ class CustomersList extends Component {
                 <div>
                   <i
                     onClick={this.downloadFile}
-                    className="fas fa-download btn-download"
+                    className="fas fa-download btn-download "
                   />
                 </div>
               </div>
