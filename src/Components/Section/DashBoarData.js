@@ -85,7 +85,7 @@ class DashBoarData extends Component {
           <div className="col-12 col-sm-6 col-lg-3">
             <div className="card card-sm-4">
               <div className="card-icon bg-danger">
-                <i class="fas fa-user-friends" />
+                <i className="fas fa-user-friends" />
               </div>
               <div className="card-wrap">
                 <div className="card-header">
@@ -100,7 +100,7 @@ class DashBoarData extends Component {
           <div className="col-12 col-sm-6 col-lg-3">
             <div className="card card-sm-4">
               <div className="card-icon bg-warning">
-                <i class="fas fa-user-plus" />
+                <i className="fas fa-user-plus" />
               </div>
               <div className="card-wrap">
                 <div className="card-header">

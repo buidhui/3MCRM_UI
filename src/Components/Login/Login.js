@@ -24,7 +24,7 @@ export default function Login(props) {
         console.log("respone", respone.data);
         // Neu k dung:
         if (!respone.data) {
-          alert("Sai mat khau or email");
+          alert("Sai mật khẩu hoặc email");
         } else {
           // Ket qua thanh cong email & pasword đúng
           localStorage.setItem("role", respone.data.role);

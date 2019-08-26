@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Editor } from "@tinymce/tinymce-react";
-// import { MDBCa rd, MDBCardTitle, MDBCardText, MDBContainer } from "mdbreact";
+//import { MDBCard, MDBCardTitle, MDBCardText, MDBContainer } from "mdbreact";
 
 class Scheduler extends Component {
   handleEditorChange = e => {

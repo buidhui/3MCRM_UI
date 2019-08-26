@@ -39,11 +39,11 @@ export default class Statistics extends Component {
                   <Card.Header>{customer.name}</Card.Header>
                   <Card.Body>
                     <Card.Text>
-                      Số lượng lead:{" "}
+                      Số lượng lead:
                       <strong className="float-right">{customer.total}</strong>
                     </Card.Text>
                     <Card.Text>
-                      Phân trăm chuyển đổi:{" "}
+                      Tỉ lệ chuyển đổi:
                       <strong className="float-right">
                         {this.calculate(
                           customer.convert,

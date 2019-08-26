@@ -6,6 +6,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
 import TablCusDetail from './TablCusDetail';
+import TablMailHis from './TablMailHis';
 function TabContainer(props) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
@@ -44,15 +45,15 @@ export default function DisabledTabs(props) {
         >
           <Tab label="Lịch sử đơn hàng" />
           <Tab label="Lịch sử email" />
-          <Tab label="Lịch sử hội thoại" />
+          {/* <Tab label="Lịch sử hội thoại" /> */}
         </Tabs>
       </AppBar>
       {value === 0 && <TabContainer>
         <TablCusDetail customer={props.customer} /></TabContainer>}
       {value === 1 && <TabContainer>
-        <TablCusDetail customer={props.customer} /></TabContainer>}
-      {value === 2 && <TabContainer>
-        <TablCusDetail customer={props.customer} /></TabContainer>}
+        <TablMailHis customer={props.customer} /></TabContainer>}
+      {/* {value === 2 && <TabContainer>
+        <TablCusDetail customer={props.customer} /></TabContainer>} */}
     </div>
   );
 }

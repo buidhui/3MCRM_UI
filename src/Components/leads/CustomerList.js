@@ -85,7 +85,7 @@ class CustomerList extends Component {
                     <option value={0}>Đầu mối</option>
                   </Form.Control>
                   </th>
-                <th className="text-center"></th>
+                {/* <th className="text-center"></th> */}
               </tr>
             </thead>
             <tbody>{eleCustomer}</tbody>
