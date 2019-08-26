@@ -7,11 +7,12 @@ class SideNavigation extends Component {
   //   super(props);
   // }
 
-  logoutHandler = e => {
+  logoutHandler = () => {
     localStorage.clear();
     window.location.href = "/login";
     // this.props.history.push("/login");
   };
+
   render() {
     return (
       <div className="main-sidebar">
@@ -132,7 +133,7 @@ class SideNavigation extends Component {
             </Link>
           </li> */}
           </ul>
-          <div className="p-3 mt-4 mb-4" onClick={e => this.logoutHandler(e)}>
+          <div className="p-3 mt-4 mb-4" onClick={this.logoutHandler}>
             <Link
               to="/login"
               className="btn btn-info btn-shadow btn-round has-icon has-icon-nofloat btn-block"

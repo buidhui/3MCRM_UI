@@ -4,13 +4,13 @@ import SideNavigation from "../Components/SideNavigation";
 import Footer from "../Components/Footer";
 import Routes from "../Components/Routes";
 
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Redirect } from "react-router-dom";
 
 class Layout extends Component {
   render() {
-    // if (!localStorage.getItem("token")) {
-    //   return <Redirect to="/login" />;
-    // }
+    if (!localStorage.getItem("token")) {
+      return <Redirect to="/login" />;
+    }
 
     return (
       <BrowserRouter>
@@ -31,7 +31,7 @@ class Layout extends Component {
             {/* Main content end*/}
 
             {/* Footer   */}
-            {/* <Footer /> */}
+            <Footer />
           </div>
         </div>
       </BrowserRouter>

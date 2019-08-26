@@ -44,20 +44,7 @@ class Lead extends Component {
           <form onSubmit={this.onFormSubmit}>
             <div className="row">
               <div className="col-lg-11 col-md-11 col-sm-11 file-input">
-                {/* <label for="uploadhihi" className="button">
-                  Chọn tệp
-                </label> */}
-                <input
-                  // id="uploadhihi"
-                  type="file"
-                  onChange={this.onChange}
-                  accept=".xlsx"
-                  // style={{ display: "none" }}
-                />
-
-                {/* <span className="label" data-js-label>
-                  Tệp chưa được chọn...
-                </span> */}
+                <input type="file" onChange={this.onChange} accept=".xlsx" />
               </div>
               <div className="col-lg-1 col-md-1 col-sm-1">
                 <button
@@ -73,19 +60,6 @@ class Lead extends Component {
               </div>
             </div>
           </form>
-
-          {/* <button className="button" type="submit">
-                Tải lên
-              </button> */}
-          {/* <form onSubmit={this.onFormSubmit}>
-              <input
-                className="bg-light fileinput1"
-                type="file"
-                onChange={this.onChange}
-                accept=".xlsx"
-              />
-              <button type="submit">Tải lên</button>
-            </form> */}
 
           <br />
           <CustomerList />

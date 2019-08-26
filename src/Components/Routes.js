@@ -14,6 +14,7 @@ import StaffsList from "./Pages/StaffsList";
 import OrdersList from "./Pages/OrdersList";
 import GroupCusDetail from "./Pages/GroupCusDetail";
 import StaffsDetail from "./Pages/StaffsDetail";
+import CustomersList from "./Pages/CustomersList";
 class Routes extends React.Component {
   render() {
     return (
@@ -22,7 +23,7 @@ class Routes extends React.Component {
         <Route path="/dashboard" component={DashBoard} />
         <Route path="/staffs" exact component={StaffsList} />
         <Route path="/staffs/:id" component={StaffsDetail} />
-        <Route path="/customers" exact component={Lead} />
+        <Route path="/customers" exact component={CustomersList} />
         <Route path="/customers/:id" component={CustomersDetail} />
         <Route path="/groupcustomers" exact component={GroupsCustomer} />
         <Route path="/groupcustomers/:id" component={GroupCusDetail} />

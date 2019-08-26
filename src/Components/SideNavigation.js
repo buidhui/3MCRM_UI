@@ -2,6 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const SideNavigation = () => {
+  const logoutHandler = () => {
+    localStorage.clear();
+    window.location.href = "/login";
+    // this.props.history.push("/login");
+  };
   return (
     <div className="main-sidebar">
       <aside id="sidebar-wrapper">
@@ -31,7 +36,13 @@ const SideNavigation = () => {
           </li>
           <li className="menu-header">Chi tiết</li>
           <li>
-            <a href="top#" className="has-dropdown">
+            <Link to="/leads">
+              <i className="fas fa-users" />
+              <span>Đầu mối</span>
+            </Link>
+          </li>
+          <li>
+            <a href="/" className="has-dropdown">
               <i className="fas fa-user" />
               <span>Khách hàng</span>
             </a>
@@ -51,9 +62,9 @@ const SideNavigation = () => {
             </ul>
           </li>
           <li>
-            <a href="top#" className="has-dropdown">
+            <a href="/" className="has-dropdown">
               <i className="fas fa-shopping-cart" />
-              <span>Quản lý mua hàng</span>
+              <span>Quản lý bán hàng</span>
             </a>
             <ul className="menu-dropdown">
               <li>
@@ -70,17 +81,11 @@ const SideNavigation = () => {
               </li>
             </ul>
           </li>
-          <li>
-            <Link to="/report">
-              <i className="fas fa-chart-line" />
-              <span>Báo cáo</span>
-            </Link>
-          </li>
 
           <li>
-            <a href="top#" className="has-dropdown">
+            <a href="/" className="has-dropdown">
               <i className="ion ion-stats-bars" />
-              <span>Khách hàng</span>
+              <span>Marketing</span>
             </a>
             <ul className="menu-dropdown">
               <li>
@@ -90,9 +95,9 @@ const SideNavigation = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/groupcustomers">
+                <Link to="/scheduler">
                   <i className="ion ion-ios-circle-outline" />
-                  Đặt lịch hẹn
+                  Tạo mẫu Email
                 </Link>
               </li>
             </ul>
@@ -114,13 +119,13 @@ const SideNavigation = () => {
             </Link>
           </li> */}
         </ul>
-        <div className="p-3 mt-4 mb-4">
+        <div className="p-3 mt-4 mb-4" onClick={logoutHandler}>
           <Link
-            to="/setting"
+            to="/login"
             className="btn btn-info btn-shadow btn-round has-icon has-icon-nofloat btn-block"
           >
-            <i className="ion ion-help-buoy" />
-            <div>Cài đặt</div>
+            <i className="fas fa-sign-out-alt" />
+            <div>Đăng xuất</div>
           </Link>
         </div>
       </aside>

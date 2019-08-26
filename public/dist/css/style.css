@@ -228,7 +228,7 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 .sidebar-brand {
   padding-top: 20px;
   margin-bottom: 20px;
-  background-color: #212330 !important;
+  background-color: transparent !important;
 }
 
 .sidebar-user{

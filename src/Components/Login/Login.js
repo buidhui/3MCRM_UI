@@ -1,39 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import "./LoginStyle.css";
 import { Redirect } from "react-router-dom";
 import url from "../url";
 import axios from "axios";
 
 export default function Login(props) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   function onSignIn(e) {
     e.preventDefault();
 
-    localStorage.setItem("token", "okok");
-    console.log("Props", props.history);
-    props.history.push("/");
+    // localStorage.setItem("token", "okok");
 
-    console.log("token", localStorage.getItem("token"));
+    axios({
+      method: "get",
+      url: `${url}/staffs?email=${email}`,
+      headers: {
+        "content-type": "application/json"
+      }
+    })
+      .then(respone => {
+        console.log("respone", respone.data);
+        // Neu k dung:
+        if (!respone.data) {
+          alert("Sai mat khau or email");
+        } else {
+          // Ket qua thanh cong email & pasword đúng
+          localStorage.setItem("role", respone.data.role);
+          localStorage.setItem("token", respone.data.phone);
+          window.location.href = "/";
+          // props.history.push("/");
+        }
+      })
+      .catch(error => {
+        // Ket qua sai: email & password sai
+        console.log(error);
+      });
+
+    // console.log("token", localStorage.getItem("token"));
   }
 
   if (localStorage.getItem("token")) {
     return <Redirect to="/" />;
   }
-  axios({
-    method: "post",
-    url: `${url}/conversion`,
-    data: null,
-    headers: {
-      "content-type": "application/json"
-    }
-  })
-    .then(respone => {
-      this.setState({
-        conversion: respone.data
-      });
-    })
-    .catch(error => {
-      console.log(error);
-    });
+
   return (
     <React.Fragment>
       <h1 className="error">ỨNG DỤNG QUẢN LÍ KHÁCH HÀNG</h1>
@@ -66,6 +77,8 @@ export default function Login(props) {
                   tabIndex="1"
                   required
                   autoFocus
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
                 />
                 <div className="clear" />
               </div>
@@ -79,6 +92,8 @@ export default function Login(props) {
                   placeholder="Mật khẩu"
                   tabIndex="2"
                   required
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
                 />
                 <div className="clear" />
               </div>

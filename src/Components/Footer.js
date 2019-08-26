@@ -8,6 +8,7 @@ const Footer = () => {
         <br />
         <br />
       </div>
+      
     </footer>
   );
 };
