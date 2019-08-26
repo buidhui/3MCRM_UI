@@ -124,7 +124,7 @@ export default function Login(props) {
                   <span className="remenber-me">Lưu đăng nhập</span>
                 </div>
                 <div className="right-side-forget">
-                  <a href="top#" className="for">
+                  <a href="/" className="for">
                     Quên mật khẩu...?
                   </a>
                 </div>
@@ -141,7 +141,7 @@ export default function Login(props) {
 
       <footer className="copyrigh-wthree">
         <div className="footer-right">
-          Copyright &copy; 2019 Design By <a href="top#">3M Team</a>
+          Copyright &copy; 2019 Design By <a href="/">3M Team</a>
         </div>
       </footer>
     </React.Fragment>

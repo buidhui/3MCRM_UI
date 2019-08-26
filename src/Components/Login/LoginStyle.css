@@ -312,6 +312,7 @@ display: -webkit-flex;
 justify-content: space-between; 
 -webkit-flex-wrap: wrap;
 flex-wrap:wrap;
+margin-left:    40px;
 }
 h1.error {
     text-align: center;

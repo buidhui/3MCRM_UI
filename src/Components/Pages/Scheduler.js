@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { Editor } from "@tinymce/tinymce-react";
-//import { MDBCard, MDBCardTitle, MDBCardText, MDBContainer } from "mdbreact";
-
 class Scheduler extends Component {
   handleEditorChange = e => {
     console.log("Content was updated:", e.target.getContent());
@@ -12,7 +10,7 @@ class Scheduler extends Component {
       <React.Fragment>
         <section className="section">
           <h1 className="section-header">
-            <div>Tạo mẫu Email</div>
+            <div>Tạo mẫu Email (Sắp ra mắt...)</div>
           </h1>
         </section>
 
@@ -27,14 +25,12 @@ class Scheduler extends Component {
           }}
           onChange={this.handleEditorChange}
         />
+        <br />
+        <br />
 
-        {/* <MDBCard
-          className="card-body"
-          style={{ width: "22rem", marginTop: "1rem" }}
-        >
-          <MDBCardTitle>Email Title</MDBCardTitle>
-          <MDBCardText>{this.handleEditorChange}</MDBCardText>
-        </MDBCard> */}
+        <br />
+
+        <br />
       </React.Fragment>
     );
   }
