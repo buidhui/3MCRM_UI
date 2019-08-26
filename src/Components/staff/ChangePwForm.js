@@ -6,42 +6,23 @@ class ChangePwForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "",
-      name: "",
-      dob: "",
-      gender: "",
-      role: "",
-      email: "",
-      phone: "",
-      note: ""
+      password: ""
     };
   }
-  addStaff(obj) {
-    axios({
-      method: "post",
-      url: `${url}/staffs/add`,
-      data: obj,
-      headers: {
-        "content-type": "application/json"
-      }
-    })
-      .then(() => {
-        alert("Thêm nhân viên thành công");
-        axios({
-          method: "get",
-          url: `${url}/staffs/list`
-        })
-          .then(respone => {
-            this.props.onUpdateData(respone.data);
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
+  //   axios({
+  //     method: "get",
+  //     url: `${url}/staffs/list`
+  //   })
+  //     .then(respone => {
+  //       this.props.onUpdateData(respone.data);
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // })
+  // .catch(error => {
+  //   console.log(error);
+  // });
   onChange = event => {
     var target = event.target;
     var name = target.name;
@@ -62,20 +43,13 @@ class ChangePwForm extends Component {
     event.preventDefault();
 
     const data = {
-      id: this.state.id,
-      name: this.state.name,
-      jobTitle: this.state.role,
-      dob: this.state.dob,
-      email: this.state.email,
-      gender: this.state.gender,
-      phone: this.state.phone,
-      note: this.state.note
+      password: this.state.password
     };
-    if (!data.name || !data.email || !data.phone) {
-      alert("Tên nhân viên, email, số điện thoại không được để trống!");
+    if (!data.password) {
+      alert("Mật khẩu không được để trống!");
     } else {
       this.props.onClick();
-      this.addStaff(data);
+      // this.addStaff(data);
     }
   };
   render() {

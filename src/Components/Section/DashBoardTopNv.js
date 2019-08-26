@@ -81,7 +81,7 @@ class DashBoardTopNv extends Component {
           <div className="card">
             <div>
               <div className="card-header bg-info text-light">
-                <h4>Nhân viên xuất sắc tuần qua</h4>
+                <h4>Nhân viên xuất sắc tháng qua</h4>
               </div>
               <div>
                 <table className="table">

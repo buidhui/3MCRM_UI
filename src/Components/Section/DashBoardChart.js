@@ -13,7 +13,7 @@ class DashBoardChart extends Component {
               <div className="card-chart">
                 <h4>
                   {" "}
-                  <b>Tỉ lệ các nhóm khách hàng (%)</b>
+                  <b>Tỉ lệ chuyển đổi các nhóm khách hàng (%)</b>
                 </h4>
                 <br />
                 <Tabs
@@ -21,7 +21,8 @@ class DashBoardChart extends Component {
                   transition={false}
                   id="noanim-tab-example"
                 >
-                  <Tab eventKey="week" title="Tháng" className="btn">
+                  <Tab eventKey="week" className="btn">
+                    <br />
                     <WeekChart />
                   </Tab>
                   {/* <Tab eventKey="month" title="Tháng" className="btn">
