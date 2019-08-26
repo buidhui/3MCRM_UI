@@ -80,7 +80,7 @@ class Marketing extends Component {
                         Kết Quả:{" "}
                         <strong className="float-right">
                           {" "}
-                          {marketing.result}
+                          {marketing.result}%
                         </strong>
                       </Card.Text>
                     </Card.Body>

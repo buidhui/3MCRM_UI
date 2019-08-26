@@ -13,6 +13,24 @@ export default function Login(props) {
 
     // localStorage.setItem("token", "okok");
 
+    // axios({
+    //   method: "post",
+    //   url: `${url}/login`,
+    //   data: {
+    //     email: "viet.huy@sapo.vn",
+    //     password: "123456"
+    //   },
+    //   headers: {
+    //     "content-type": "application/x-www-form-urlencoded"
+    //   }
+    // })
+    //   .then(respone => {
+    //     console.log(respone);
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
+
     axios({
       method: "get",
       url: `${url}/staffs?email=${email}`,
@@ -24,10 +42,14 @@ export default function Login(props) {
         console.log("respone", respone.data);
         // Neu k dung:
         if (!respone.data) {
-          alert("Sai mật khẩu hoặc email");
+          alert("Nhập sai email hoặc mật khẩu không đúng !!");
         } else {
           // Ket qua thanh cong email & pasword đúng
+
+          console.log(respone.data);
           localStorage.setItem("role", respone.data.role);
+          localStorage.setItem("name", respone.data.name);
+
           localStorage.setItem("token", respone.data.phone);
           window.location.href = "/";
           // props.history.push("/");

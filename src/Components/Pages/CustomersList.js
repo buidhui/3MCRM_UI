@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import CustomerList from "../customer/CustomerList";
+import url from "../url";
 
 class CustomersList extends Component {
   downloadFile = () => {
-    window.open("http://192.168.30.50:8080/customers/exportxlsx");
+    window.open(`${url}/customers/exportxlsx`);
   };
 
   render() {

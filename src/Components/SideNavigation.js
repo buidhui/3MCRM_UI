@@ -7,6 +7,8 @@ const SideNavigation = () => {
     window.location.href = "/login";
     // this.props.history.push("/login");
   };
+  var name = localStorage.getItem("name");
+
   return (
     <div className="main-sidebar">
       <aside id="sidebar-wrapper">
@@ -19,11 +21,11 @@ const SideNavigation = () => {
         </div>
         <div className="sidebar-user">
           <div className="sidebar-user-picture">
-            <img alt="" src="../dist/img/avatar/avatar-1.jpeg" />
+            <img alt="" src="../dist/img/avatar/avatar-5.jpeg" />
           </div>
           <div className="sidebar-user-details">
-            <div className="user-name">Việt Huy</div>
-            <div className="user-role">Nhân viên bán hàng</div>
+            <div className="user-name">{name}</div>
+            <div className="user-role">Nhân viên</div>
           </div>
         </div>
         <ul className="sidebar-menu">
