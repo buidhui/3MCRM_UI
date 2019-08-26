@@ -13,14 +13,15 @@ class CustomersList extends Component {
           <h1 className="section-header">
             <div className="row">
               <div className="col-11">
-                <div>Danh sách khách hàng</div>
-              </div>
-              <div className="col-1">
-                <div>
-                  <i
+                Danh sách khách hàng
+                <i
                     onClick={this.downloadFile}
                     className="fas fa-download btn-download "
                   />
+              </div>
+              <div className="col-1">
+                <div>
+                  
                 </div>
               </div>
             </div>
