@@ -3,10 +3,6 @@ import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 
 class SideNavigation extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   logoutHandler = () => {
     localStorage.clear();
     window.location.href = "/login";
@@ -14,6 +10,7 @@ class SideNavigation extends Component {
   };
 
   render() {
+    var name = localStorage.getItem("name");
     return (
       <div className="main-sidebar">
         <style
@@ -35,7 +32,7 @@ class SideNavigation extends Component {
               <img alt="" src="../dist/img/avatar/avatar-1.jpeg" />
             </div>
             <div className="sidebar-user-details">
-              <div className="user-name">Việt Huy</div>
+              <div className="user-name">{name}</div>
               <div className="user-role">Admin</div>
             </div>
           </div>
