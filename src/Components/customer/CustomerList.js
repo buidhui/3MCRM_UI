@@ -52,8 +52,6 @@ class CustomerList extends Component {
           });
       }
     }
-    
-    
   }
   onFilter = (filterName1, filterEmail1, filterPhone1) => {
     if (!filterName1 && !filterEmail1 && !filterPhone1) {
