@@ -22,7 +22,7 @@ class Lead extends Component {
     this.setState({ file: e.target.files[0] });
   }
   fileUpload(file) {
-    const url = "http://192.168.30.50:8080/lead/upload";
+    const url = "http://192.168.10.22:8080/lead/upload";
     const formData = new FormData();
     formData.append("file", file);
     const config = {

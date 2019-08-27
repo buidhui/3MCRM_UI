@@ -124,7 +124,7 @@ const SideNavigation = () => {
         <div className="p-3 mt-4 mb-4" onClick={logoutHandler}>
           <Link
             to="/login"
-            className="btn btn-info btn-shadow btn-round has-icon has-icon-nofloat btn-block"
+            className="btn btn-info btn-shadow btn-round has-icon has-icon-nofloat btn-block "
           >
             <i className="fas fa-sign-out-alt" />
             <div>Đăng xuất</div>

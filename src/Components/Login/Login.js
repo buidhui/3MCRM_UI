@@ -32,8 +32,12 @@ export default function Login(props) {
     //   });
 
     axios({
-      method: "get",
-      url: `${url}/staffs?email=${email}`,
+      method: "post",
+      url: `${url}/staff/login`,
+      data: {
+        email: email,
+        password: password
+      },
       headers: {
         "content-type": "application/json"
       }
@@ -42,21 +46,20 @@ export default function Login(props) {
         console.log("respone", respone.data);
         // Neu k dung:
         if (!respone.data) {
-          alert("Nhập sai email hoặc mật khẩu không đúng !!");
+          console.log(respone.status);
         } else {
-          // Ket qua thanh cong email & pasword đúng
+          //   // Ket qua thanh cong email & pasword đúng
 
-          console.log(respone.data);
           localStorage.setItem("role", respone.data.role);
           localStorage.setItem("name", respone.data.name);
           localStorage.setItem("token", respone.data.id);
           window.location.href = "/";
-          // props.history.push("/");
         }
       })
       .catch(error => {
         // Ket qua sai: email & password sai
         console.log(error);
+        alert("Nhập sai email hoặc mật khẩu không đúng !!");
       });
 
     // console.log("token", localStorage.getItem("token"));

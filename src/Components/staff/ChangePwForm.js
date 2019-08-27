@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Form, Col, Button, Container } from "react-bootstrap";
-import axios from "axios";
-import url from "../url";
+// import axios from "axios";
+// import url from "../url";
 class ChangePwForm extends Component {
   constructor(props) {
     super(props);
